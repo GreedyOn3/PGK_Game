@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 6094143471325782912}
   - component: {fileID: 4470370686211478460}
   - component: {fileID: -6728380197195377163}
+  - component: {fileID: -5167089272841205230}
+  - component: {fileID: 2809181945823587291}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -157,3 +159,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-5167089272841205230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8473961373550710930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5397bb30afbc154a933a40b07c253a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  value: 100
+--- !u!114 &2809181945823587291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8473961373550710930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02a19ff5439e14d409acab64ed0db24f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Experience
+  value: 0
