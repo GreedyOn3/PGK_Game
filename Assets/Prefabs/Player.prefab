@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5805535888861732353}
   - component: {fileID: 6094143471325782912}
   - component: {fileID: -6728380197195377163}
+  - component: {fileID: 4822155126531462329}
   - component: {fileID: 4470370686211478460}
   - component: {fileID: -5167089272841205230}
   - component: {fileID: 2809181945823587291}
@@ -145,6 +146,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4822155126531462329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8473961373550710930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8431d0f4acaf7604d9af07569e3e25a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
+  movementSpeed: 8
+  attack: 5
+  defense: 5
 --- !u!114 &4470370686211478460
 MonoBehaviour:
   m_ObjectHideFlags: 0
