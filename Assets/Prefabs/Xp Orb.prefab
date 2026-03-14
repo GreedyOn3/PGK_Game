@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1674228929032799958}
   - component: {fileID: 4230355080795297055}
   - component: {fileID: 3398923511655210409}
-  - component: {fileID: 6465747428032069196}
   - component: {fileID: 1974553580739097082}
   m_Layer: 0
   m_Name: Xp Orb
@@ -114,20 +113,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6465747428032069196
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2016887137102623746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02a19ff5439e14d409acab64ed0db24f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Xp
-  value: 5
-  maxValue: 100
 --- !u!114 &1974553580739097082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,3 +125,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 364191b6e0801d74eb28f398457efe41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::XpPickup
+  amount: 5

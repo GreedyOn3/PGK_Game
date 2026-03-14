@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ItemDrop : MonoBehaviour
+public class DropItemOnDestroy : MonoBehaviour
 {
     public GameObject item;
 

@@ -4,9 +4,9 @@ using UnityEngine.UI;
 namespace UI
 {
     [RequireComponent(typeof(Slider))]
-    public class DisplayXp : MonoBehaviour
+    public class DisplayPlayerXp : MonoBehaviour
     {
-        public Xp source;
+        public PlayerXp source;
 
         private Slider _slider;
 
