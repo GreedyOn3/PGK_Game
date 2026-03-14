@@ -5,8 +5,16 @@ public class PlayerXp : MonoBehaviour
     public float value = 0.0f;
     public float maxValue = 100.0f;
 
+    public int Level { get; private set; } = 0;
+
     public void Add(float amount)
     {
-        value = Mathf.Clamp(value + amount, 0.0f, maxValue);
+        value += amount;
+
+        while (value >= maxValue)
+        {
+            Level++;
+            value -= maxValue;
+        }
     }
 }

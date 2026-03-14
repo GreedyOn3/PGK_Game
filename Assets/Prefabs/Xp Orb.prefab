@@ -125,4 +125,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 364191b6e0801d74eb28f398457efe41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::XpPickup
-  amount: 5
+  amount: 25
