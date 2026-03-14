@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
 
     private GameObject _player;
 
-    private void Start()
+    private void Awake()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
     }

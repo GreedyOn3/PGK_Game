@@ -11,7 +11,7 @@ public class EnemySpawner : MonoBehaviour
     private BoxCollider _spawnArea;
     private float _spawnTimer;
 
-    private void Start()
+    private void Awake()
     {
         _spawnArea = GetComponent<BoxCollider>();
     }

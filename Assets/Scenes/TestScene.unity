@@ -658,6 +658,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eecca3e02d7aa5443b34cffdc368ec19, type: 3}
+--- !u!114 &33620372920418207 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4822155126531462329, guid: eecca3e02d7aa5443b34cffdc368ec19, type: 3}
+  m_PrefabInstance: {fileID: 33620372920418206}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8431d0f4acaf7604d9af07569e3e25a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
 --- !u!1001 &109991665807074117
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -674,6 +685,10 @@ PrefabInstance:
       propertyPath: playerXp
       value: 
       objectReference: {fileID: 1929440297}
+    - target: {fileID: 1550433709057428935, guid: 1c6a684064a87c8469f49fad4e3b363f, type: 3}
+      propertyPath: playerStats
+      value: 
+      objectReference: {fileID: 33620372920418207}
     - target: {fileID: 1550433709057428935, guid: 1c6a684064a87c8469f49fad4e3b363f, type: 3}
       propertyPath: playerHealth
       value: 
