@@ -1,23 +1,17 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Xp))]
 public class XpPickup : MonoBehaviour
 {
-    private Xp _xp;
-
-    private void Start()
-    {
-        _xp = GetComponent<Xp>();
-    }
+    public float amount = 5.0f;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            var xp = other.GetComponent<Xp>();
-            if (xp == null) return;
-            xp.Add(_xp.value);
+            var playerXp = other.GetComponent<PlayerXp>();
+            if (playerXp == null) return;
+            playerXp.Add(amount);
             Destroy(gameObject);
         }
     }
