@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
         transform.localPosition += movementVector;
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
