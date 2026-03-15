@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerXp : MonoBehaviour
@@ -6,6 +7,7 @@ public class PlayerXp : MonoBehaviour
     public float maxValue = 100.0f;
 
     public int Level { get; private set; } = 0;
+    public event Action OnLevelUp;
 
     public void Add(float amount)
     {
@@ -15,6 +17,7 @@ public class PlayerXp : MonoBehaviour
         {
             Level++;
             value -= maxValue;
+            OnLevelUp?.Invoke();
         }
     }
 }
