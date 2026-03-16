@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38f8ce6660181014885b789fa08fd694, type: 3}
   m_Name: Attack Upgrade
   m_EditorClassIdentifier: Assembly-CSharp::Upgrade
+  image: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   title: Attack
   description: ...
   type: 1

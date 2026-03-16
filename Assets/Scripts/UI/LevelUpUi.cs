@@ -19,21 +19,7 @@ namespace UI
 
         public void PickUpgrade(Upgrade upgrade)
         {
-            switch (upgrade.type)
-            {
-                case UpgradeType.MovementSpeed:
-                    playerStats.movementSpeed += 1.0f;
-                    break;
-                case UpgradeType.Attack:
-                    playerStats.attack += 1.0f;
-                    break;
-                case UpgradeType.Defense:
-                    playerStats.defense += 1.0f;
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-
+            playerStats.ApplyUpgrade(upgrade);
             levelUpScreen.SetActive(false);
             Time.timeScale = 1.0f;
         }
