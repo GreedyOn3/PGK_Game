@@ -9,17 +9,15 @@ public class HUD : MonoBehaviour
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI statsText;
 
-    public Health playerHealth;
-    public PlayerXp playerXp;
-    public PlayerStats playerStats;
+    public PlayerReferences player;
 
     private void Update()
     {
-        healthSlider.value = playerHealth.value;
-        healthSlider.maxValue = playerHealth.maxValue;
-        xpSlider.value = playerXp.value;
-        xpSlider.maxValue = playerXp.maxValue;
-        levelText.text = $"Level {playerXp.Level}";
-        statsText.text = $"Player stats:\nMovement speed: {playerStats.movementSpeed}\nAttack: {playerStats.attack}\nDefense: {playerStats.defense}";
+        healthSlider.value = player.health.value;
+        healthSlider.maxValue = player.health.maxValue;
+        xpSlider.value = player.xp.value;
+        xpSlider.maxValue = player.xp.maxValue;
+        levelText.text = $"Level {player.xp.Level}";
+        statsText.text = $"Player stats:\nMovement speed: {player.stats.movementSpeed}\nAttack: {player.stats.attack}\nDefense: {player.stats.defense}";
     }
 }

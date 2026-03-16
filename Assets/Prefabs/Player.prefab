@@ -12,11 +12,14 @@ GameObject:
   - component: {fileID: 7827079270363728289}
   - component: {fileID: 5805535888861732353}
   - component: {fileID: 6094143471325782912}
-  - component: {fileID: -6728380197195377163}
   - component: {fileID: 4822155126531462329}
   - component: {fileID: 4470370686211478460}
   - component: {fileID: -5167089272841205230}
   - component: {fileID: 2809181945823587291}
+  - component: {fileID: 9134130243309847553}
+  - component: {fileID: 7328065228462681933}
+  - component: {fileID: 5343043742513150171}
+  - component: {fileID: 7535198466013395785}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -111,7 +114,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -119,33 +122,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &-6728380197195377163
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8473961373550710930}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &4822155126531462329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,8 +149,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3662a9c80e249e74ebb75388e3e46b3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
-  moveAction: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  movementSpeed: 8
+  maxGroundSpeed: 8
+  groundAcceleration: 70
+  groundFriction: 8
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 384
+  slideMinSpeed: 1
+  slideFriction: 1
+  slideBoost: 5
+  slopeSlideForce: 50
+  airAcceleration: 25
+  airMaxSpeed: 2
+  airDrag: 0.4
+  jumpForce: 10
+  jumpSpeedBoost: 0.1
+  gravity: -25
+  wallCheckDistance: 0.8
+  wallJumpPush: 8
 --- !u!114 &-5167089272841205230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,3 +195,89 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Experience
   value: 0
   maxValue: 100
+--- !u!114 &9134130243309847553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8473961373550710930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f1e283d04376774fa343e18f9cc87e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerReferences
+  health: {fileID: -5167089272841205230}
+  controller: {fileID: 7328065228462681933}
+  movement: {fileID: 4470370686211478460}
+  stats: {fileID: 4822155126531462329}
+  xp: {fileID: 2809181945823587291}
+--- !u!114 &7328065228462681933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8473961373550710930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67a57663e5c52c945ae410b01ebba37f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  movement: {fileID: 4470370686211478460}
+  jumpBufferTime: 0.15
+--- !u!114 &5343043742513150171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8473961373550710930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
+  m_Actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 1
+  m_DefaultControlScheme: Keyboard&Mouse
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!143 &7535198466013395785
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8473961373550710930}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}

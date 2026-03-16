@@ -5,21 +5,20 @@ namespace UI
 {
     public class LevelUpUi : MonoBehaviour
     {
-        public PlayerXp playerXp;
-        public PlayerStats playerStats;
+        public PlayerReferences player;
         public GameObject levelUpScreen;
         public LevelUpOptionUi[] options;
         public Upgrade[] upgrades;
 
         private void Awake()
         {
-            playerXp.OnLevelUp += LevelUp;
+            player.xp.OnLevelUp += LevelUp;
             levelUpScreen.SetActive(false);
         }
 
         public void PickUpgrade(Upgrade upgrade)
         {
-            playerStats.ApplyUpgrade(upgrade);
+            player.stats.ApplyUpgrade(upgrade);
             levelUpScreen.SetActive(false);
             Time.timeScale = 1.0f;
         }
