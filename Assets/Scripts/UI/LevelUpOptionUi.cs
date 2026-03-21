@@ -8,11 +8,11 @@ namespace UI
     {
         public LevelUpUi levelUpUi;
 
-        private Upgrade _upgrade;
+        private StatUpgradeType _upgrade;
 
-        public void SetUpgrade(Upgrade upgrade)
+        public void SetStatUpgrade(StatUpgradeInfo upgrade)
         {
-            _upgrade = upgrade;
+            _upgrade = upgrade.type;
             var image = transform.Find("Image").GetComponent<Image>();
             var name = transform.Find("Name").GetComponent<TextMeshProUGUI>();
             var description = transform.Find("Description").GetComponent<TextMeshProUGUI>();
@@ -23,7 +23,7 @@ namespace UI
 
         public void Pick()
         {
-            levelUpUi.PickUpgrade(_upgrade);
+            levelUpUi.PickStatUpgrade(_upgrade);
         }
     }
 }

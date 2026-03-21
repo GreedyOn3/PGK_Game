@@ -7,4 +7,5 @@ public class PlayerReferences : MonoBehaviour
     public PlayerMovement movement;
     public PlayerStats stats;
     public PlayerXp xp;
+    public PlayerInventory inventory;
 }

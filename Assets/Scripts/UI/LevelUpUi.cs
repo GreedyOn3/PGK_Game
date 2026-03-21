@@ -7,7 +7,7 @@ namespace UI
         public PlayerReferences player;
         public GameObject levelUpScreen;
         public LevelUpOptionUi[] options;
-        public Upgrade[] upgrades;
+        public StatUpgradeInfo[] upgrades;
 
         private void Awake()
         {
@@ -15,9 +15,9 @@ namespace UI
             levelUpScreen.SetActive(false);
         }
 
-        public void PickUpgrade(Upgrade upgrade)
+        public void PickStatUpgrade(StatUpgradeType upgrade)
         {
-            player.stats.ApplyUpgrade(upgrade);
+            player.stats.ApplyStatUpgrade(upgrade);
             levelUpScreen.SetActive(false);
             Time.timeScale = 1.0f;
         }
@@ -30,7 +30,7 @@ namespace UI
             for (var i = 0; i < 3; i++)
             {
                 options[i].levelUpUi = this;
-                options[i].SetUpgrade(upgrades[i]);
+                options[i].SetStatUpgrade(upgrades[i]);
             }
         }
     }
