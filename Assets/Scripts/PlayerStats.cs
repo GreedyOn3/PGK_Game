@@ -7,17 +7,17 @@ public class PlayerStats : MonoBehaviour
     public float attack = 5.0f;
     public float defense = 5.0f;
 
-    public void ApplyUpgrade(Upgrade upgrade)
+    public void ApplyStatUpgrade(StatUpgradeType type)
     {
-        switch (upgrade.type)
+        switch (type)
         {
-            case UpgradeType.MovementSpeed:
+            case StatUpgradeType.MovementSpeed:
                 movementSpeed += 1.0f;
                 break;
-            case UpgradeType.Attack:
+            case StatUpgradeType.Attack:
                 attack += 1.0f;
                 break;
-            case UpgradeType.Defense:
+            case StatUpgradeType.Defense:
                 defense += 1.0f;
                 break;
             default:

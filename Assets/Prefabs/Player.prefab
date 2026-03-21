@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4470370686211478460}
   - component: {fileID: -5167089272841205230}
   - component: {fileID: 2809181945823587291}
+  - component: {fileID: 4646245972546279748}
   - component: {fileID: 9134130243309847553}
   - component: {fileID: 7328065228462681933}
   - component: {fileID: 5343043742513150171}
@@ -195,6 +196,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Experience
   value: 0
   maxValue: 100
+--- !u!114 &4646245972546279748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8473961373550710930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7bd4e64199a4e443ab031896f86d49f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInventory
+  startingWeapon: 0
+  wandWeaponInfo: {fileID: 11400000, guid: 1c1c5754b53d2ff43bc86362b9ee5b55, type: 2}
+  whipWeaponInfo: {fileID: 11400000, guid: 79904d54ce938d84f8afedc73f8400b0, type: 2}
+  capacity: 6
 --- !u!114 &9134130243309847553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,6 +229,7 @@ MonoBehaviour:
   movement: {fileID: 4470370686211478460}
   stats: {fileID: 4822155126531462329}
   xp: {fileID: 2809181945823587291}
+  inventory: {fileID: 4646245972546279748}
 --- !u!114 &7328065228462681933
 MonoBehaviour:
   m_ObjectHideFlags: 0
