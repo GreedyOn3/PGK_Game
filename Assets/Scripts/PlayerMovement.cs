@@ -1,8 +1,11 @@
+using NUnit.Framework.Internal;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
+    public Transform visuals;
+
     [Header("Movement")]
     public float maxGroundSpeed = 8f;
     public float groundAcceleration = 70f;
@@ -51,16 +54,23 @@ public class PlayerMovement : MonoBehaviour
         else
             AirMove();
 
+        RotateTowards(moveDir, (grounded ? groundHit.normal : Vector3.up));
+
         Vector3 velocity = horizontalVelocity;
         if (grounded)
-        {
-            velocity = Vector3.ProjectOnPlane(horizontalVelocity, groundHit.normal);
-            velocity = velocity.normalized * horizontalVelocity.magnitude;
-        }
+            velocity = Vector3.ProjectOnPlane(horizontalVelocity, groundHit.normal).normalized * horizontalVelocity.magnitude;
 
         Vector3 finalVelocity = velocity + Vector3.up * verticalVelocity;
         Debug.DrawRay(transform.position, finalVelocity, Color.blue);
         controller.Move(finalVelocity * Time.deltaTime);
+    }
+
+    public void RotateTowards(Vector3 dir, Vector3 up)
+    {
+        Transform toRotate = (visuals) ? visuals : transform;
+
+        Vector3 forward = Vector3.ProjectOnPlane((dir != Vector3.zero) ? dir : toRotate.forward, up).normalized;
+        toRotate.rotation = Quaternion.LookRotation(forward, up);
     }
 
     void GroundMove(RaycastHit groundHit, bool isSliding)
@@ -145,7 +155,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool GroundCheck(out RaycastHit hit)
     {
-        float sphereRadius = controller.radius * 0.9f;
+        float sphereRadius = controller.radius * 0.95f;
         float distance = (controller.height * 0.5f) - sphereRadius + 0.1f;
 
         return Physics.SphereCast(
@@ -159,25 +169,20 @@ public class PlayerMovement : MonoBehaviour
         );
     }
 
-    public bool CheckWall(out RaycastHit hit)
+    public bool CheckWall(out RaycastHit hit, out bool right)
     {
-        if (Physics.Raycast(transform.position, transform.right, out hit, wallCheckDistance))
+        Transform checkTransform = (visuals) ? visuals : transform;
+
+        if (right = Physics.Raycast(transform.position, checkTransform.right, out hit, wallCheckDistance, groundMask))
             return true;
-        if (Physics.Raycast(transform.position, -transform.right, out hit, wallCheckDistance))
-            return true;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, wallCheckDistance))
+        if (Physics.Raycast(transform.position, -checkTransform.right, out hit, wallCheckDistance, groundMask))
             return true;
 
         return false;
     }
 
-    public Vector3 HorizontalVelocity()
-    {
-        return horizontalVelocity;
-    }
-
-    public void AddVelocity(Vector3 v)
-    {
-        horizontalVelocity += v;
-    }
+    public void BoostVelocity(float boost) => horizontalVelocity += horizontalVelocity.normalized * boost;
+    public Vector3 GetMoveDir() => moveDir;
+    public Vector3 GetHorizontalVelocity() => horizontalVelocity;
+    public float GetCurrentSpeed() => horizontalVelocity.magnitude;
 }

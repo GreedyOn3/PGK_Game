@@ -3,7 +3,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Animation")]
+    public Animator animator;
+    [Header("Player Scripts")]
     public PlayerMovement movement;
+    public PlayerCamera cam;
+    [Header("Timers")]
     public float jumpBufferTime = 0.15f;
 
     //States
@@ -44,7 +49,7 @@ public class PlayerController : MonoBehaviour
 
     public void Move(bool sliding = false)
     {
-        Vector3 move = transform.right * moveDir.x + transform.forward * moveDir.y;
+        Vector3 move = Quaternion.Euler(0f, (cam) ? cam.playerCamera.eulerAngles.y : 0f, 0f) * new Vector3(moveDir.x, 0f, moveDir.y);
 
         movement.SetMoveDir(move);
 
@@ -52,11 +57,15 @@ public class PlayerController : MonoBehaviour
         movement.UpdateMovement(isGrounded, groundHit, sliding);
     }
 
-    public void ClearJumpBuffer() { jumpBufferTimer = 0f; }
-    public bool CheckJumpBuffered() { return jumpBufferTimer > 0f; }
-    public bool IsSliding() { return sliding; }
-    public void StopSliding() { sliding = false; }
-    public bool IsGrounded() { return isGrounded; }
+    public void SetAnimatorValue(string name, bool value) { if (animator) animator.SetBool(name, value); }
+    public void SetAnimatorValue(string name, float value) { if (animator) animator.SetFloat(name, value); }
+    public void SetAnimatorValue(string name) { if (animator) animator.SetTrigger(name); }
+
+    public void ClearJumpBuffer() => jumpBufferTimer = 0f;
+    public bool CheckJumpBuffered() => (jumpBufferTimer > 0f);
+    public bool IsSliding() => sliding;
+    public void StopSliding() => sliding = false;
+    public bool IsGrounded() => isGrounded;
 
     private void OnMove(InputValue val)
     {
@@ -64,6 +73,6 @@ public class PlayerController : MonoBehaviour
 
         if(moveDir.sqrMagnitude > 1) moveDir = moveDir.normalized;
     }
-    private void OnJump(InputValue val) { if(val.isPressed) jumpBufferTimer = jumpBufferTime; }
+    private void OnJump(InputValue val) { if(val.isPressed && jumpBufferTimer <= 0f) jumpBufferTimer = jumpBufferTime; }
     private void OnSlide(InputValue val) { sliding = val.isPressed; }
 }
