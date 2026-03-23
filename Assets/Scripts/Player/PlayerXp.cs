@@ -3,8 +3,11 @@ using UnityEngine;
 
 public class PlayerXp : MonoBehaviour
 {
-    public float value = 0.0f;
-    public float maxValue = 100.0f;
+    [SerializeField] private float value = 0.0f;
+    [SerializeField] private float maxValue = 100.0f;
+
+    public float Value => value;
+    public float MaxValue => maxValue;
 
     public int Level { get; private set; } = 0;
     public event Action OnLevelUp;

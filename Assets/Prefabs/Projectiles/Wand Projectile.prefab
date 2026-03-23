@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8235947360647264817}
   - component: {fileID: 3228510204267806398}
   - component: {fileID: 4614201235961904924}
+  - component: {fileID: -4053180584651372770}
   m_Layer: 0
   m_Name: Wand Projectile
   m_TagString: Projectile
@@ -140,3 +141,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-4053180584651372770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3864531069361945626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7aba318ab4c30774bb83e4c74be09b13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Projectile
+  lifetime: 5

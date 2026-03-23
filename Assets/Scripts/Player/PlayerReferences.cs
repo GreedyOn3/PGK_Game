@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerReferences : MonoBehaviour
 {
-    public Health health;
+    public PlayerHealth health;
     public PlayerController controller;
     public PlayerMovement movement;
     public PlayerStats stats;

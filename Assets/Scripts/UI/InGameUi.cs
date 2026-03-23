@@ -7,16 +7,16 @@ namespace UI
 {
     public class InGameUi : MonoBehaviour
     {
-        public InputActionReference pauseAction;
+        [SerializeField] private InputActionReference pauseAction;
 
-        public Slider healthSlider;
-        public Slider xpSlider;
-        public TextMeshProUGUI levelText;
-        public TextMeshProUGUI statsText;
-        public TextMeshProUGUI timeText;
-        public GameObject pauseMenu;
+        [SerializeField] private Slider healthSlider;
+        [SerializeField] private Slider xpSlider;
+        [SerializeField] private TextMeshProUGUI levelText;
+        [SerializeField] private TextMeshProUGUI statsText;
+        [SerializeField] private TextMeshProUGUI timeText;
+        [SerializeField] private GameObject pauseMenu;
 
-        public PlayerReferences player;
+        [SerializeField] private PlayerReferences player;
 
         private void Update()
         {
@@ -26,10 +26,10 @@ namespace UI
                 pauseMenu.SetActive(!active);
             }
 
-            healthSlider.value = player.health.value;
-            healthSlider.maxValue = player.health.maxValue;
-            xpSlider.value = player.xp.value;
-            xpSlider.maxValue = player.xp.maxValue;
+            healthSlider.value = player.health.Value;
+            healthSlider.maxValue = player.health.MaxValue;
+            xpSlider.value = player.xp.Value;
+            xpSlider.maxValue = player.xp.MaxValue;
             levelText.text = $"Level {player.xp.Level}";
             statsText.text = $"Player stats:\nMovement speed: {player.stats.movementSpeed}\nAttack: {player.stats.attack}\nDefense: {player.stats.defense}";
 
