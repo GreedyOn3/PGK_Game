@@ -2,18 +2,19 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
-using Weapons;
 
+[RequireComponent(typeof(PlayerReferences))]
 public class PlayerInventory : MonoBehaviour
 {
-    public WeaponId startingWeapon;
-    public WeaponInfo wandWeaponInfo;
-    public WeaponInfo whipWeaponInfo;
+    [SerializeField] private WeaponId startingWeapon;
+    [SerializeField] private GameObject wandPrefab;
+    [SerializeField] private GameObject whipPrefab;
+
     [SerializeField] private int capacity = 6;
+    private readonly List<Weapon> _weapons = new();
+    [SerializeField] private Transform weaponsContainer;
 
     public event Action OnInventoryChange;
-
-    private List<Weapon> _weapons = new();
 
     private void Awake()
     {
@@ -28,13 +29,18 @@ public class PlayerInventory : MonoBehaviour
     public void AddWeapon(WeaponId weaponId)
     {
         Assert.IsTrue(_weapons.Count < capacity);
+        var playerReferences = GetComponent<PlayerReferences>();
         switch (weaponId)
         {
             case WeaponId.Wand:
-                _weapons.Add(new Wand(wandWeaponInfo));
+                var wand = Instantiate(wandPrefab, weaponsContainer).GetComponent<Weapons.Wand>();
+                wand.player = playerReferences;
+                _weapons.Add(wand);
                 break;
             case WeaponId.Whip:
-                _weapons.Add(new Whip(whipWeaponInfo));
+                var whip = Instantiate(whipPrefab, weaponsContainer).GetComponent<Weapons.Whip>();
+                whip.player = playerReferences;
+                _weapons.Add(whip);
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(weaponId), weaponId, null);

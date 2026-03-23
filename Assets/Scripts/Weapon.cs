@@ -1,10 +1,20 @@
-public abstract class Weapon
-{
-    public WeaponInfo Info { get; private set; }
+using UnityEngine;
 
-    protected Weapon(WeaponInfo info)
+public abstract class Weapon : MonoBehaviour
+{
+    public WeaponInfo weaponInfo;
+    public PlayerReferences player;
+    public float cooldownSeconds = 5.0f;
+
+    private void Start()
     {
-        Info = info;
+        Invoke(nameof(DoAttack), cooldownSeconds);
+    }
+
+    private void DoAttack()
+    {
+        Invoke(nameof(DoAttack), cooldownSeconds);
+        Attack();
     }
 
     public abstract void Attack();
