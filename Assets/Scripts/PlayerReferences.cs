@@ -8,4 +8,5 @@ public class PlayerReferences : MonoBehaviour
     public PlayerStats stats;
     public PlayerXp xp;
     public PlayerInventory inventory;
+    public PlayerCamera playerCamera;
 }
