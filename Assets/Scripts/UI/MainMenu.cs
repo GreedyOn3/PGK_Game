@@ -7,7 +7,7 @@ namespace UI
     {
         public void OnStartButtonClicked()
         {
-            SceneManager.LoadScene("TestScene");
+            SceneManager.LoadScene(SceneIndex.TestScene);
         }
 
         public void OnQuitButtonClicked()

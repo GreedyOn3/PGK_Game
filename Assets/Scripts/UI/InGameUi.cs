@@ -13,6 +13,7 @@ namespace UI
         public Slider xpSlider;
         public TextMeshProUGUI levelText;
         public TextMeshProUGUI statsText;
+        public TextMeshProUGUI timeText;
         public GameObject pauseMenu;
 
         public PlayerReferences player;
@@ -31,6 +32,14 @@ namespace UI
             xpSlider.maxValue = player.xp.maxValue;
             levelText.text = $"Level {player.xp.Level}";
             statsText.text = $"Player stats:\nMovement speed: {player.stats.movementSpeed}\nAttack: {player.stats.attack}\nDefense: {player.stats.defense}";
+
+            var levelManager = LevelManager.Instance;
+            var levelTime = (int)levelManager.LevelTimeSeconds;
+            var levelTimeSeconds = levelTime % 60;
+            var levelTimeSecondsText = levelTimeSeconds < 10 ? $"0{levelTimeSeconds}" : $"{levelTimeSeconds}";
+            var levelTimeMinutes = levelTime / 60;
+            var levelTimeMinutesText = levelTimeMinutes < 10 ? $"0{levelTimeMinutes}" : $"{levelTimeMinutes}";
+            timeText.text = $"{levelTimeMinutesText}:{levelTimeSecondsText}";
         }
     }
 }

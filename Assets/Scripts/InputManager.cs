@@ -1,0 +1,60 @@
+using System;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class InputManager : MonoBehaviour
+{
+    public InputActionAsset inputActions;
+    public InputMode InputMode { get; private set; }
+    [SerializeField] private InputMode initialInputMode = InputMode.Gameplay;
+
+    public static InputManager Instance { get; private set; }
+
+    private InputActionMap _gameplayActions;
+    private InputActionMap _uiActions;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
+
+        _gameplayActions = inputActions.FindActionMap("Gameplay");
+        _uiActions = inputActions.FindActionMap("UI");
+        SwitchInputMode(initialInputMode);
+    }
+
+    public void SwitchInputMode(InputMode mode)
+    {
+        InputMode = mode;
+
+        switch (InputMode)
+        {
+            case InputMode.Gameplay:
+                _uiActions.Disable();
+                _gameplayActions.Enable();
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                break;
+            case InputMode.Ui:
+                _gameplayActions.Disable();
+                _uiActions.Enable();
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+    }
+}
+
+public enum InputMode
+{
+    Gameplay,
+    Ui,
+}

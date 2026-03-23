@@ -5,7 +5,8 @@ namespace UI
 {
     public class PauseMenu : MonoBehaviour
     {
-        private float _prevTimeScale = 1.0f;
+        private bool _levelWasPaused;
+        private InputMode _savedInputMode;
 
         private void Awake()
         {
@@ -19,18 +20,35 @@ namespace UI
 
         public void OnQuitButtonClicked()
         {
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene(SceneIndex.MainMenu);
         }
 
         private void OnEnable()
         {
-            _prevTimeScale = Time.timeScale;
-            Time.timeScale = 0.0f;
+            var levelManager = LevelManager.Instance;
+            var inputManager = InputManager.Instance;
+            _levelWasPaused = levelManager.LevelPaused;
+            LevelManager.Instance.PauseLevel();
+            _savedInputMode = inputManager.InputMode;
+            inputManager.SwitchInputMode(InputMode.Ui);
         }
 
         private void OnDisable()
         {
-            Time.timeScale = _prevTimeScale;
+            if (!_levelWasPaused)
+            {
+                var levelManager = LevelManager.Instance;
+                if (levelManager != null)
+                {
+                    levelManager.UnpauseLevel();
+                }
+            }
+
+            var inputManager = InputManager.Instance;
+            if (inputManager != null)
+            {
+                InputManager.Instance.SwitchInputMode(_savedInputMode);
+            }
         }
     }
 }

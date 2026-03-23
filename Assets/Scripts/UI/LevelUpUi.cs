@@ -18,13 +18,15 @@ namespace UI
         public void PickStatUpgrade(StatUpgradeType upgrade)
         {
             player.stats.ApplyStatUpgrade(upgrade);
+            LevelManager.Instance.UnpauseLevel();
+            InputManager.Instance.SwitchInputMode(InputMode.Gameplay);
             levelUpScreen.SetActive(false);
-            Time.timeScale = 1.0f;
         }
 
         private void LevelUp()
         {
-            Time.timeScale = 0.0f;
+            LevelManager.Instance.PauseLevel();
+            InputManager.Instance.SwitchInputMode(InputMode.Ui);
             levelUpScreen.SetActive(true);
 
             for (var i = 0; i < 3; i++)
