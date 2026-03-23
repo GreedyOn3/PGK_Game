@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class Enemy : MonoBehaviour
+public class EnemyMovement : MonoBehaviour
 {
     public float movementSpeed = 7.0f;
 

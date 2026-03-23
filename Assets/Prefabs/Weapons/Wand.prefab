@@ -46,4 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Weapons.Wand
   weaponInfo: {fileID: 11400000, guid: 1c1c5754b53d2ff43bc86362b9ee5b55, type: 2}
   player: {fileID: 0}
+  cooldownSeconds: 2.5
+  range: 15
+  projectileSpeed: 20
   wandProjectile: {fileID: 3864531069361945626, guid: 53331e8b98dc73247a81bfab0f6d5c4b, type: 3}

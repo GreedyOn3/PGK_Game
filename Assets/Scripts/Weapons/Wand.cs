@@ -48,14 +48,8 @@ namespace Weapons
             projectile.transform.forward = direction;
 
             var rigidBody = projectile.GetComponent<Rigidbody>();
-            if (rigidBody != null)
-            {
-                rigidBody.linearVelocity = direction * projectileSpeed;
-            }
-            else
-            {
-                Assert.IsTrue(false, "Wand projectile should have a rigidbody.");
-            }
+            Assert.IsNotNull(rigidBody, "Wand projectile should have a rigidbody.");
+            rigidBody.linearVelocity = direction * projectileSpeed;
         }
     }
 }
