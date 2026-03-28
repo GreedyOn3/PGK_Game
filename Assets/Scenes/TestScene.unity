@@ -1187,6 +1187,10 @@ PrefabInstance:
       propertyPath: playerHealth
       value: 
       objectReference: {fileID: 1929440298}
+    - target: {fileID: 1779487962705247228, guid: 1c6a684064a87c8469f49fad4e3b363f, type: 3}
+      propertyPath: m_Name
+      value: Level Up Ui
+      objectReference: {fileID: 0}
     - target: {fileID: 2206607224144704201, guid: 1c6a684064a87c8469f49fad4e3b363f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2080,7 +2084,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2703914911238484787, guid: 7ad971847c5b55040817ddf368a84b33, type: 3}
       propertyPath: spawnInterval
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7004238072351893412, guid: 7ad971847c5b55040817ddf368a84b33, type: 3}
       propertyPath: m_Name

@@ -1,13 +1,17 @@
+using System;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace UI
 {
     public class LevelUpUi : MonoBehaviour
     {
-        public PlayerReferences player;
-        public GameObject levelUpScreen;
-        public LevelUpOptionUi[] options;
-        public StatUpgradeInfo[] upgrades;
+        [SerializeField] private GameObject optionPrefab;
+        [SerializeField] private PlayerReferences player;
+        [SerializeField] private GameObject levelUpScreen;
+        [SerializeField] private StatUpgradeInfo[] upgrades;
+
+        private GameObject[] _options = Array.Empty<GameObject>();
 
         private void Awake()
         {
@@ -29,10 +33,20 @@ namespace UI
             InputManager.Instance.SwitchInputMode(InputMode.Ui);
             levelUpScreen.SetActive(true);
 
-            for (var i = 0; i < 3; i++)
+            foreach (var option in _options)
             {
-                options[i].levelUpUi = this;
-                options[i].SetStatUpgrade(upgrades[i]);
+                Destroy(option);
+            }
+
+            _options = new GameObject[upgrades.Length];
+
+            for (var i = 0; i < upgrades.Length; i++)
+            {
+                _options[i] = Instantiate(optionPrefab, levelUpScreen.transform);
+                var optionUi = _options[i].GetComponent<LevelUpOptionUi>();
+                Assert.IsNotNull(optionUi, "Level up option should have a LevelUpOptionUi component.");
+                optionUi.levelUpUi = this;
+                optionUi.SetStatUpgrade(upgrades[i]);
             }
         }
     }
