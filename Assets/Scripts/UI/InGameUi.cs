@@ -8,6 +8,7 @@ namespace UI
     public class InGameUi : MonoBehaviour
     {
         [SerializeField] private InputActionReference pauseAction;
+        [SerializeField] private InputActionReference unpauseAction;
 
         [SerializeField] private Slider healthSlider;
         [SerializeField] private Slider xpSlider;
@@ -18,14 +19,14 @@ namespace UI
 
         [SerializeField] private PlayerReferences player;
 
+        private void Awake()
+        {
+            pauseAction.action.performed += TogglePauseMenu;
+            unpauseAction.action.performed += TogglePauseMenu;
+        }
+
         private void Update()
         {
-            if (pauseAction.action.WasPressedThisFrame())
-            {
-                var active = pauseMenu.activeSelf;
-                pauseMenu.SetActive(!active);
-            }
-
             healthSlider.value = player.health.Value;
             healthSlider.maxValue = player.health.MaxValue;
             xpSlider.value = player.xp.Value;
@@ -40,6 +41,12 @@ namespace UI
             var levelTimeMinutes = levelTime / 60;
             var levelTimeMinutesText = levelTimeMinutes < 10 ? $"0{levelTimeMinutes}" : $"{levelTimeMinutes}";
             timeText.text = $"{levelTimeMinutesText}:{levelTimeSecondsText}";
+        }
+
+        private void TogglePauseMenu(InputAction.CallbackContext callbackContext)
+        {
+            var menuActive = pauseMenu.activeSelf;
+            pauseMenu.SetActive(!menuActive);
         }
     }
 }

@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HUD
   pauseAction: {fileID: -34865874450063544, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  unpauseAction: {fileID: 1386112205256704531, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   healthSlider: {fileID: 2297079071648365537}
   xpSlider: {fileID: 6442573561538913799}
   levelText: {fileID: 5147182016853795486}
