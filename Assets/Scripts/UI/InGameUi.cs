@@ -27,12 +27,12 @@ namespace UI
 
         private void Update()
         {
-            healthSlider.value = player.health.Value;
-            healthSlider.maxValue = player.health.MaxValue;
-            xpSlider.value = player.xp.Value;
-            xpSlider.maxValue = player.xp.MaxValue;
-            levelText.text = $"Level {player.xp.Level}";
-            statsText.text = $"Player stats:\nMovement speed: {player.stats.movementSpeed}\nAttack: {player.stats.attack}\nDefense: {player.stats.defense}";
+            healthSlider.value = player.Health.Value;
+            healthSlider.maxValue = player.Health.MaxValue;
+            xpSlider.value = player.Xp.Value;
+            xpSlider.maxValue = player.Xp.MaxValue;
+            levelText.text = $"Level {player.Xp.Level}";
+            statsText.text = $"Player stats:\nMovement speed: {player.Stats.movementSpeed}\nAttack: {player.Stats.attack}\nDefense: {player.Stats.defense}";
 
             var levelManager = LevelManager.Instance;
             var levelTime = (int)levelManager.LevelTimeSeconds;

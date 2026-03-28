@@ -11,13 +11,13 @@ namespace UI
 
         private void Awake()
         {
-            player.xp.OnLevelUp += LevelUp;
+            player.Xp.OnLevelUp += LevelUp;
             levelUpScreen.SetActive(false);
         }
 
         public void PickStatUpgrade(StatUpgradeType upgrade)
         {
-            player.stats.ApplyStatUpgrade(upgrade);
+            player.Stats.ApplyStatUpgrade(upgrade);
             LevelManager.Instance.UnpauseLevel();
             InputManager.Instance.SwitchInputMode(InputMode.Gameplay);
             levelUpScreen.SetActive(false);
