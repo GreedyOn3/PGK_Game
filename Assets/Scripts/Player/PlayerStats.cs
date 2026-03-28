@@ -6,10 +6,12 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private float movementSpeed = 8.0f;
     [SerializeField] private float attack = 5.0f;
     [SerializeField] private float defense = 5.0f;
+    [SerializeField] private float pickupRange = 5.0f;
 
     public float MovementSpeed => movementSpeed;
     public float Attack => attack;
     public float Defense => defense;
+    public float PickupRange => pickupRange;
 
     public void ApplyStatUpgrade(StatUpgradeType type)
     {
@@ -23,6 +25,9 @@ public class PlayerStats : MonoBehaviour
                 break;
             case StatUpgradeType.Defense:
                 defense += 1.0f;
+                break;
+            case StatUpgradeType.PickupRange:
+                pickupRange += 1.0f;
                 break;
             default:
                 throw new ArgumentOutOfRangeException();

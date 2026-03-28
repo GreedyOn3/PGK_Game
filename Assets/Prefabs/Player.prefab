@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 430057429671470438}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Weapons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,7 +51,7 @@ GameObject:
   - component: {fileID: 7328065228462681933}
   - component: {fileID: 4470370686211478460}
   - component: {fileID: -7623453730141397379}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -123,6 +123,7 @@ MonoBehaviour:
   movementSpeed: 8
   attack: 5
   defense: 5
+  pickupRange: 5
 --- !u!114 &-5167089272841205230
 MonoBehaviour:
   m_ObjectHideFlags: 0

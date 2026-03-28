@@ -15,4 +15,5 @@ public enum StatUpgradeType
     MovementSpeed,
     Attack,
     Defense,
+    PickupRange,
 }

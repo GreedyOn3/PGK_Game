@@ -16,17 +16,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        var maxMovementDistance = movementSpeed * Time.fixedDeltaTime;
-        var movementVector = Vector3.ClampMagnitude(_player.transform.position - transform.position, maxMovementDistance);
-        _rigidbody.MovePosition(transform.localPosition + movementVector);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            // TODO: Delete this destroy.
-            Destroy(gameObject);
-        }
+        var position = Vector3.MoveTowards(transform.position, _player.transform.position, movementSpeed * Time.fixedDeltaTime);
+        _rigidbody.MovePosition(position);
     }
 }

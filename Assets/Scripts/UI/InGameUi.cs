@@ -32,7 +32,7 @@ namespace UI
             xpSlider.value = player.Xp.Value;
             xpSlider.maxValue = player.Xp.MaxValue;
             levelText.text = $"Level {player.Xp.Level}";
-            statsText.text = $"Player stats:\nMovement speed: {player.Stats.MovementSpeed}\nAttack: {player.Stats.Attack}\nDefense: {player.Stats.Defense}";
+            statsText.text = $"Player stats:\nMovement speed: {player.Stats.MovementSpeed}\nAttack: {player.Stats.Attack}\nDefense: {player.Stats.Defense}\nPickup range: {player.Stats.PickupRange}";
 
             var levelManager = LevelManager.Instance;
             var levelTime = (int)levelManager.LevelTimeSeconds;

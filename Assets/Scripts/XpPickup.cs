@@ -9,9 +9,8 @@ public class XpPickup : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             var playerXp = other.GetComponent<PlayerXp>();
-            if (playerXp == null) return;
             playerXp.Add(amount);
-            Destroy(gameObject);
+            Destroy(transform.parent.gameObject);
         }
     }
 }
