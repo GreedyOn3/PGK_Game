@@ -3,9 +3,13 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    public float movementSpeed = 8.0f;
-    public float attack = 5.0f;
-    public float defense = 5.0f;
+    [SerializeField] private float movementSpeed = 8.0f;
+    [SerializeField] private float attack = 5.0f;
+    [SerializeField] private float defense = 5.0f;
+
+    public float MovementSpeed => movementSpeed;
+    public float Attack => attack;
+    public float Defense => defense;
 
     public void ApplyStatUpgrade(StatUpgradeType type)
     {

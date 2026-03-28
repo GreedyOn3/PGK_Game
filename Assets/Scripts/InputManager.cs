@@ -4,9 +4,9 @@ using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
-    public InputActionAsset inputActions;
-    public InputMode InputMode { get; private set; }
+    [SerializeField] private InputActionAsset inputActions;
     [SerializeField] private InputMode initialInputMode = InputMode.Gameplay;
+    public InputMode InputMode { get; private set; }
 
     public static InputManager Instance { get; private set; }
 

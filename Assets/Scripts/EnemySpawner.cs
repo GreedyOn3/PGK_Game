@@ -4,9 +4,8 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemyPrefab;
-
-    public float spawnInterval = 5.0f;
+    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private float spawnInterval = 5.0f;
 
     private BoxCollider _spawnArea;
     private float _spawnTimer;

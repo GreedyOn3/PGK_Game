@@ -5,9 +5,9 @@ namespace Weapons
 {
     public class Wand : Weapon
     {
-        public float range = 15.0f;
-        public float projectileSpeed = 20.0f;
-        public GameObject wandProjectile;
+        [SerializeField] private float range = 15.0f;
+        [SerializeField] private float projectileSpeed = 20.0f;
+        [SerializeField] private GameObject wandProjectile;
 
         public override void Attack()
         {

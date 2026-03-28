@@ -3,8 +3,8 @@ using UnityEngine.Assertions;
 
 public class Projectile : MonoBehaviour
 {
-    public float lifetime = 5.0f;
-    public float damage = 5.0f;
+    [SerializeField] private float lifetime = 5.0f;
+    [SerializeField] private float damage = 5.0f;
     private bool _active = true;
 
     private void Awake()

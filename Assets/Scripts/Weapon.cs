@@ -2,9 +2,12 @@ using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
-    public WeaponInfo weaponInfo;
     public PlayerReferences player;
-    public float cooldownSeconds = 5.0f;
+
+    [SerializeField] private WeaponInfo weaponInfo;
+    [SerializeField] private float cooldownSeconds = 5.0f;
+
+    public WeaponInfo WeaponInfo => weaponInfo;
 
     private void Start()
     {

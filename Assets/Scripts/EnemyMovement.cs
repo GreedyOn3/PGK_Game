@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class EnemyMovement : MonoBehaviour
 {
-    public float movementSpeed = 7.0f;
+    [SerializeField] private float movementSpeed = 7.0f;
 
     private Rigidbody _rigidbody;
     private GameObject _player;
