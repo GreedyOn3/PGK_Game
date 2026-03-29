@@ -1,37 +1,77 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-// If performance gets bad, we could consider object pooling.
-[RequireComponent(typeof(BoxCollider))]
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject enemyPrefab;
-    [SerializeField] private float spawnInterval = 5.0f;
+    [SerializeField] private Vector2 spawnRadiusMinMax = new(30.0f, 50.0f);
+    [SerializeField] private List<Wave> waves = new();
 
-    private BoxCollider _spawnArea;
-    private float _spawnTimer;
+    private GameObject _player;
 
-    private void Awake()
+    private void Start()
     {
-        _spawnArea = GetComponent<BoxCollider>();
+        _player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        _spawnTimer += Time.deltaTime;
+        var levelTimeMinutes = LevelManager.Instance.LevelTimeMinutes;
 
-        if (_spawnTimer >= spawnInterval)
+        for (var i = waves.Count - 1; i >= 0; i--)
         {
-            SpawnEnemy();
-            _spawnTimer = 0.0f;
+            var wave = waves[i];
+            if (levelTimeMinutes >= wave.startTimeMinutes)
+            {
+                SpawnWave(wave);
+                waves.RemoveAt(i);
+            }
         }
     }
 
-    public void SpawnEnemy()
+    private void SpawnWave(Wave wave)
     {
-        var bounds = _spawnArea.bounds;
-        var min = bounds.min;
-        var max = bounds.max;
-        var position = new Vector3(Random.Range(min.x, max.x), 0.0f, Random.Range(min.z, max.z));
+        foreach (var batch in wave.enemyBatches)
+        {
+            SpawnBatch(batch);
+        }
+    }
+
+    private void SpawnBatch(EnemyBatch batch)
+    {
+        for (var i = 0; i < batch.enemyCount; i++)
+        {
+            SpawnEnemy(batch.enemyPrefab);
+        }
+    }
+
+    private void SpawnEnemy(GameObject enemyPrefab)
+    {
+        var position = GetRandomSpawnPosition();
         Instantiate(enemyPrefab, position, Quaternion.identity);
     }
+
+    private Vector3 GetRandomSpawnPosition()
+    {
+        var randomHorizontalDirection = Random.insideUnitCircle.normalized;
+        var randomDirection = new Vector3(randomHorizontalDirection.x, 0.0f, randomHorizontalDirection.y);
+        var randomDistance = Random.Range(spawnRadiusMinMax.x, spawnRadiusMinMax.y);
+        var spawnPosition = _player.transform.position + randomDirection * randomDistance;
+        spawnPosition.y = _player.transform.position.y;
+
+        return spawnPosition;
+    }
+}
+
+[System.Serializable]
+public struct Wave
+{
+    public EnemyBatch[] enemyBatches;
+    public float startTimeMinutes;
+}
+
+[System.Serializable]
+public struct EnemyBatch
+{
+    public GameObject enemyPrefab;
+    public int enemyCount;
 }
