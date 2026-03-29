@@ -28,8 +28,9 @@ public class AttractItem : MonoBehaviour
         if (distanceToPlayer < _playerStats.PickupRange)
         {
             var playerDirection = toPlayer.normalized;
-            var attractionModifier = (1.0f - distanceToPlayer / _playerStats.PickupRange);
-            _rigidbody.AddForce(playerDirection * (attractionForce * attractionModifier), ForceMode.Impulse);
+            var linearAttractionModifier = (1.0f - distanceToPlayer / _playerStats.PickupRange);
+            var quadraticAttractionModifier = linearAttractionModifier * linearAttractionModifier;
+            _rigidbody.AddForce(playerDirection * (attractionForce * quadraticAttractionModifier), ForceMode.Impulse);
         }
     }
 }
