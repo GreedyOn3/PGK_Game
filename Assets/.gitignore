@@ -1,4 +1,4 @@
-/[Mm]odels/
-/[Tt]extures/
+/[Mm]odels/**/*.fbx
+/[Tt]extures/**/*.png
 /[Ss]ounds/
 /TextMesh Pro/
