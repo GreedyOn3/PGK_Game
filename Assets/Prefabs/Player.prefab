@@ -285,7 +285,7 @@ MonoBehaviour:
   pitchMinMax: {x: -15, y: 80}
   ignoreMask:
     serializedVersion: 2
-    m_Bits: 584
+    m_Bits: 2632
   cameraRadius: 0.4
 --- !u!1001 &8680989582684807244
 PrefabInstance:
