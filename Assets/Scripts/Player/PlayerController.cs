@@ -8,21 +8,23 @@ public class PlayerController : MonoBehaviour
     [Header("Player Scripts")]
     public PlayerMovement movement;
     public PlayerCamera cam;
+    public PlayerGathering gathering;
     [Header("Timers")]
     public float jumpBufferTime = 0.15f;
 
-    //States
+    // States
     public GroundedState GroundedState { get; private set; }
     public AirState AirState { get; private set; }
     public SlideState SlideState { get; private set; }
     PlayerStateMachine sm;
 
+    // Is Grounded?
     bool isGrounded = false;
     RaycastHit groundHit;
-    float jumpBufferTimer;
 
-    //Input
+    // Input
     Vector2 moveDir;
+    float jumpBufferTimer;
     bool sliding;
 
     void Awake()
@@ -42,6 +44,9 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         sm.Update();
+
+        if (gathering)
+            animator.SetBool("Gathering", gathering.CheckForResources());
 
         if (jumpBufferTimer > 0)
             jumpBufferTimer -= Time.deltaTime;

@@ -3,6 +3,11 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    [Header("Resources")]
+    public int resourceGathered = 0;
+    public float resourceDamage = 3f;
+
+    [Header("Stats")]
     [SerializeField] private float movementSpeed = 8.0f;
     [SerializeField] private float attack = 5.0f;
     [SerializeField] private float defense = 5.0f;

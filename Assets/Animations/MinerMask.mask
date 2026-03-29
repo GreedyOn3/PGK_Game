@@ -1,0 +1,207 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MinerMask
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: boots
+    m_Weight: 0
+  - m_Path: face lowpoly
+    m_Weight: 0
+  - m_Path: hands
+    m_Weight: 0
+  - m_Path: Miner
+    m_Weight: 0
+  - m_Path: Miner/ElbowIK.L
+    m_Weight: 1
+  - m_Path: Miner/ElbowIK.L/ElbowIK.L_end
+    m_Weight: 1
+  - m_Path: Miner/ElbowIK.R
+    m_Weight: 1
+  - m_Path: Miner/ElbowIK.R/ElbowIK.R_end
+    m_Weight: 1
+  - m_Path: Miner/FeetIK.L
+    m_Weight: 0
+  - m_Path: Miner/FeetIK.L/feet.L
+    m_Weight: 0
+  - m_Path: Miner/FeetIK.L/feet.L/feet.L_end
+    m_Weight: 0
+  - m_Path: Miner/FeetIK.R
+    m_Weight: 0
+  - m_Path: Miner/FeetIK.R/feet.R
+    m_Weight: 0
+  - m_Path: Miner/FeetIK.R/feet.R/feet.R_end
+    m_Weight: 0
+  - m_Path: Miner/KneeIK.L
+    m_Weight: 0
+  - m_Path: Miner/KneeIK.L/KneeIK.L_end
+    m_Weight: 0
+  - m_Path: Miner/KneeIK.R
+    m_Weight: 0
+  - m_Path: Miner/KneeIK.R/KneeIK.R_end
+    m_Weight: 0
+  - m_Path: Miner/spine01
+    m_Weight: 0
+  - m_Path: Miner/spine01/Bone.00.L
+    m_Weight: 0
+  - m_Path: Miner/spine01/Bone.00.L/upperleg.L
+    m_Weight: 0
+  - m_Path: Miner/spine01/Bone.00.L/upperleg.L/lowerleg.L
+    m_Weight: 0
+  - m_Path: Miner/spine01/Bone.00.L/upperleg.L/lowerleg.L/lowerleg.L_end
+    m_Weight: 0
+  - m_Path: Miner/spine01/Bone.00.R
+    m_Weight: 0
+  - m_Path: Miner/spine01/Bone.00.R/upperleg.R
+    m_Weight: 0
+  - m_Path: Miner/spine01/Bone.00.R/upperleg.R/lowerleg.R
+    m_Weight: 0
+  - m_Path: Miner/spine01/Bone.00.R/upperleg.R/lowerleg.R/lowerleg.R_end
+    m_Weight: 0
+  - m_Path: Miner/spine01/spine02
+    m_Weight: 1
+  - m_Path: Miner/spine01/spine02/neck
+    m_Weight: 1
+  - m_Path: Miner/spine01/spine02/neck/head
+    m_Weight: 1
+  - m_Path: Miner/spine01/spine02/neck/head/head_end
+    m_Weight: 1
+  - m_Path: Miner/spine01/spine02/neck/head/helmet
+    m_Weight: 1
+  - m_Path: Miner/spine01/spine02/shoulder.L
+    m_Weight: 1
+  - m_Path: Miner/spine01/spine02/shoulder.L/upperarm.L
+    m_Weight: 1
+  - m_Path: Miner/spine01/spine02/shoulder.L/upperarm.L/forarm.L
+    m_Weight: 1
+  - m_Path: Miner/spine01/spine02/shoulder.L/upperarm.L/forarm.L/forarm.L_end
+    m_Weight: 1
+  - m_Path: Miner/spine01/spine02/shoulder.R
+    m_Weight: 1
+  - m_Path: Miner/spine01/spine02/shoulder.R/upperarm.R
+    m_Weight: 1
+  - m_Path: Miner/spine01/spine02/shoulder.R/upperarm.R/forarm.R
+    m_Weight: 1
+  - m_Path: Miner/spine01/spine02/shoulder.R/upperarm.R/forarm.R/forarm.R_end
+    m_Weight: 1
+  - m_Path: Miner/WristIK.L
+    m_Weight: 1
+  - m_Path: Miner/WristIK.L/hand.L
+    m_Weight: 1
+  - m_Path: Miner/WristIK.L/hand.L/Bone.24.L
+    m_Weight: 1
+  - m_Path: Miner/WristIK.L/hand.L/Bone.24.L/Bone.33.L
+    m_Weight: 1
+  - m_Path: Miner/WristIK.L/hand.L/Bone.24.L/Bone.33.L/Bone.34.L
+    m_Weight: 1
+  - m_Path: Miner/WristIK.L/hand.L/Bone.24.L/Bone.33.L/Bone.34.L/Bone.35.L
+    m_Weight: 1
+  - m_Path: Miner/WristIK.L/hand.L/Bone.24.L/Bone.33.L/Bone.34.L/Bone.35.L/Bone.35.L_end
+    m_Weight: 1
+  - m_Path: Miner/WristIK.L/hand.L/Bone.26.L
+    m_Weight: 1
+  - m_Path: Miner/WristIK.L/hand.L/Bone.26.L/Bone.36.L
+    m_Weight: 1
+  - m_Path: Miner/WristIK.L/hand.L/Bone.26.L/Bone.36.L/Bone.37.L
+    m_Weight: 1
+  - m_Path: Miner/WristIK.L/hand.L/Bone.26.L/Bone.36.L/Bone.37.L/Bone.38.L
+    m_Weight: 1
+  - m_Path: Miner/WristIK.L/hand.L/Bone.26.L/Bone.36.L/Bone.37.L/Bone.38.L/Bone.38.L_end
+    m_Weight: 1
+  - m_Path: Miner/WristIK.L/hand.L/Bone.28.L
+    m_Weight: 1
+  - m_Path: Miner/WristIK.L/hand.L/Bone.28.L/Bone.39.L
+    m_Weight: 1
+  - m_Path: Miner/WristIK.L/hand.L/Bone.28.L/Bone.39.L/Bone.40.L
+    m_Weight: 1
+  - m_Path: Miner/WristIK.L/hand.L/Bone.28.L/Bone.39.L/Bone.40.L/Bone.41.L
+    m_Weight: 1
+  - m_Path: Miner/WristIK.L/hand.L/Bone.28.L/Bone.39.L/Bone.40.L/Bone.41.L/Bone.41.L_end
+    m_Weight: 1
+  - m_Path: Miner/WristIK.L/hand.L/Bone.29.L
+    m_Weight: 1
+  - m_Path: Miner/WristIK.L/hand.L/Bone.29.L/Bone.32.L
+    m_Weight: 1
+  - m_Path: Miner/WristIK.L/hand.L/Bone.29.L/Bone.32.L/Bone.21.L
+    m_Weight: 1
+  - m_Path: Miner/WristIK.L/hand.L/Bone.29.L/Bone.32.L/Bone.21.L/Bone.21.L_end
+    m_Weight: 1
+  - m_Path: Miner/WristIK.L/hand.L/Bone.31.L
+    m_Weight: 1
+  - m_Path: Miner/WristIK.L/hand.L/Bone.31.L/Bone.42.L
+    m_Weight: 1
+  - m_Path: Miner/WristIK.L/hand.L/Bone.31.L/Bone.42.L/Bone.43.L
+    m_Weight: 1
+  - m_Path: Miner/WristIK.L/hand.L/Bone.31.L/Bone.42.L/Bone.43.L/Bone.44.L
+    m_Weight: 1
+  - m_Path: Miner/WristIK.L/hand.L/Bone.31.L/Bone.42.L/Bone.43.L/Bone.44.L/Bone.44.L_end
+    m_Weight: 1
+  - m_Path: Miner/WristIK.R
+    m_Weight: 1
+  - m_Path: Miner/WristIK.R/hand.R
+    m_Weight: 1
+  - m_Path: Miner/WristIK.R/hand.R/Bone.24.R
+    m_Weight: 1
+  - m_Path: Miner/WristIK.R/hand.R/Bone.24.R/Bone.33.R
+    m_Weight: 1
+  - m_Path: Miner/WristIK.R/hand.R/Bone.24.R/Bone.33.R/Bone.34.R
+    m_Weight: 1
+  - m_Path: Miner/WristIK.R/hand.R/Bone.24.R/Bone.33.R/Bone.34.R/Bone.35.R
+    m_Weight: 1
+  - m_Path: Miner/WristIK.R/hand.R/Bone.24.R/Bone.33.R/Bone.34.R/Bone.35.R/Bone.35.R_end
+    m_Weight: 1
+  - m_Path: Miner/WristIK.R/hand.R/Bone.26.R
+    m_Weight: 1
+  - m_Path: Miner/WristIK.R/hand.R/Bone.26.R/Bone.36.R
+    m_Weight: 1
+  - m_Path: Miner/WristIK.R/hand.R/Bone.26.R/Bone.36.R/Bone.37.R
+    m_Weight: 1
+  - m_Path: Miner/WristIK.R/hand.R/Bone.26.R/Bone.36.R/Bone.37.R/Bone.38.R
+    m_Weight: 1
+  - m_Path: Miner/WristIK.R/hand.R/Bone.26.R/Bone.36.R/Bone.37.R/Bone.38.R/Bone.38.R_end
+    m_Weight: 1
+  - m_Path: Miner/WristIK.R/hand.R/Bone.28.R
+    m_Weight: 1
+  - m_Path: Miner/WristIK.R/hand.R/Bone.28.R/Bone.39.R
+    m_Weight: 1
+  - m_Path: Miner/WristIK.R/hand.R/Bone.28.R/Bone.39.R/Bone.40.R
+    m_Weight: 1
+  - m_Path: Miner/WristIK.R/hand.R/Bone.28.R/Bone.39.R/Bone.40.R/Bone.41.R
+    m_Weight: 1
+  - m_Path: Miner/WristIK.R/hand.R/Bone.28.R/Bone.39.R/Bone.40.R/Bone.41.R/Bone.41.R_end
+    m_Weight: 1
+  - m_Path: Miner/WristIK.R/hand.R/Bone.29.R
+    m_Weight: 1
+  - m_Path: Miner/WristIK.R/hand.R/Bone.29.R/Bone.32.R
+    m_Weight: 1
+  - m_Path: Miner/WristIK.R/hand.R/Bone.29.R/Bone.32.R/Bone.21.R
+    m_Weight: 1
+  - m_Path: Miner/WristIK.R/hand.R/Bone.29.R/Bone.32.R/Bone.21.R/Bone.21.R_end
+    m_Weight: 1
+  - m_Path: Miner/WristIK.R/hand.R/Bone.31.R
+    m_Weight: 1
+  - m_Path: Miner/WristIK.R/hand.R/Bone.31.R/Bone.42.R
+    m_Weight: 1
+  - m_Path: Miner/WristIK.R/hand.R/Bone.31.R/Bone.42.R/Bone.43.R
+    m_Weight: 1
+  - m_Path: Miner/WristIK.R/hand.R/Bone.31.R/Bone.42.R/Bone.43.R/Bone.44.R
+    m_Weight: 1
+  - m_Path: Miner/WristIK.R/hand.R/Bone.31.R/Bone.42.R/Bone.43.R/Bone.44.R/Bone.44.R_end
+    m_Weight: 1
+  - m_Path: Miner/WristIK.R/hand.R/WeaponBone.R
+    m_Weight: 1
+  - m_Path: Miner/WristIK.R/hand.R/WeaponBone.R/Cylinder
+    m_Weight: 1
+  - m_Path: Miner/WristIK.R/hand.R/WeaponBone.R/WeaponBone.R_end
+    m_Weight: 1
+  - m_Path: pants
+    m_Weight: 0
+  - m_Path: shirt lp
+    m_Weight: 0
