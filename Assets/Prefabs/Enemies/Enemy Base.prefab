@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -7704220916404606633}
   - component: {fileID: -5772969448147980151}
   m_Layer: 6
-  m_Name: Enemy
+  m_Name: Enemy Base
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,7 +71,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e466c44b02d41c147a1917d21c88af0a, type: 2}
+  - {fileID: 2100000, guid: b69632affcdba184f8ca1d434ce08a5d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f3c69901315ea438cafe2be2581bcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  value: 10
+  value: 5
 --- !u!114 &-7704220916404606633
 MonoBehaviour:
   m_ObjectHideFlags: 0

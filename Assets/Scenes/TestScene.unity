@@ -394,7 +394,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6190352029212254907, guid: adcae072e84539446b423acef906004b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11
+      value: 2.51
       objectReference: {fileID: 0}
     - target: {fileID: 6190352029212254907, guid: adcae072e84539446b423acef906004b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -446,6 +446,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 6259035269905157129, guid: a71fd8f97988146479a87bb9e40f9400, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b69632affcdba184f8ca1d434ce08a5d, type: 2}
     - target: {fileID: 7899504062820023926, guid: a71fd8f97988146479a87bb9e40f9400, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.7907442
@@ -1009,6 +1013,10 @@ PrefabInstance:
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 84799481}
+    - target: {fileID: -7623453730141397379, guid: eecca3e02d7aa5443b34cffdc368ec19, type: 3}
+      propertyPath: ignoreMask.m_Bits
+      value: 3656
+      objectReference: {fileID: 0}
     - target: {fileID: -6728380197195377163, guid: eecca3e02d7aa5443b34cffdc368ec19, type: 3}
       propertyPath: m_IsKinematic
       value: 1
@@ -2095,9 +2103,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2703914911238484787, guid: 7ad971847c5b55040817ddf368a84b33, type: 3}
-      propertyPath: spawnInterval
-      value: 2
+      propertyPath: waves.Array.data[0].startTime
+      value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 2703914911238484787, guid: 7ad971847c5b55040817ddf368a84b33, type: 3}
+      propertyPath: waves.Array.data[0].enemyBatches.Array.data[1].enemyCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2703914911238484787, guid: 7ad971847c5b55040817ddf368a84b33, type: 3}
+      propertyPath: waves.Array.data[0].enemyBatches.Array.data[1].enemyPrefab
+      value: 
+      objectReference: {fileID: 4668435512099604257, guid: 94cdd38d64bf5db418366cbfce1de316, type: 3}
     - target: {fileID: 7004238072351893412, guid: 7ad971847c5b55040817ddf368a84b33, type: 3}
       propertyPath: m_Name
       value: Enemy Spawner

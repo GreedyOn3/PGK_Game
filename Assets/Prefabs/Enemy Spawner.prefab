@@ -66,5 +66,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1b7842c5151a0749838f88054e80981, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  enemyPrefab: {fileID: 5832452191371821113, guid: a71fd8f97988146479a87bb9e40f9400, type: 3}
-  spawnInterval: 3
+  spawnRadiusMinMax: {x: 30, y: 50}
+  waves:
+  - enemyBatches:
+    - enemyPrefab: {fileID: 5832452191371821113, guid: a71fd8f97988146479a87bb9e40f9400, type: 3}
+      enemyCount: 10
+    startTimeMinutes: 0
+  - enemyBatches:
+    - enemyPrefab: {fileID: 1831605224621909188, guid: b18cfcdf29ebe2c46b102475f59fb163, type: 3}
+      enemyCount: 5
+    startTimeMinutes: 0.1
+  - enemyBatches:
+    - enemyPrefab: {fileID: 8898916323503995786, guid: 46e285fa4dd606c459db5f50327d314c, type: 3}
+      enemyCount: 3
+    startTimeMinutes: 0.4
+  - enemyBatches:
+    - enemyPrefab: {fileID: 4668435512099604257, guid: 94cdd38d64bf5db418366cbfce1de316, type: 3}
+      enemyCount: 1
+    startTimeMinutes: 0.7

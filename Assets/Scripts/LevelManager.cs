@@ -6,6 +6,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private LevelInfo levelInfo;
 
     public float LevelTimeSeconds { get; private set; }
+    public float LevelTimeMinutes => LevelTimeSeconds / 60.0f;
     public bool LevelPaused { get; private set; }
 
     public static LevelManager Instance { get; private set; }
