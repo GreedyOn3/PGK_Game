@@ -882,6 +882,18 @@ PrefabInstance:
       value: Xp Orb (7)
       objectReference: {fileID: 0}
     - target: {fileID: 6190352029212254907, guid: adcae072e84539446b423acef906004b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6190352029212254907, guid: adcae072e84539446b423acef906004b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6190352029212254907, guid: adcae072e84539446b423acef906004b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6190352029212254907, guid: adcae072e84539446b423acef906004b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.08
       objectReference: {fileID: 0}
@@ -2084,7 +2096,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2703914911238484787, guid: 7ad971847c5b55040817ddf368a84b33, type: 3}
       propertyPath: spawnInterval
-      value: 100
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7004238072351893412, guid: 7ad971847c5b55040817ddf368a84b33, type: 3}
       propertyPath: m_Name
