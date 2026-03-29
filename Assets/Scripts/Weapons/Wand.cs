@@ -51,5 +51,11 @@ namespace Weapons
             Assert.IsNotNull(rigidBody, "Wand projectile should have a rigidbody.");
             rigidBody.linearVelocity = direction * projectileSpeed;
         }
+
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, range);
+        }
     }
 }
