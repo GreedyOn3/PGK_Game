@@ -4,6 +4,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private Vector2 spawnRadiusMinMax = new(30.0f, 50.0f);
+    [SerializeField] private List<RegularSpawn> regularSpawns = new();
     [SerializeField] private List<Wave> waves = new();
 
     private GameObject _player;
@@ -16,6 +17,28 @@ public class EnemySpawner : MonoBehaviour
     private void FixedUpdate()
     {
         var levelTimeMinutes = LevelManager.Instance.LevelTimeMinutes;
+
+        for (var i = regularSpawns.Count - 1; i >= 0; i--)
+        {
+            var regularSpawn = regularSpawns[i];
+            regularSpawn.SpawnTimer += Time.fixedDeltaTime;
+
+            var spawnPeriodMin = regularSpawn.spawnPeriodMinutes.x;
+            var spawnPeriodMax = regularSpawn.spawnPeriodMinutes.y;
+
+            if (levelTimeMinutes >= spawnPeriodMin && levelTimeMinutes <= spawnPeriodMax)
+            {
+                if (regularSpawn.SpawnTimer >= regularSpawn.spawnIntervalSeconds)
+                {
+                    SpawnEnemy(regularSpawn.enemyPrefab);
+                    regularSpawn.SpawnTimer = 0.0f;
+                }
+            }
+            else if (levelTimeMinutes > spawnPeriodMax)
+            {
+                regularSpawns.RemoveAt(i);
+            }
+        }
 
         for (var i = waves.Count - 1; i >= 0; i--)
         {
@@ -63,14 +86,23 @@ public class EnemySpawner : MonoBehaviour
 }
 
 [System.Serializable]
-public struct Wave
+public class RegularSpawn
+{
+    public GameObject enemyPrefab;
+    public float spawnIntervalSeconds;
+    public Vector2 spawnPeriodMinutes;
+    [System.NonSerialized] public float SpawnTimer;
+}
+
+[System.Serializable]
+public class Wave
 {
     public EnemyBatch[] enemyBatches;
     public float startTimeMinutes;
 }
 
 [System.Serializable]
-public struct EnemyBatch
+public class EnemyBatch
 {
     public GameObject enemyPrefab;
     public int enemyCount;
