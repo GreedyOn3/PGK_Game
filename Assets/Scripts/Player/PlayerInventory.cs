@@ -34,12 +34,12 @@ public class PlayerInventory : MonoBehaviour
         {
             case WeaponId.Wand:
                 var wand = Instantiate(wandPrefab, weaponsContainer).GetComponent<Weapons.Wand>();
-                wand.player = playerReferences;
+                wand.InitWeapon(playerReferences);
                 _weapons.Add(wand);
                 break;
             case WeaponId.Whip:
                 var whip = Instantiate(whipPrefab, weaponsContainer).GetComponent<Weapons.Whip>();
-                whip.player = playerReferences;
+                whip.InitWeapon(playerReferences);
                 _weapons.Add(whip);
                 break;
             default:

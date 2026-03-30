@@ -9,6 +9,11 @@ public abstract class Weapon : MonoBehaviour
 
     public WeaponInfo WeaponInfo => weaponInfo;
 
+    public void InitWeapon(PlayerReferences playerReferences)
+    {
+        player = playerReferences;
+    }
+
     private void Start()
     {
         Invoke(nameof(DoAttack), cooldownSeconds);

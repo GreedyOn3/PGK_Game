@@ -3,11 +3,14 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class AttractItem : MonoBehaviour
 {
-    public float attractionForce = 3.0f;
+    public float attractionForce = 10.0f;
+    public float attractionForceSpeedup = 3.0f;
 
     private GameObject _player;
     private PlayerStats _playerStats;
     private Rigidbody _rigidbody;
+
+    private float _attractionTime;
 
     private void Awake()
     {
@@ -28,9 +31,13 @@ public class AttractItem : MonoBehaviour
         if (distanceToPlayer < _playerStats.PickupRange)
         {
             var playerDirection = toPlayer.normalized;
-            var linearAttractionModifier = (1.0f - distanceToPlayer / _playerStats.PickupRange);
-            var quadraticAttractionModifier = linearAttractionModifier * linearAttractionModifier;
-            _rigidbody.AddForce(playerDirection * (attractionForce * quadraticAttractionModifier), ForceMode.Impulse);
+            var attractionModifier = _attractionTime * _attractionTime * attractionForceSpeedup;
+            _rigidbody.AddForce(playerDirection * (attractionForce * attractionModifier), ForceMode.Impulse);
+            _attractionTime += Time.fixedDeltaTime;
+        }
+        else
+        {
+            _attractionTime = 0.0f;
         }
     }
 }
