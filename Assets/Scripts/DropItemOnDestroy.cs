@@ -14,6 +14,8 @@ public class DropItemOnDestroy : MonoBehaviour
     private void OnDestroy()
     {
         if (!_quitting && gameObject.scene.isLoaded)
+        {
             Instantiate(item, transform.position, Quaternion.identity);
+        }
     }
 }

@@ -20,7 +20,7 @@ namespace UI
             levelUpScreen.SetActive(false);
         }
 
-        public void PickStatUpgrade(StatUpgradeType upgrade)
+        public void PickStatUpgrade(StatUpgradeId upgrade)
         {
             _player.Stats.ApplyStatUpgrade(upgrade);
             LevelManager.Instance.UnpauseLevel();

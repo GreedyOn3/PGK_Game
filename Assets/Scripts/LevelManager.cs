@@ -1,18 +1,10 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    [Header("Level Infos")]
-    [SerializeField] private LevelInfo forestLevelInfo;
-
-    [Header("Player Prefabs")]
-    [SerializeField] private GameObject minerPrefab;
-    [SerializeField] private GameObject lumberjackPrefab;
-
-    [Header("Player Camera")]
-    [SerializeField] private GameObject playerCameraPrefab;
+    [SerializeField] private LevelInfos levelInfos;
+    [SerializeField] private PlayerPrefabs playerPrefabs;
 
     private LevelInfo _levelInfo;
 
@@ -35,33 +27,12 @@ public class LevelManager : MonoBehaviour
 
         var persistentData = PersistentData.Instance;
 
-        switch (persistentData.selectedLevel)
-        {
-            case LevelId.Forest:
-                _levelInfo = forestLevelInfo;
-                SceneManager.LoadScene(SceneIndex.LevelForest, LoadSceneMode.Additive);
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
-
-        GameObject player = null;
-
-        switch (persistentData.selectedCharacter)
-        {
-            case CharacterId.Miner:
-                player = Instantiate(minerPrefab);
-                break;
-            case CharacterId.Lumberjack:
-                player = Instantiate(lumberjackPrefab);
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
-
-        var playerCamera = Instantiate(playerCameraPrefab);
-        var playerCameraComponent = player.GetComponent<PlayerCamera>();
-        playerCameraComponent.playerCamera = playerCamera.transform;
+        _levelInfo = levelInfos.GetById(persistentData.selectedLevel);
+        SceneManager.LoadScene(SceneIndex.GetByLevelId(persistentData.selectedLevel), LoadSceneMode.Additive);
+        var playerPrefab = playerPrefabs.GetById(persistentData.selectedCharacter);
+        var player = Instantiate(playerPrefab);
+        var playerCamera = Instantiate(playerPrefabs.playerCamera);
+        player.GetComponent<PlayerCamera>().playerCamera = playerCamera.transform;
 
         Time.timeScale = 1.0f;
     }

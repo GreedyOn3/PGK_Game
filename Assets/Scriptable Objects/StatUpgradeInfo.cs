@@ -7,10 +7,10 @@ public class StatUpgradeInfo : ScriptableObject
     public string title;
     [TextArea(3, 5)]
     public string description;
-    public StatUpgradeType type;
+    public StatUpgradeId id;
 }
 
-public enum StatUpgradeType
+public enum StatUpgradeId
 {
     MovementSpeed,
     Attack,

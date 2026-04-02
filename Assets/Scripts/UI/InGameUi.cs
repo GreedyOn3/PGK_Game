@@ -20,12 +20,6 @@ namespace UI
 
         private PlayerReferences _player;
 
-        private void Awake()
-        {
-            pauseAction.action.performed += TogglePauseMenu;
-            unpauseAction.action.performed += TogglePauseMenu;
-        }
-
         private void Start()
         {
             _player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerReferences>();
@@ -48,6 +42,18 @@ namespace UI
             var levelTimeMinutes = levelTime / 60;
             var levelTimeMinutesText = levelTimeMinutes < 10 ? $"0{levelTimeMinutes}" : $"{levelTimeMinutes}";
             timeText.text = $"{levelTimeMinutesText}:{levelTimeSecondsText}";
+        }
+
+        private void OnEnable()
+        {
+            pauseAction.action.performed += TogglePauseMenu;
+            unpauseAction.action.performed += TogglePauseMenu;
+        }
+
+        private void OnDisable()
+        {
+            pauseAction.action.performed -= TogglePauseMenu;
+            unpauseAction.action.performed -= TogglePauseMenu;
         }
 
         private void TogglePauseMenu(InputAction.CallbackContext callbackContext)

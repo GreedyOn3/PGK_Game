@@ -7,8 +7,7 @@ using UnityEngine.Assertions;
 public class PlayerInventory : MonoBehaviour
 {
     [SerializeField] private WeaponId startingWeapon;
-    [SerializeField] private GameObject wandPrefab;
-    [SerializeField] private GameObject whipPrefab;
+    [SerializeField] private WeaponPrefabs weaponPrefabs;
 
     [SerializeField] private int capacity = 6;
     private readonly List<Weapon> _weapons = new();
@@ -16,35 +15,17 @@ public class PlayerInventory : MonoBehaviour
 
     public event Action OnInventoryChange;
 
-    private void Awake()
-    {
-        AddWeapon(startingWeapon);
-    }
-
     private void Start()
     {
-        OnInventoryChange?.Invoke();
+        AddWeapon(startingWeapon);
     }
 
     public void AddWeapon(WeaponId weaponId)
     {
         Assert.IsTrue(_weapons.Count < capacity);
-        var playerReferences = GetComponent<PlayerReferences>();
-        switch (weaponId)
-        {
-            case WeaponId.Wand:
-                var wand = Instantiate(wandPrefab, weaponsContainer).GetComponent<Weapons.Wand>();
-                wand.InitWeapon(playerReferences);
-                _weapons.Add(wand);
-                break;
-            case WeaponId.Whip:
-                var whip = Instantiate(whipPrefab, weaponsContainer).GetComponent<Weapons.Whip>();
-                whip.InitWeapon(playerReferences);
-                _weapons.Add(whip);
-                break;
-            default:
-                throw new ArgumentOutOfRangeException(nameof(weaponId), weaponId, null);
-        }
+        var weaponPrefab = weaponPrefabs.GetById(weaponId);
+        var weapon = Instantiate(weaponPrefab, weaponsContainer).GetComponent<Weapon>();
+        _weapons.Add(weapon);
         OnInventoryChange?.Invoke();
     }
 

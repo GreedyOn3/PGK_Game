@@ -2,20 +2,16 @@ using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
-    public PlayerReferences player;
-
     [SerializeField] private WeaponInfo weaponInfo;
     [SerializeField] private float cooldownSeconds = 5.0f;
 
-    public WeaponInfo WeaponInfo => weaponInfo;
+    protected PlayerReferences Player;
 
-    public void InitWeapon(PlayerReferences playerReferences)
-    {
-        player = playerReferences;
-    }
+    public WeaponInfo WeaponInfo => weaponInfo;
 
     private void Start()
     {
+        Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerReferences>();
         Invoke(nameof(DoAttack), cooldownSeconds);
     }
 

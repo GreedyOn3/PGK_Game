@@ -18,20 +18,20 @@ public class PlayerStats : MonoBehaviour
     public float Defense => defense;
     public float PickupRange => pickupRange;
 
-    public void ApplyStatUpgrade(StatUpgradeType type)
+    public void ApplyStatUpgrade(StatUpgradeId upgrade)
     {
-        switch (type)
+        switch (upgrade)
         {
-            case StatUpgradeType.MovementSpeed:
+            case StatUpgradeId.MovementSpeed:
                 movementSpeed += 1.0f;
                 break;
-            case StatUpgradeType.Attack:
+            case StatUpgradeId.Attack:
                 attack += 1.0f;
                 break;
-            case StatUpgradeType.Defense:
+            case StatUpgradeId.Defense:
                 defense += 1.0f;
                 break;
-            case StatUpgradeType.PickupRange:
+            case StatUpgradeId.PickupRange:
                 pickupRange += 1.0f;
                 break;
             default:

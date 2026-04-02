@@ -26,6 +26,7 @@ namespace UI
             }
 
             Assert.IsTrue(_slots.Length == _player.Inventory.GetCapacity());
+            UpdateUi();
         }
 
         public void UpdateUi()

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67e1c4e44abd20746926c017f0e743c1, type: 3}
+  m_Name: Player Prefabs
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterPrefabs
+  playerCamera: {fileID: 1183712943621090413, guid: d8635fce6c767c143a149fc4c6bf740c, type: 3}
+  minerPrefab: {fileID: 7412095148770312280, guid: 6b29515b19035d049b28f85a8ac4e1d8, type: 3}
+  lumberjackPrefab: {fileID: 6697502103162544868, guid: 4d363b42d66075043bf5b7bf38849613, type: 3}

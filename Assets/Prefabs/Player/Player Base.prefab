@@ -180,8 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInventory
   startingWeapon: 0
-  wandPrefab: {fileID: 6656470399939549403, guid: 4a32e0aecb76eed4f8cab2f96a586177, type: 3}
-  whipPrefab: {fileID: 861562726054869019, guid: cc7de70a2c5e1b140befbc9ecac03133, type: 3}
+  weaponPrefabs: {fileID: 11400000, guid: dd60b782990e4984f9e7f8ca4219e26a, type: 2}
   capacity: 6
   weaponsContainer: {fileID: 430057429671470438}
 --- !u!114 &9134130243309847553
