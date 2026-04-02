@@ -5,6 +5,7 @@ namespace UI
 {
     public class CharacterSelectionUi : MonoBehaviour
     {
+        [SerializeField] private MainMenu mainMenu;
         [SerializeField] private CharacterInfo[] characterInfos;
         [SerializeField] private GameObject characterCardPrefab;
 
@@ -21,7 +22,7 @@ namespace UI
 
         public void PickCharacter(CharacterId characterId)
         {
-            Debug.Log($"Picked character {characterId}");
+            mainMenu.PickCharacter(characterId);
         }
     }
 }

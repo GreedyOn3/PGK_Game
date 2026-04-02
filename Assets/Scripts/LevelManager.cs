@@ -25,6 +25,13 @@ public class LevelManager : MonoBehaviour
         Time.timeScale = 1.0f;
     }
 
+    private void Start()
+    {
+        var persistentData = PersistentData.Instance;
+        Debug.Log($"Selected level: {persistentData.SelectedLevel}");
+        Debug.Log($"Selected character: {persistentData.SelectedCharacter}");
+    }
+
     private void FixedUpdate()
     {
         LevelTimeSeconds += Time.fixedDeltaTime;

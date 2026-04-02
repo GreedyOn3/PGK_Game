@@ -5,6 +5,7 @@ namespace UI
 {
     public class LevelSelectionUi : MonoBehaviour
     {
+        [SerializeField] private MainMenu mainMenu;
         [SerializeField] private LevelInfo[] levelInfos;
         [SerializeField] private GameObject levelCardPrefab;
 
@@ -21,7 +22,7 @@ namespace UI
 
         public void PickLevel(LevelId levelId)
         {
-            Debug.Log($"Picked level {levelId}");
+            mainMenu.PickLevel(levelId);
         }
     }
 }
