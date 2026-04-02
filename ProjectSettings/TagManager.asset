@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Projectile
+  - World Space Canvas
   layers:
   - Default
   - TransparentFX

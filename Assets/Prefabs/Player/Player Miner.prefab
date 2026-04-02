@@ -60,10 +60,6 @@ PrefabInstance:
       propertyPath: gathering
       value: 
       objectReference: {fileID: 6479241605098493429}
-    - target: {fileID: 7535198466013395785, guid: eecca3e02d7aa5443b34cffdc368ec19, type: 3}
-      propertyPath: m_Center.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8229114302271225908, guid: eecca3e02d7aa5443b34cffdc368ec19, type: 3}
       propertyPath: reference
       value: 

@@ -300,5 +300,5 @@ MonoBehaviour:
   pitchMinMax: {x: -15, y: 80}
   ignoreMask:
     serializedVersion: 2
-    m_Bits: 3656
+    m_Bits: 3784
   cameraRadius: 0.4

@@ -158,6 +158,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   value: 5
+  damagePopupPrefab: {fileID: 4565016010454154952, guid: ecf53f84874eea14093b15e9c6f0027e, type: 3}
+  damagePopupHeightOffset: 0.5
+  worldSpaceCanvas: {fileID: 0}
 --- !u!114 &-7704220916404606633
 MonoBehaviour:
   m_ObjectHideFlags: 0
