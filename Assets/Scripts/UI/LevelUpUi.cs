@@ -45,8 +45,7 @@ namespace UI
                 _options[i] = Instantiate(optionPrefab, levelUpScreen.transform);
                 var optionUi = _options[i].GetComponent<LevelUpOptionUi>();
                 Assert.IsNotNull(optionUi, "Level up option should have a LevelUpOptionUi component.");
-                optionUi.levelUpUi = this;
-                optionUi.SetStatUpgrade(upgrades[i]);
+                optionUi.Initialize(upgrades[i], this);
             }
         }
     }

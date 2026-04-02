@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38f8ce6660181014885b789fa08fd694, type: 3}
-  m_Name: Movement Speed Upgrade
-  m_EditorClassIdentifier: Assembly-CSharp::Upgrade
+  m_Script: {fileID: 11500000, guid: 546a924647006834e89a79cbd8e02c14, type: 3}
+  m_Name: Miner
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterInfo
   image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  title: Movement Speed
+  characterName: Miner
   description: ...
-  type: 0

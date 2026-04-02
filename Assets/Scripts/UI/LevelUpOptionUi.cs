@@ -6,12 +6,12 @@ namespace UI
 {
     public class LevelUpOptionUi : MonoBehaviour
     {
-        public LevelUpUi levelUpUi;
-
         private StatUpgradeType _upgrade;
+        private LevelUpUi _levelUpUi;
 
-        public void SetStatUpgrade(StatUpgradeInfo upgrade)
+        public void Initialize(StatUpgradeInfo upgrade, LevelUpUi levelUpUi)
         {
+            _levelUpUi = levelUpUi;
             _upgrade = upgrade.type;
             var image = transform.Find("Image").GetComponent<Image>();
             var name = transform.Find("Name").GetComponent<TextMeshProUGUI>();
@@ -23,7 +23,7 @@ namespace UI
 
         public void Pick()
         {
-            levelUpUi.PickStatUpgrade(_upgrade);
+            _levelUpUi.PickStatUpgrade(_upgrade);
         }
     }
 }
