@@ -7,32 +7,30 @@ namespace UI
     [RequireComponent(typeof(RectTransform))]
     public class InventoryUi : MonoBehaviour
     {
-        [SerializeField] private PlayerReferences player;
         [SerializeField] private GameObject slotPrefab;
 
+        private PlayerReferences _player;
         private GameObject[] _slots;
 
-        private void Awake()
+        private void Start()
         {
-            player.Inventory.OnInventoryChange += UpdateUi;
+            _player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerReferences>();
 
-            var capacity = player.Inventory.GetCapacity();
+            _player.Inventory.OnInventoryChange += UpdateUi;
+            var capacity = _player.Inventory.GetCapacity();
             _slots = new GameObject[capacity];
 
             for (var i = 0; i < capacity; i++)
             {
                 _slots[i] = Instantiate(slotPrefab, transform);
             }
-        }
 
-        private void Start()
-        {
-            Assert.IsTrue(_slots.Length == player.Inventory.GetCapacity());
+            Assert.IsTrue(_slots.Length == _player.Inventory.GetCapacity());
         }
 
         public void UpdateUi()
         {
-            var weapons = player.Inventory.GetWeapons();
+            var weapons = _player.Inventory.GetWeapons();
             Assert.IsTrue(weapons.Count <= _slots.Length);
             for (var i = 0; i < weapons.Count; i++)
             {

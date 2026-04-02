@@ -1,9 +1,20 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] private LevelInfo levelInfo;
+    [Header("Level Infos")]
+    [SerializeField] private LevelInfo forestLevelInfo;
+
+    [Header("Player Prefabs")]
+    [SerializeField] private GameObject minerPrefab;
+    [SerializeField] private GameObject lumberjackPrefab;
+
+    [Header("Player Camera")]
+    [SerializeField] private GameObject playerCameraPrefab;
+
+    private LevelInfo _levelInfo;
 
     public float LevelTimeSeconds { get; private set; }
     public float LevelTimeMinutes => LevelTimeSeconds / 60.0f;
@@ -22,14 +33,44 @@ public class LevelManager : MonoBehaviour
             Instance = this;
         }
 
+        var persistentData = PersistentData.Instance;
+
+        switch (persistentData.selectedLevel)
+        {
+            case LevelId.Forest:
+                _levelInfo = forestLevelInfo;
+                SceneManager.LoadScene(SceneIndex.LevelForest, LoadSceneMode.Additive);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+
+        GameObject player = null;
+
+        switch (persistentData.selectedCharacter)
+        {
+            case CharacterId.Miner:
+                player = Instantiate(minerPrefab);
+                break;
+            case CharacterId.Lumberjack:
+                player = Instantiate(lumberjackPrefab);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+
+        var playerCamera = Instantiate(playerCameraPrefab);
+        var playerCameraComponent = player.GetComponent<PlayerCamera>();
+        playerCameraComponent.playerCamera = playerCamera.transform;
+
         Time.timeScale = 1.0f;
     }
 
     private void Start()
     {
         var persistentData = PersistentData.Instance;
-        Debug.Log($"Selected level: {persistentData.SelectedLevel}");
-        Debug.Log($"Selected character: {persistentData.SelectedCharacter}");
+        Debug.Log($"Selected character: {persistentData.selectedCharacter}");
+        Debug.Log($"Selected level: {persistentData.selectedLevel}");
     }
 
     private void FixedUpdate()
@@ -39,7 +80,7 @@ public class LevelManager : MonoBehaviour
 
     private void Update()
     {
-        if (LevelTimeSeconds > levelInfo.timeLimitMinutes * 60.0f)
+        if (LevelTimeSeconds > _levelInfo.timeLimitMinutes * 60.0f)
         {
             // TODO: Game over screen.
             SceneManager.LoadScene(SceneIndex.MainMenu);
@@ -60,11 +101,11 @@ public class LevelManager : MonoBehaviour
 
     public string GetLevelName()
     {
-        return levelInfo.levelName;
+        return _levelInfo.levelName;
     }
 
     public float GetLevelTimeLimitMinutes()
     {
-        return levelInfo.timeLimitMinutes;
+        return _levelInfo.timeLimitMinutes;
     }
 }

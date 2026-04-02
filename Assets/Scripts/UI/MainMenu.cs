@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -25,22 +24,14 @@ namespace UI
 
         public void PickCharacter(CharacterId characterId)
         {
-            PersistentData.Instance.SelectedCharacter = characterId;
+            PersistentData.Instance.selectedCharacter = characterId;
             SwitchScreen(_levelSelectionScreen);
         }
 
         public void PickLevel(LevelId levelId)
         {
-            PersistentData.Instance.SelectedLevel = levelId;
-
-            switch (levelId)
-            {
-                case LevelId.Forest:
-                    SceneManager.LoadScene(SceneIndex.LevelForest);
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(levelId), levelId, null);
-            }
+            PersistentData.Instance.selectedLevel = levelId;
+            SceneManager.LoadScene(SceneIndex.GameplayScene);
         }
 
         public void OnQuitButtonClicked()

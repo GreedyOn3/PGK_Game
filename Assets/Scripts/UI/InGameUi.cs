@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
@@ -17,7 +18,7 @@ namespace UI
         [SerializeField] private TextMeshProUGUI timeText;
         [SerializeField] private GameObject pauseMenu;
 
-        [SerializeField] private PlayerReferences player;
+        private PlayerReferences _player;
 
         private void Awake()
         {
@@ -25,14 +26,20 @@ namespace UI
             unpauseAction.action.performed += TogglePauseMenu;
         }
 
+        private void Start()
+        {
+            _player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerReferences>();
+            Assert.IsNotNull(_player, "Player object should have PlayerReferences component.");
+        }
+
         private void Update()
         {
-            healthSlider.value = player.Health.Value;
-            healthSlider.maxValue = player.Health.MaxValue;
-            xpSlider.value = player.Xp.Value;
-            xpSlider.maxValue = player.Xp.MaxValue;
-            levelText.text = $"Level {player.Xp.Level}";
-            statsText.text = $"Player stats:\nMovement speed: {player.Stats.MovementSpeed}\nAttack: {player.Stats.Attack}\nDefense: {player.Stats.Defense}\nPickup range: {player.Stats.PickupRange}";
+            healthSlider.value = _player.Health.Value;
+            healthSlider.maxValue = _player.Health.MaxValue;
+            xpSlider.value = _player.Xp.Value;
+            xpSlider.maxValue = _player.Xp.MaxValue;
+            levelText.text = $"Level {_player.Xp.Level}";
+            statsText.text = $"Player stats:\nMovement speed: {_player.Stats.MovementSpeed}\nAttack: {_player.Stats.Attack}\nDefense: {_player.Stats.Defense}\nPickup range: {_player.Stats.PickupRange}";
 
             var levelManager = LevelManager.Instance;
             var levelTime = (int)levelManager.LevelTimeSeconds;

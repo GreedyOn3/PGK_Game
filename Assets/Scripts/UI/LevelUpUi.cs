@@ -7,21 +7,22 @@ namespace UI
     public class LevelUpUi : MonoBehaviour
     {
         [SerializeField] private GameObject optionPrefab;
-        [SerializeField] private PlayerReferences player;
         [SerializeField] private GameObject levelUpScreen;
         [SerializeField] private StatUpgradeInfo[] upgrades;
 
+        private PlayerReferences _player;
         private GameObject[] _options = Array.Empty<GameObject>();
 
-        private void Awake()
+        private void Start()
         {
-            player.Xp.OnLevelUp += LevelUp;
+            _player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerReferences>();
+            _player.Xp.OnLevelUp += LevelUp;
             levelUpScreen.SetActive(false);
         }
 
         public void PickStatUpgrade(StatUpgradeType upgrade)
         {
-            player.Stats.ApplyStatUpgrade(upgrade);
+            _player.Stats.ApplyStatUpgrade(upgrade);
             LevelManager.Instance.UnpauseLevel();
             InputManager.Instance.SwitchInputMode(InputMode.Gameplay);
             levelUpScreen.SetActive(false);

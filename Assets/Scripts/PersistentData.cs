@@ -4,8 +4,8 @@ public class PersistentData : MonoBehaviour
 {
     public static PersistentData Instance { get; private set; }
 
-    public LevelId? SelectedLevel;
-    public CharacterId? SelectedCharacter;
+    public CharacterId selectedCharacter;
+    public LevelId selectedLevel;
 
     private void Awake()
     {

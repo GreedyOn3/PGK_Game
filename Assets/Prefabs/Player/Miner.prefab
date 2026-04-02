@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8e6dd9018830bb1498fc7c8bbaac3727, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.78
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8e6dd9018830bb1498fc7c8bbaac3727, type: 3}
       propertyPath: m_LocalPosition.z
@@ -294,7 +294,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8e6dd9018830bb1498fc7c8bbaac3727, type: 3}
       propertyPath: m_Name
-      value: miner
+      value: Miner
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8e6dd9018830bb1498fc7c8bbaac3727, type: 3}
       propertyPath: m_Layer
@@ -503,6 +503,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8e6dd9018830bb1498fc7c8bbaac3727, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2583986639438991561}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8e6dd9018830bb1498fc7c8bbaac3727, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3558951816448449523}
   m_SourcePrefab: {fileID: 100100000, guid: 8e6dd9018830bb1498fc7c8bbaac3727, type: 3}
 --- !u!1 &8680176089409952416 stripped
 GameObject:
@@ -531,3 +534,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3558951816448449523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8680176089409952416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68f248cd66cea23408046e6eba4ae3db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerGathering
+  stats: {fileID: 0}
+  checkRadius: 0.25
+  checkDistance: 1
+  maxFound: 4
+  resourceMask:
+    serializedVersion: 2
+    m_Bits: 128
