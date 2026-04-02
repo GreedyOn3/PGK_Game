@@ -14,7 +14,7 @@ namespace UI
             {
                 var card = Instantiate(characterCardPrefab, transform);
                 var characterCardUi = card.GetComponent<CharacterCardUi>();
-                Assert.IsNotNull(characterCardUi, "Level up option should have a LevelUpOptionUi component.");
+                Assert.IsNotNull(characterCardUi, "Character card should have a CharacterCardUi component.");
                 characterCardUi.Initialize(character, this);
             }
         }

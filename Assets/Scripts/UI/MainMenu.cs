@@ -6,17 +6,19 @@ namespace UI
     {
         private GameObject _titleScreen;
         private GameObject _characterSelectionScreen;
+        private GameObject _levelSelectionScreen;
 
         private void Start()
         {
             _titleScreen = transform.Find("Title Screen").gameObject;
             _characterSelectionScreen = transform.Find("Character Selection").gameObject;
+            _levelSelectionScreen = transform.Find("Level Selection").gameObject;
             SwitchScreen(_titleScreen);
         }
 
         public void OnStartButtonClicked()
         {
-            SwitchScreen(_characterSelectionScreen);
+            SwitchScreen(_levelSelectionScreen);
         }
 
         public void OnQuitButtonClicked()
@@ -32,6 +34,7 @@ namespace UI
         {
             _titleScreen.SetActive(false);
             _characterSelectionScreen.SetActive(false);
+            _levelSelectionScreen.SetActive(false);
 
             screen.SetActive(true);
         }

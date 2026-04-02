@@ -10,7 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb9dcac26f7ae1b47b9ff60c611e63ae, type: 3}
-  m_Name: ExampleLevel
+  m_Name: Forest
   m_EditorClassIdentifier: Assembly-CSharp::LevelInfo
-  levelName: Example
+  image: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  levelName: Forest
+  description: ...
   timeLimitMinutes: 20
+  id: 0
