@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3228510204267806398}
   - component: {fileID: 4614201235961904924}
   - component: {fileID: -4053180584651372770}
+  - component: {fileID: 4933693586456978406}
   m_Layer: 11
   m_Name: Wand Projectile
   m_TagString: Projectile
@@ -153,5 +154,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aba318ab4c30774bb83e4c74be09b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
+  damageScaling: 1
+--- !u!114 &4933693586456978406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3864531069361945626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaeef6e76dc2b024abdae48e587e86c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Lifetime
   lifetime: 5
-  damage: 5

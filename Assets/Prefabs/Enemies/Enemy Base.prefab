@@ -159,8 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   value: 5
   damagePopupPrefab: {fileID: 4565016010454154952, guid: ecf53f84874eea14093b15e9c6f0027e, type: 3}
-  damagePopupHeightOffset: 0.5
-  worldSpaceCanvas: {fileID: 0}
+  damagePopupSpawnOffset: {x: 0, y: 0.5, z: 0}
 --- !u!114 &-7704220916404606633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,4 +185,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0635f8f2d0625c846898bfa69d892373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::XpDrop
-  item: {fileID: 2016887137102623746, guid: adcae072e84539446b423acef906004b, type: 3}
+  obj: {fileID: 2016887137102623746, guid: adcae072e84539446b423acef906004b, type: 3}

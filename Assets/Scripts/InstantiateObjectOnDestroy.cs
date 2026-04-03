@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class DropItemOnDestroy : MonoBehaviour
+public class InstantiateObjectOnDestroy : MonoBehaviour
 {
-    public GameObject item;
+    public GameObject obj;
 
     private static bool _quitting = false;
 
@@ -15,7 +15,7 @@ public class DropItemOnDestroy : MonoBehaviour
     {
         if (!_quitting && gameObject.scene.isLoaded)
         {
-            Instantiate(item, transform.position, Quaternion.identity);
+            Instantiate(obj, transform.position, Quaternion.identity);
         }
     }
 }

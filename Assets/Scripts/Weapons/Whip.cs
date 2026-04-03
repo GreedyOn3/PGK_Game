@@ -1,11 +1,9 @@
 using UnityEngine;
-using UnityEngine.Assertions;
 
 namespace Weapons
 {
     public class Whip : Weapon
     {
-        [SerializeField] private int damage = 5;
         [SerializeField] private Vector3 hitBoxSize = new(3.0f, 1.0f, 6.0f);
         [SerializeField] private LayerMask enemyLayer;
 
@@ -18,9 +16,7 @@ namespace Weapons
             {
                 if (collider.CompareTag("Enemy"))
                 {
-                    var enemyHealth = collider.GetComponent<EnemyHealth>();
-                    Assert.IsNotNull(enemyHealth, "Enemy should have an EnemyHealth component.");
-                    enemyHealth.Remove(damage);
+                    DamageEnemy(collider.gameObject);
                 }
             }
         }

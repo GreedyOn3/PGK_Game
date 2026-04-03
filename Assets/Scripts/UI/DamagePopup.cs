@@ -7,7 +7,6 @@ namespace UI
     public class DamagePopup : MonoBehaviour
     {
         public float floatSpeed = 2.0f;
-        public float lifetime = 1.0f;
         public float fadeSpeed = 3.0f;
 
         private TextMeshProUGUI _text;
@@ -26,13 +25,6 @@ namespace UI
 
         private void Update()
         {
-            if (_lifetimeTimer > lifetime)
-            {
-                Destroy(gameObject);
-            }
-
-            _lifetimeTimer += Time.deltaTime;
-
             transform.position += Vector3.up * (floatSpeed * Time.deltaTime);
             var textColor = _text.color;
             textColor.a -= fadeSpeed * Time.deltaTime;
