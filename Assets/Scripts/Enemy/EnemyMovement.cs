@@ -17,6 +17,8 @@ public class EnemyMovement : MonoBehaviour
     private void FixedUpdate()
     {
         var position = Vector3.MoveTowards(transform.position, _player.transform.position, movementSpeed * Time.fixedDeltaTime);
-        _rigidbody.MovePosition(position);
+        var playerDirection = (_player.transform.position - transform.position).normalized;
+        var rotation = Quaternion.LookRotation(playerDirection);
+        _rigidbody.Move(position, rotation);
     }
 }

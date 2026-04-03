@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class InstantiateObjectOnDestroy : MonoBehaviour
+public class SpawnObjectOnDestroy : MonoBehaviour
 {
     public GameObject obj;
 

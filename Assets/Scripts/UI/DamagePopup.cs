@@ -3,14 +3,13 @@ using UnityEngine;
 
 namespace UI
 {
-    [RequireComponent(typeof(TextMeshProUGUI))]
+    [RequireComponent(typeof(TextMeshProUGUI), typeof(Lifetime))]
     public class DamagePopup : MonoBehaviour
     {
         public float floatSpeed = 2.0f;
         public float fadeSpeed = 3.0f;
 
         private TextMeshProUGUI _text;
-        private float _lifetimeTimer;
         private Camera _camera;
 
         private void Awake()
@@ -35,12 +34,17 @@ namespace UI
                 return;
             }
 
-            transform.LookAt(transform.position + _camera.transform.rotation * Vector3.forward, Vector3.up);
+            transform.LookAt(transform.position + _camera.transform.rotation * Vector3.forward);
         }
 
         public void SetDamage(int damage)
         {
             _text.text = $"{damage}";
+        }
+
+        public void SetColor(Color color)
+        {
+            _text.color = color;
         }
     }
 }

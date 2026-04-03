@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: value
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 1579356707425573641, guid: a71fd8f97988146479a87bb9e40f9400, type: 3}
+      propertyPath: maxValue
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 5832452191371821113, guid: a71fd8f97988146479a87bb9e40f9400, type: 3}
       propertyPath: m_Name
       value: Weak Enemy

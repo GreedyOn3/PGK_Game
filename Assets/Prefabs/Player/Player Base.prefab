@@ -135,8 +135,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
   resourceGathered: 0
   resourceDamage: 3
-  modifiers: {fileID: 0}
   baseStats: {fileID: 11400000, guid: 122f374d7546689469292b1178df899e, type: 2}
+  characterStats: {fileID: 0}
 --- !u!114 &-5167089272841205230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,6 +151,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Health
   value: 100
   maxValue: 100
+  damagePopupPrefab: {fileID: 3258144711355226788, guid: 700e5252652cfac4d907d207befcef64, type: 3}
+  damagePopupSpawnOffset: {x: 0, y: 0.5, z: 0}
 --- !u!114 &2809181945823587291
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,16 +1,10 @@
-using System;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : Health
 {
-    [SerializeField] private int value = 100;
-    [SerializeField] private int maxValue = 100;
-
-    public int Value => value;
-    public int MaxValue => maxValue;
-
-    public void Add(int amount)
+    protected override void OnZeroHealth()
     {
-        value = Math.Clamp(value + amount, 0, maxValue);
+        // TODO: Game over.
+        Debug.Log("PLAYER DEAD!");
     }
 }

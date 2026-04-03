@@ -4,13 +4,15 @@ public class Lifetime : MonoBehaviour
 {
     public float lifetime = 5.0f;
 
-    private void Awake()
-    {
-        Invoke(nameof(DestroyOnLifetimeOver), lifetime);
-    }
+    private float _timer;
 
-    private void DestroyOnLifetimeOver()
+    private void FixedUpdate()
     {
-        Destroy(gameObject);
+        if (_timer > lifetime)
+        {
+            Destroy(gameObject);
+        }
+
+        _timer += Time.fixedDeltaTime;
     }
 }
