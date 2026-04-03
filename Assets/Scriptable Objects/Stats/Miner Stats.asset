@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f16609c25d339f4ea2d7cd6e67774a9, type: 3}
+  m_Name: Miner Stats
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStatsModifiers
+  <MovementSpeedModifier>k__BackingField: 0
+  <AttackModifier>k__BackingField: 0
+  <DefenseModifier>k__BackingField: 10
+  <PickupRangeModifier>k__BackingField: 0

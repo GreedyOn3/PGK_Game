@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40843d787c3397e41b209c16a0e7cfaf, type: 3}
   m_Name: Whip
   m_EditorClassIdentifier: Assembly-CSharp::WeaponInfo
-  image: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-  title: Whip
-  description: ...
-  id: 1
+  <Image>k__BackingField: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  <Title>k__BackingField: Whip
+  <Description>k__BackingField: 
+  <Id>k__BackingField: 1

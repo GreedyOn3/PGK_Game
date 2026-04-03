@@ -1,15 +1,16 @@
+using System;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] private float value = 100.0f;
-    [SerializeField] private float maxValue = 100.0f;
+    [SerializeField] private int value = 100;
+    [SerializeField] private int maxValue = 100;
 
-    public float Value => value;
-    public float MaxValue => maxValue;
+    public int Value => value;
+    public int MaxValue => maxValue;
 
-    public void Add(float amount)
+    public void Add(int amount)
     {
-        value = Mathf.Clamp(value + amount, 0.0f, maxValue);
+        value = Math.Clamp(value + amount, 0, maxValue);
     }
 }

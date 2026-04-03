@@ -37,7 +37,7 @@ namespace UI
             {
                 var weapon = weapons[i];
                 var slot = _slots[i];
-                slot.GetComponent<Image>().sprite = weapon.WeaponInfo.image;
+                slot.GetComponent<Image>().sprite = weapon.WeaponInfo.Image;
             }
         }
     }

@@ -5,7 +5,7 @@ namespace Weapons
 {
     public class Whip : Weapon
     {
-        [SerializeField] private float damage = 5.0f;
+        [SerializeField] private int damage = 5;
         [SerializeField] private Vector3 hitBoxSize = new(3.0f, 1.0f, 6.0f);
         [SerializeField] private LayerMask enemyLayer;
 

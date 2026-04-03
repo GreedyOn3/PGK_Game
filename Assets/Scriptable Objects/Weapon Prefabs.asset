@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca9a6e8e69356d64ba9f66bc55df1118, type: 3}
   m_Name: Weapon Prefabs
   m_EditorClassIdentifier: Assembly-CSharp::WeaponPrefabs
-  wandPrefab: {fileID: 6656470399939549403, guid: 4a32e0aecb76eed4f8cab2f96a586177, type: 3}
-  whipPrefab: {fileID: 861562726054869019, guid: cc7de70a2c5e1b140befbc9ecac03133, type: 3}
+  <WandPrefab>k__BackingField: {fileID: 6656470399939549403, guid: 4a32e0aecb76eed4f8cab2f96a586177, type: 3}
+  <WhipPrefab>k__BackingField: {fileID: 861562726054869019, guid: cc7de70a2c5e1b140befbc9ecac03133, type: 3}

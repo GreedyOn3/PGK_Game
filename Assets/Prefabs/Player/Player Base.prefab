@@ -135,10 +135,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
   resourceGathered: 0
   resourceDamage: 3
-  movementSpeed: 8
-  attack: 5
-  defense: 5
-  pickupRange: 5
+  modifiers: {fileID: 0}
+  baseStats: {fileID: 11400000, guid: 122f374d7546689469292b1178df899e, type: 2}
 --- !u!114 &-5167089272841205230
 MonoBehaviour:
   m_ObjectHideFlags: 0

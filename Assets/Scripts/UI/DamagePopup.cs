@@ -46,7 +46,7 @@ namespace UI
             transform.LookAt(transform.position + _camera.transform.rotation * Vector3.forward, Vector3.up);
         }
 
-        public void SetDamage(float damage)
+        public void SetDamage(int damage)
         {
             _text.text = $"{damage}";
         }

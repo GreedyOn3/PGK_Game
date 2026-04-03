@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class XpPickup : MonoBehaviour
 {
-    public float amount = 5.0f;
+    public int amount = 5;
 
     private void OnTriggerEnter(Collider other)
     {

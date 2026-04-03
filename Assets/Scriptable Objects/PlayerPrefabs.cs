@@ -4,19 +4,19 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayerPrefabs", menuName = "Scriptable Objects/Player Prefabs")]
 public class PlayerPrefabs : ScriptableObject
 {
-    public GameObject playerCamera;
+    [field: SerializeField] public GameObject PlayerCamera { get; private set; }
 
-    public GameObject minerPrefab;
-    public GameObject lumberjackPrefab;
+    [field: SerializeField] public GameObject MinerPrefab { get; private set; }
+    [field: SerializeField] public GameObject LumberjackPrefab { get; private set; }
 
     public GameObject GetById(CharacterId id)
     {
         switch (id)
         {
             case CharacterId.Miner:
-                return minerPrefab;
+                return MinerPrefab;
             case CharacterId.Lumberjack:
-                return lumberjackPrefab;
+                return LumberjackPrefab;
             default:
                 throw new ArgumentOutOfRangeException(nameof(id), id, null);
         }

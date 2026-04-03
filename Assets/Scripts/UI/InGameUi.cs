@@ -33,7 +33,7 @@ namespace UI
             xpSlider.value = _player.Xp.Value;
             xpSlider.maxValue = _player.Xp.MaxValue;
             levelText.text = $"Level {_player.Xp.Level}";
-            statsText.text = $"Player stats:\nMovement speed: {_player.Stats.MovementSpeed}\nAttack: {_player.Stats.Attack}\nDefense: {_player.Stats.Defense}\nPickup range: {_player.Stats.PickupRange}";
+            UpdatePlayerStatsDisplay();
 
             var levelManager = LevelManager.Instance;
             var levelTime = (int)levelManager.LevelTimeSeconds;
@@ -42,6 +42,22 @@ namespace UI
             var levelTimeMinutes = levelTime / 60;
             var levelTimeMinutesText = levelTimeMinutes < 10 ? $"0{levelTimeMinutes}" : $"{levelTimeMinutes}";
             timeText.text = $"{levelTimeMinutesText}:{levelTimeSecondsText}";
+        }
+
+        private void UpdatePlayerStatsDisplay()
+        {
+            var modifiers = _player.Stats.Modifiers;
+            var text = "Player stats\n";
+            text += GetStatModifierText("Movement speed", modifiers.MovementSpeedModifier);
+            text += GetStatModifierText("Attack", modifiers.AttackModifier);
+            text += GetStatModifierText("Defense", modifiers.DefenseModifier);
+            text += GetStatModifierText("Pickup range", modifiers.PickupRangeModifier);
+            statsText.text = text;
+        }
+
+        private static string GetStatModifierText(string statName, int stat)
+        {
+            return stat < 0 ? $"{statName}: {stat}%\n" : $"{statName}: +{stat}%\n";
         }
 
         private void OnEnable()

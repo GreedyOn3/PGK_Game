@@ -3,16 +3,16 @@ using UnityEngine;
 
 public class PlayerXp : MonoBehaviour
 {
-    [SerializeField] private float value = 0.0f;
-    [SerializeField] private float maxValue = 100.0f;
+    [SerializeField] private int value = 0;
+    [SerializeField] private int maxValue = 100;
 
-    public float Value => value;
-    public float MaxValue => maxValue;
+    public int Value => value;
+    public int MaxValue => maxValue;
 
     public int Level { get; private set; } = 0;
     public event Action OnLevelUp;
 
-    public void Add(float amount)
+    public void Add(int amount)
     {
         value += amount;
 

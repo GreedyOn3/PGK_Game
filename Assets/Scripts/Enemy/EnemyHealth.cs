@@ -3,24 +3,24 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] private float value = 10.0f;
+    [SerializeField] private int value = 10;
     [SerializeField] private GameObject damagePopupPrefab;
     [SerializeField] private Vector3 damagePopupSpawnOffset = new(0.0f, 0.5f, 0.0f);
 
-    public float Value => value;
+    public int Value => value;
 
-    public void Remove(float amount)
+    public void Remove(int amount)
     {
         value -= amount;
         SpawnDamagePopup(amount);
 
-        if (value <= 0.0f)
+        if (value <= 0)
         {
             Destroy(gameObject);
         }
     }
 
-    private void SpawnDamagePopup(float amount)
+    private void SpawnDamagePopup(int amount)
     {
         var popupPosition = transform.position + damagePopupSpawnOffset;
         // Add a random offset to the spawn position.

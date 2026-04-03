@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: visuals
       value: 
       objectReference: {fileID: 1996487432997506588}
+    - target: {fileID: 4822155126531462329, guid: eecca3e02d7aa5443b34cffdc368ec19, type: 3}
+      propertyPath: modifiers
+      value: 
+      objectReference: {fileID: 11400000, guid: 0babd8075bcc66145b75501ba5a94b87, type: 2}
+    - target: {fileID: 4822155126531462329, guid: eecca3e02d7aa5443b34cffdc368ec19, type: 3}
+      propertyPath: characterStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 0babd8075bcc66145b75501ba5a94b87, type: 2}
     - target: {fileID: 6746373401210320191, guid: eecca3e02d7aa5443b34cffdc368ec19, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

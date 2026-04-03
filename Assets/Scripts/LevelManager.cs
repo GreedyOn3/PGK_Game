@@ -31,7 +31,7 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(SceneIndex.GetByLevelId(persistentData.selectedLevel), LoadSceneMode.Additive);
         var playerPrefab = playerPrefabs.GetById(persistentData.selectedCharacter);
         var player = Instantiate(playerPrefab);
-        var playerCamera = Instantiate(playerPrefabs.playerCamera);
+        var playerCamera = Instantiate(playerPrefabs.PlayerCamera);
         player.GetComponent<PlayerCamera>().playerCamera = playerCamera.transform;
 
         Time.timeScale = 1.0f;
@@ -51,7 +51,7 @@ public class LevelManager : MonoBehaviour
 
     private void Update()
     {
-        if (LevelTimeSeconds > _levelInfo.timeLimitMinutes * 60.0f)
+        if (LevelTimeSeconds > _levelInfo.TimeLimitMinutes * 60.0f)
         {
             // TODO: Game over screen.
             SceneManager.LoadScene(SceneIndex.MainMenu);
@@ -72,11 +72,11 @@ public class LevelManager : MonoBehaviour
 
     public string GetLevelName()
     {
-        return _levelInfo.levelName;
+        return _levelInfo.LevelName;
     }
 
     public float GetLevelTimeLimitMinutes()
     {
-        return _levelInfo.timeLimitMinutes;
+        return _levelInfo.TimeLimitMinutes;
     }
 }

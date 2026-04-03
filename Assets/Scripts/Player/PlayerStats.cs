@@ -8,34 +8,63 @@ public class PlayerStats : MonoBehaviour
     public float resourceDamage = 3f;
 
     [Header("Stats")]
-    [SerializeField] private float movementSpeed = 8.0f;
-    [SerializeField] private float attack = 5.0f;
-    [SerializeField] private float defense = 5.0f;
-    [SerializeField] private float pickupRange = 5.0f;
+    [SerializeField] private BasePlayerStats baseStats;
+    [SerializeField] private CharacterStats characterStats;
 
-    public float MovementSpeed => movementSpeed;
-    public float Attack => attack;
-    public float Defense => defense;
-    public float PickupRange => pickupRange;
+    public PlayerStatsModifiers Modifiers { get; private set; }
+
+    public float MovementSpeed => ApplyStatModifier(baseStats.MovementSpeed, Modifiers.MovementSpeedModifier);
+    public float Attack => ApplyStatModifier(baseStats.Attack, Modifiers.AttackModifier);
+    public float Defense => ApplyStatModifier(baseStats.Defense, Modifiers.DefenseModifier);
+    public float PickupRange => ApplyStatModifier(baseStats.PickupRange, Modifiers.PickupRangeModifier);
+
+    private void Awake()
+    {
+        Modifiers = new PlayerStatsModifiers
+        {
+            MovementSpeedModifier = characterStats.MovementSpeedModifier,
+            AttackModifier = characterStats.AttackModifier,
+            DefenseModifier = characterStats.DefenseModifier,
+            PickupRangeModifier = characterStats.PickupRangeModifier,
+        };
+    }
 
     public void ApplyStatUpgrade(StatUpgradeId upgrade)
     {
+        var modifiers = Modifiers;
+
         switch (upgrade)
         {
             case StatUpgradeId.MovementSpeed:
-                movementSpeed += 1.0f;
+                modifiers.MovementSpeedModifier += 5;
                 break;
             case StatUpgradeId.Attack:
-                attack += 1.0f;
+                modifiers.AttackModifier += 5;
                 break;
             case StatUpgradeId.Defense:
-                defense += 1.0f;
+                modifiers.DefenseModifier += 5;
                 break;
             case StatUpgradeId.PickupRange:
-                pickupRange += 1.0f;
+                modifiers.PickupRangeModifier += 5;
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
         }
+
+        Modifiers = modifiers;
     }
+
+    private static float ApplyStatModifier(float baseValue, int modifier)
+    {
+        var multiplier = 1.0f + modifier / 100.0f;
+        return baseValue * multiplier;
+    }
+}
+
+public struct PlayerStatsModifiers
+{
+    public int MovementSpeedModifier;
+    public int AttackModifier;
+    public int DefenseModifier;
+    public int PickupRangeModifier;
 }

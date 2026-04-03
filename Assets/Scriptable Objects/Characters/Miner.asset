@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 546a924647006834e89a79cbd8e02c14, type: 3}
   m_Name: Miner
   m_EditorClassIdentifier: Assembly-CSharp::CharacterInfo
-  image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  characterName: Miner
-  description: ...
+  <Image>k__BackingField: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  <CharacterName>k__BackingField: Miner
+  <Description>k__BackingField: 
+  <Id>k__BackingField: 0
