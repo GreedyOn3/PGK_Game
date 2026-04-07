@@ -5,6 +5,8 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Animation")]
     public Animator animator;
+    [Header("Particles")]
+    public ParticleSystem jumpParticles;
     [Header("Player Scripts")]
     public PlayerMovement movement;
     public PlayerCamera cam;

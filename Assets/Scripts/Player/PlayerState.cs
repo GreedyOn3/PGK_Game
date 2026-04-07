@@ -28,6 +28,7 @@ public class GroundedState : PlayerState
         {
             player.movement.Jump();
             player.SetAnimatorValue("Jump");
+            if(player.jumpParticles) player.jumpParticles.Play();
             player.ClearJumpBuffer();
 
             sm.ChangeState(player.AirState);

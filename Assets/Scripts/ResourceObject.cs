@@ -4,6 +4,11 @@ using System.Collections;
 public class ResourceObject : MonoBehaviour
 {
     public Transform visuals;
+    [Header("Particles")]
+    public MeshRenderer particlesSource;
+    public ParticleSystem breakParticles;
+    public Material particleMaterial;
+    public Color particleColor = Color.white;
     [Header("Information")]
     public ResourceData data;
     public float health = 12f;
@@ -27,9 +32,19 @@ public class ResourceObject : MonoBehaviour
         health -= val;
 
         if (health <= 0f)
-            Destroy(gameObject);
+        {
+            float time = 0f;
+            if (breakParticles && particlesSource)
+            {
+                gameObject.SetActive(false);
+                time = PlayBreakParticles();
+            }
+
+            Destroy(gameObject, time);
+        }
         else
             Shake();
+
         return amountPerHit;
     }
 
@@ -39,6 +54,23 @@ public class ResourceObject : MonoBehaviour
             StopCoroutine(shakeCoroutine);
 
         shakeCoroutine = StartCoroutine(ShakeCoroutine());
+    }
+
+    float PlayBreakParticles()
+    {
+        ParticleSystem particles = Instantiate(breakParticles);
+
+        ParticleSystem.MainModule main = particles.main;
+        ParticleSystem.ShapeModule shape = particles.shape;
+        ParticleSystemRenderer renderer = particles.GetComponent<ParticleSystemRenderer>();
+
+        main.startColor = particleColor;
+        shape.meshRenderer = particlesSource;
+        if(particleMaterial) renderer.material = particleMaterial;
+
+        particles.Play();
+
+        return main.duration + main.startLifetime.constantMax;
     }
 
     private IEnumerator ShakeCoroutine()

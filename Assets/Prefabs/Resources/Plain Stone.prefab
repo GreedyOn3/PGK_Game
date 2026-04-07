@@ -158,6 +158,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ResourceObject
   visuals: {fileID: 8979032149478798980}
+  particlesSource: {fileID: 7325675395751004175}
+  breakParticles: {fileID: 3306850227804937373, guid: 37ede804efe1a624588a1472c7601f26, type: 3}
+  particleMaterial: {fileID: 2100000, guid: af3cc80fcb0083240b2f6727e8af7f7e, type: 2}
+  particleColor: {r: 1, g: 1, b: 1, a: 1}
   data: {fileID: 11400000, guid: 64cfe64072c3bc04dbbe6832c50b2c00, type: 2}
   health: 12
   amountPerHit: 1

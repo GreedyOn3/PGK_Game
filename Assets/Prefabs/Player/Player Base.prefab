@@ -245,6 +245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   animator: {fileID: 0}
+  jumpParticles: {fileID: 0}
   movement: {fileID: 4470370686211478460}
   cam: {fileID: -7623453730141397379}
   gathering: {fileID: 0}
@@ -263,7 +264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
   visuals: {fileID: 0}
   maxGroundSpeed: 8
-  groundAcceleration: 70
+  groundAcceleration: 80
   groundFriction: 8
   groundMask:
     serializedVersion: 2
@@ -274,7 +275,7 @@ MonoBehaviour:
   slopeSlideForce: 50
   airAcceleration: 25
   airMaxSpeed: 2
-  airDrag: 0.4
+  airDrag: 0
   jumpForce: 10
   jumpSpeedBoost: 0.1
   gravity: -25

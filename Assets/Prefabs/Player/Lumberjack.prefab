@@ -101,6 +101,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -7956919756574189296, guid: fe82fd313495ec043af6fa8df8e89b8f, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7956919756574189296, guid: fe82fd313495ec043af6fa8df8e89b8f, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 9d6255e0c2c363b4da24ab5f7874cd2d, type: 2}
@@ -221,6 +225,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -3488063919645288440, guid: fe82fd313495ec043af6fa8df8e89b8f, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3488063919645288440, guid: fe82fd313495ec043af6fa8df8e89b8f, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 9d6255e0c2c363b4da24ab5f7874cd2d, type: 2}
@@ -229,12 +237,20 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -3341079909134402011, guid: fe82fd313495ec043af6fa8df8e89b8f, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3341079909134402011, guid: fe82fd313495ec043af6fa8df8e89b8f, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 9d6255e0c2c363b4da24ab5f7874cd2d, type: 2}
     - target: {fileID: -3243744855428963590, guid: fe82fd313495ec043af6fa8df8e89b8f, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -3107824568456337282, guid: fe82fd313495ec043af6fa8df8e89b8f, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -3107824568456337282, guid: fe82fd313495ec043af6fa8df8e89b8f, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -415,6 +431,10 @@ PrefabInstance:
     - target: {fileID: 5306318629548162815, guid: fe82fd313495ec043af6fa8df8e89b8f, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5433269313094510252, guid: fe82fd313495ec043af6fa8df8e89b8f, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5433269313094510252, guid: fe82fd313495ec043af6fa8df8e89b8f, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
