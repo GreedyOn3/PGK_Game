@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: visuals
       value: 
       objectReference: {fileID: 1996487432997506588}
+    - target: {fileID: 4646245972546279748, guid: eecca3e02d7aa5443b34cffdc368ec19, type: 3}
+      propertyPath: startingWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 1c1c5754b53d2ff43bc86362b9ee5b55, type: 2}
+    - target: {fileID: 4646245972546279748, guid: eecca3e02d7aa5443b34cffdc368ec19, type: 3}
+      propertyPath: _passives.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4822155126531462329, guid: eecca3e02d7aa5443b34cffdc368ec19, type: 3}
       propertyPath: modifiers
       value: 

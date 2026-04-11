@@ -7,7 +7,7 @@ public class WeaponPrefabs : ScriptableObject
     [field: SerializeField] public GameObject WandPrefab { get; private set; }
     [field: SerializeField] public GameObject WhipPrefab { get; private set; }
 
-    public GameObject GetById(WeaponId id)
+    /*public GameObject GetById(WeaponId id)
     {
         switch (id)
         {
@@ -18,5 +18,5 @@ public class WeaponPrefabs : ScriptableObject
             default:
                 throw new ArgumentOutOfRangeException(nameof(id), id, null);
         }
-    }
+    }*/
 }

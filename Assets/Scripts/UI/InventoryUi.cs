@@ -8,36 +8,51 @@ namespace UI
     public class InventoryUi : MonoBehaviour
     {
         [SerializeField] private GameObject slotPrefab;
+        [SerializeField] private Transform weaponsContainer;
+        [SerializeField] private Transform passivesContainer;
 
         private PlayerReferences _player;
-        private GameObject[] _slots;
+        private GameObject[] _weaponSlots;
+        private GameObject[] _passiveSlots;
 
         private void Start()
         {
             _player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerReferences>();
 
             _player.Inventory.OnInventoryChange += UpdateUi;
-            var capacity = _player.Inventory.GetCapacity();
-            _slots = new GameObject[capacity];
 
-            for (var i = 0; i < capacity; i++)
-            {
-                _slots[i] = Instantiate(slotPrefab, transform);
-            }
+            var weaponCapacity = _player.Inventory.GetWeaponCapacity();
+            _weaponSlots = new GameObject[weaponCapacity];
+            var passiveCapacity = _player.Inventory.GetPassivesCapacity();
+            _passiveSlots = new GameObject[passiveCapacity];
 
-            Assert.IsTrue(_slots.Length == _player.Inventory.GetCapacity());
+            for (var i = 0; i < weaponCapacity; i++)
+                _weaponSlots[i] = Instantiate(slotPrefab, weaponsContainer);
+            for (var i = 0; i < passiveCapacity; i++)
+                _passiveSlots[i] = Instantiate(slotPrefab, passivesContainer);
+
+            Assert.IsTrue(_weaponSlots.Length == _player.Inventory.GetWeaponCapacity());
             UpdateUi();
         }
 
         public void UpdateUi()
         {
             var weapons = _player.Inventory.GetWeapons();
-            Assert.IsTrue(weapons.Count <= _slots.Length);
+            var passives = _player.Inventory.GetPassives();
+
+            Assert.IsTrue(weapons.Count <= _weaponSlots.Length);
             for (var i = 0; i < weapons.Count; i++)
             {
                 var weapon = weapons[i];
-                var slot = _slots[i];
+                var slot = _weaponSlots[i];
                 slot.GetComponent<Image>().sprite = weapon.weaponInfo.Image;
+            }
+
+            for (var i = 0; i < passives.Count; i++)
+            {
+                var passive = passives[i];
+                var slot = _passiveSlots[i];
+                slot.GetComponent<Image>().sprite = passive.info.Image;
             }
         }
     }

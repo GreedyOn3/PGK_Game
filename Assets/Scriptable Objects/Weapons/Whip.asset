@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Whip
   m_EditorClassIdentifier: Assembly-CSharp::WeaponInfo
   <Image>k__BackingField: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  <Title>k__BackingField: Whip
+  <Name>k__BackingField: Whip
   <Description>k__BackingField: 
-  <Id>k__BackingField: 1
+  <WeaponPrefab>k__BackingField: {fileID: 4730451546945454033, guid: cc7de70a2c5e1b140befbc9ecac03133, type: 3}

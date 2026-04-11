@@ -79,13 +79,16 @@ public class ResourceObject : MonoBehaviour
 
         while (elapsed < shakeDuration)
         {
-            float damper = 1.0f - Mathf.Clamp01(elapsed / shakeDuration);
-            float x = (Random.value * 2f - 1f) * shakeMagnitude * damper;
-            float y = (Random.value * 2f - 1f) * shakeMagnitude * damper;
+            if (Time.timeScale > 0f)
+            {
+                float damper = 1.0f - Mathf.Clamp01(elapsed / shakeDuration);
+                float x = (Random.value * 2f - 1f) * shakeMagnitude * damper;
+                float y = (Random.value * 2f - 1f) * shakeMagnitude * damper;
 
-            visuals.localPosition = originalPosition + new Vector3(x, y, 0f);
+                visuals.localPosition = originalPosition + new Vector3(x, y, 0f);
 
-            elapsed += Time.deltaTime * dampingSpeed;
+                elapsed += Time.deltaTime * dampingSpeed;
+            }
             yield return null;
         }
 

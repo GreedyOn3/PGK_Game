@@ -179,9 +179,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7bd4e64199a4e443ab031896f86d49f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInventory
-  startingWeapon: 0
-  weaponPrefabs: {fileID: 11400000, guid: dd60b782990e4984f9e7f8ca4219e26a, type: 2}
-  capacity: 6
+  startingWeapon: {fileID: 0}
+  weaponCapacity: 6
+  passivesCapacity: 6
   weaponsContainer: {fileID: 430057429671470438}
 --- !u!114 &9134130243309847553
 MonoBehaviour:

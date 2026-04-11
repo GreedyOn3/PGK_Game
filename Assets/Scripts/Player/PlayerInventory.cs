@@ -6,11 +6,14 @@ using UnityEngine.Assertions;
 [RequireComponent(typeof(PlayerReferences))]
 public class PlayerInventory : MonoBehaviour
 {
-    [SerializeField] private WeaponId startingWeapon;
-    [SerializeField] private WeaponPrefabs weaponPrefabs;
+    //[SerializeField] private WeaponId startingWeapon;
+    [SerializeField] private WeaponInfo startingWeapon;
+    //[SerializeField] private WeaponPrefabs weaponPrefabs;
 
-    [SerializeField] private int capacity = 6;
+    [SerializeField] private int weaponCapacity = 6;
+    [SerializeField] private int passivesCapacity = 6;
     private readonly List<Weapon> _weapons = new();
+    private readonly List<PassiveItem> _passives = new();
     [SerializeField] private Transform weaponsContainer;
 
     public event Action OnInventoryChange;
@@ -20,22 +23,25 @@ public class PlayerInventory : MonoBehaviour
         AddWeapon(startingWeapon);
     }
 
-    public void AddWeapon(WeaponId weaponId)
+    public void AddWeapon(WeaponInfo weaponInfo)
     {
-        Assert.IsTrue(_weapons.Count < capacity);
-        var weaponPrefab = weaponPrefabs.GetById(weaponId);
+        //Assert.IsTrue(_weapons.Count < capacity);
+        var weaponPrefab = weaponInfo.WeaponPrefab;
         var weapon = Instantiate(weaponPrefab, weaponsContainer).GetComponent<Weapon>();
         _weapons.Add(weapon);
         OnInventoryChange?.Invoke();
     }
 
-    public int GetCapacity()
+    public void AddWeapon(PassiveItemInfo passiveInfo)
     {
-        return capacity;
+        PassiveItem passive = new PassiveItem() { info = passiveInfo, percentage = passiveInfo.BasePercentage };
+        _passives.Add(passive);
+        OnInventoryChange?.Invoke();
     }
 
-    public IReadOnlyList<Weapon> GetWeapons()
-    {
-        return _weapons;
-    }
+    public int GetWeaponCapacity() => weaponCapacity;
+    public int GetPassivesCapacity() => passivesCapacity;
+
+    public IReadOnlyList<Weapon> GetWeapons() => _weapons;
+    public IReadOnlyList<PassiveItem> GetPassives() => _passives;
 }
