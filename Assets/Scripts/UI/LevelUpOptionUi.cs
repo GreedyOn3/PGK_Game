@@ -6,24 +6,29 @@ namespace UI
 {
     public class LevelUpOptionUi : MonoBehaviour
     {
+        public Image image;
+        public TextMeshProUGUI nameText;
+        public TextMeshProUGUI descriptionText;
+
         private StatUpgradeId _upgrade;
+        private LevelUpChoice _choice;
         private LevelUpUi _levelUpUi;
 
-        public void Initialize(StatUpgradeInfo upgrade, LevelUpUi levelUpUi)
+        public void Initialize(LevelUpChoice choice, LevelUpUi levelUpUi)
         {
             _levelUpUi = levelUpUi;
-            _upgrade = upgrade.Id;
-            var image = transform.Find("Image").GetComponent<Image>();
-            var name = transform.Find("Name").GetComponent<TextMeshProUGUI>();
-            var description = transform.Find("Description").GetComponent<TextMeshProUGUI>();
-            image.sprite = upgrade.Image;
-            name.text = upgrade.Title;
-            description.text = upgrade.Description;
+            //_upgrade = upgrade.Id;
+            _choice = choice;
+
+            BaseItemInfo item = choice.item;
+            image.sprite = item.Image;
+            nameText.text = item.Name;
+            descriptionText.text = item.Description;
         }
 
         public void Pick()
         {
-            _levelUpUi.PickStatUpgrade(_upgrade);
+            _levelUpUi.PickStatUpgrade(_choice);
         }
     }
 }

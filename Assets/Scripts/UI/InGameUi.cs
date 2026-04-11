@@ -55,7 +55,7 @@ namespace UI
             statsText.text = text;
         }
 
-        private static string GetStatModifierText(string statName, int stat)
+        private static string GetStatModifierText(string statName, float stat)
         {
             return stat < 0 ? $"{statName}: {stat}%\n" : $"{statName}: +{stat}%\n";
         }

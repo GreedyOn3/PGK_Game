@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d1ba90681096d54db66a04871b39ff6, type: 3}
+  m_Name: Claw
+  m_EditorClassIdentifier: Assembly-CSharp::PassiveItemInfo
+  <Image>k__BackingField: {fileID: 0}
+  <Name>k__BackingField: Claw
+  <Description>k__BackingField: Pickup Range +5%
+  <Weight>k__BackingField: 100
+  <StatUpgradeId>k__BackingField: 3
+  <BasePercentage>k__BackingField: 5

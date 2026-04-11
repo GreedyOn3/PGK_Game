@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -13,22 +14,48 @@ namespace UI
         private PlayerReferences _player;
         private GameObject[] _options = Array.Empty<GameObject>();
 
-        private void Start()
+        /*private void Start()
         {
             _player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerReferences>();
             _player.Xp.OnLevelUp += LevelUp;
             levelUpScreen.SetActive(false);
+        }*/
+
+        private void Start()
+        {
+            _player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerReferences>();
+            gameObject.SetActive(false);
         }
 
-        public void PickStatUpgrade(StatUpgradeId upgrade)
+        public void PickStatUpgrade(LevelUpChoice choice)//StatUpgradeId upgrade)
         {
-            _player.Stats.ApplyStatUpgrade(upgrade);
+            LevelUpSystem.Instance.ApplyChoice(choice, _player.Inventory);
+            //_player.Stats.ApplyStatUpgrade(upgrade);
             LevelManager.Instance.UnpauseLevel();
             InputManager.Instance.SwitchInputMode(InputMode.Gameplay);
-            levelUpScreen.SetActive(false);
+            //levelUpScreen.SetActive(false);
+            gameObject.SetActive(false);
         }
 
-        private void LevelUp()
+        public void Show(List<LevelUpChoice> choices)
+        {
+            LevelManager.Instance.PauseLevel();
+            InputManager.Instance.SwitchInputMode(InputMode.Ui);
+            gameObject.SetActive(true);
+
+            foreach (var option in _options)
+                Destroy(option);
+
+            _options = new GameObject[choices.Count];
+            for (var i = 0; i < choices.Count; i++)
+            {
+                _options[i] = Instantiate(optionPrefab, levelUpScreen.transform);
+                var optionUi = _options[i].GetComponent<LevelUpOptionUi>();
+                optionUi.Initialize(choices[i], this);
+            }
+        }
+
+        /*private void LevelUp()
         {
             LevelManager.Instance.PauseLevel();
             InputManager.Instance.SwitchInputMode(InputMode.Ui);
@@ -48,6 +75,6 @@ namespace UI
                 Assert.IsNotNull(optionUi, "Level up option should have a LevelUpOptionUi component.");
                 optionUi.Initialize(upgrades[i], this);
             }
-        }
+        }*/
     }
 }

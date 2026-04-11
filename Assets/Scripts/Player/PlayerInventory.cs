@@ -16,10 +16,12 @@ public class PlayerInventory : MonoBehaviour
     private readonly List<PassiveItem> _passives = new();
     [SerializeField] private Transform weaponsContainer;
 
+    private PlayerStats _stats;
     public event Action OnInventoryChange;
 
     private void Start()
     {
+        _stats = GetComponent<PlayerStats>();
         AddWeapon(startingWeapon);
     }
 
@@ -32,11 +34,22 @@ public class PlayerInventory : MonoBehaviour
         OnInventoryChange?.Invoke();
     }
 
-    public void AddWeapon(PassiveItemInfo passiveInfo)
+    public void AddPassive(PassiveItemInfo passiveInfo)
     {
         PassiveItem passive = new PassiveItem() { info = passiveInfo, percentage = passiveInfo.BasePercentage };
+        _stats.ApplyStatUpgrade(passiveInfo.StatUpgradeId, passive.percentage);
         _passives.Add(passive);
         OnInventoryChange?.Invoke();
+    }
+
+    public void UpgradePassive(PassiveItemInfo passiveInfo)
+    {
+        _stats.ApplyStatUpgrade(passiveInfo.StatUpgradeId, 5f);
+    }
+
+    public bool HasItem(BaseItemInfo item)
+    {
+        return _weapons.Exists(i => i.weaponInfo == item) || _passives.Exists(i => i.info == item);
     }
 
     public int GetWeaponCapacity() => weaponCapacity;

@@ -29,23 +29,23 @@ public class PlayerStats : MonoBehaviour
         };
     }
 
-    public void ApplyStatUpgrade(StatUpgradeId upgrade)
+    public void ApplyStatUpgrade(StatUpgradeId upgrade, float percentage)
     {
         var modifiers = Modifiers;
 
         switch (upgrade)
         {
             case StatUpgradeId.MovementSpeed:
-                modifiers.MovementSpeedModifier += 5;
+                modifiers.MovementSpeedModifier += percentage;
                 break;
             case StatUpgradeId.Attack:
-                modifiers.AttackModifier += 5;
+                modifiers.AttackModifier += percentage;
                 break;
             case StatUpgradeId.Defense:
-                modifiers.DefenseModifier += 5;
+                modifiers.DefenseModifier += percentage;
                 break;
             case StatUpgradeId.PickupRange:
-                modifiers.PickupRangeModifier += 5;
+                modifiers.PickupRangeModifier += percentage;
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
@@ -54,7 +54,7 @@ public class PlayerStats : MonoBehaviour
         Modifiers = modifiers;
     }
 
-    private static float ApplyStatModifier(float baseValue, int modifier)
+    private static float ApplyStatModifier(float baseValue, float modifier)
     {
         var multiplier = 1.0f + modifier / 100.0f;
         return baseValue * multiplier;
@@ -63,8 +63,8 @@ public class PlayerStats : MonoBehaviour
 
 public struct PlayerStatsModifiers
 {
-    public int MovementSpeedModifier;
-    public int AttackModifier;
-    public int DefenseModifier;
-    public int PickupRangeModifier;
+    public float MovementSpeedModifier;
+    public float AttackModifier;
+    public float DefenseModifier;
+    public float PickupRangeModifier;
 }

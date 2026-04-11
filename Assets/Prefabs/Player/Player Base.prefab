@@ -249,6 +249,7 @@ MonoBehaviour:
   movement: {fileID: 4470370686211478460}
   cam: {fileID: -7623453730141397379}
   gathering: {fileID: 0}
+  stats: {fileID: 4822155126531462329}
   jumpBufferTime: 0.15
 --- !u!114 &4470370686211478460
 MonoBehaviour:

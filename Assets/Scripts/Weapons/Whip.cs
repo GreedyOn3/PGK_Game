@@ -16,7 +16,7 @@ namespace Weapons
             {
                 if (collider.CompareTag("Enemy"))
                 {
-                    DamageEnemy(collider.gameObject);
+                    if(collider.gameObject) DamageEnemy(collider.gameObject);
                 }
             }
         }
