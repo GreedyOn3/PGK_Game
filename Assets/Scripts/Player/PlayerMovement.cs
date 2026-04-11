@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Movement")]
     public float maxGroundSpeed = 8f;
-    public float groundAcceleration = 70f;
+    public float groundAcceleration = 80f;
     public float groundFriction = 8f;
     public LayerMask groundMask;
 

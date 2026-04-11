@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public PlayerMovement movement;
     public PlayerCamera cam;
     public PlayerGathering gathering;
+    public PlayerStats stats;
     [Header("Timers")]
     public float jumpBufferTime = 0.15f;
 
@@ -46,6 +47,9 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         sm.Update();
+
+        movement.maxGroundSpeed = stats.MovementSpeed;
+        movement.groundAcceleration = stats.MovementSpeed*10f;
 
         if (gathering)
             animator.SetBool("Gathering", gathering.CheckForResources());
