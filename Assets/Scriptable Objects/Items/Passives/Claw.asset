@@ -16,5 +16,5 @@ MonoBehaviour:
   <Name>k__BackingField: Claw
   <Description>k__BackingField: Pickup Range +5%
   <Weight>k__BackingField: 100
-  <StatUpgradeId>k__BackingField: 3
+  <StatType>k__BackingField: 3
   <BasePercentage>k__BackingField: 5

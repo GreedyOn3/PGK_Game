@@ -8,10 +8,5 @@ public class LevelInfo : ScriptableObject
     [TextArea(3, 5)]
     [field: SerializeField] public string Description { get; private set; }
     [field: SerializeField] public float TimeLimitMinutes { get; private set; }
-    [field: SerializeField] public LevelId Id { get; private set; }
-}
-
-public enum LevelId
-{
-    Forest,
+    [field: SerializeField] public string LevelScene { get; private set; }
 }

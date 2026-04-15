@@ -6,13 +6,13 @@ namespace UI
 {
     public class LevelCardUi : MonoBehaviour
     {
-        private LevelId _levelId;
+        private LevelInfo _levelInfo;
         private LevelSelectionUi _levelSelectionUi;
 
         public void Initialize(LevelInfo level, LevelSelectionUi levelSelectionUi)
         {
             _levelSelectionUi = levelSelectionUi;
-            _levelId = level.Id;
+            _levelInfo = level;
             var image = transform.Find("Image").GetComponent<Image>();
             var textContainer = transform.Find("Text Container");
             var name = textContainer.transform.Find("Name").GetComponent<TextMeshProUGUI>();
@@ -24,7 +24,7 @@ namespace UI
 
         public void Pick()
         {
-            _levelSelectionUi.PickLevel(_levelId);
+            _levelSelectionUi.PickLevel(_levelInfo);
         }
     }
 }

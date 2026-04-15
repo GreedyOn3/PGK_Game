@@ -8,11 +8,5 @@ public class CharacterInfo : ScriptableObject
 
     [TextArea(3, 5)]
     [field: SerializeField] public string Description { get; private set; }
-    [field: SerializeField] public CharacterId Id { get; private set; }
-}
-
-public enum CharacterId
-{
-    Miner,
-    Lumberjack,
+    [field: SerializeField] public GameObject Prefab { get; private set; }
 }

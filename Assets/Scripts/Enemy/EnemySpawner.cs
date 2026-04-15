@@ -21,17 +21,17 @@ public class EnemySpawner : MonoBehaviour
         for (var i = regularSpawns.Count - 1; i >= 0; i--)
         {
             var regularSpawn = regularSpawns[i];
-            regularSpawn.SpawnTimer += Time.fixedDeltaTime;
+            regularSpawn.spawnTimer += Time.fixedDeltaTime;
 
             var spawnPeriodMin = regularSpawn.spawnPeriodMinutes.x;
             var spawnPeriodMax = regularSpawn.spawnPeriodMinutes.y;
 
             if (levelTimeMinutes >= spawnPeriodMin && levelTimeMinutes <= spawnPeriodMax)
             {
-                if (regularSpawn.SpawnTimer >= regularSpawn.spawnIntervalSeconds)
+                if (regularSpawn.spawnTimer >= regularSpawn.spawnIntervalSeconds)
                 {
                     SpawnEnemy(regularSpawn.enemyPrefab);
-                    regularSpawn.SpawnTimer = 0.0f;
+                    regularSpawn.spawnTimer = 0.0f;
                 }
             }
             else if (levelTimeMinutes > spawnPeriodMax)
@@ -91,7 +91,7 @@ public class RegularSpawn
     public GameObject enemyPrefab;
     public float spawnIntervalSeconds;
     public Vector2 spawnPeriodMinutes;
-    [System.NonSerialized] public float SpawnTimer;
+    [System.NonSerialized] public float spawnTimer;
 }
 
 [System.Serializable]

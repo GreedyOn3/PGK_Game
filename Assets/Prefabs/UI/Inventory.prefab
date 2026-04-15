@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2826337726408371250}
   - component: {fileID: 5859004306578497551}
   - component: {fileID: 7301953798889847307}
-  - component: {fileID: 4579462795330002670}
   m_Layer: 5
   m_Name: Inventory
   m_TagString: Untagged
@@ -103,17 +102,3 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &4579462795330002670
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 631602256139140249}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b6d1071f89b7864893bae88cfca2352, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI.InventoryUi
-  player: {fileID: 0}
-  slotPrefab: {fileID: 683246243541835398, guid: 4c56bc5da105c5644abdb0837ea7a36c, type: 3}

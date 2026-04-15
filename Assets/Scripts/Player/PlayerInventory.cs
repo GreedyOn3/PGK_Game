@@ -1,14 +1,11 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Assertions;
 
 [RequireComponent(typeof(PlayerReferences))]
 public class PlayerInventory : MonoBehaviour
 {
-    //[SerializeField] private WeaponId startingWeapon;
     [SerializeField] private WeaponInfo startingWeapon;
-    //[SerializeField] private WeaponPrefabs weaponPrefabs;
 
     [SerializeField] private int weaponCapacity = 6;
     [SerializeField] private int passivesCapacity = 6;
@@ -27,8 +24,7 @@ public class PlayerInventory : MonoBehaviour
 
     public void AddWeapon(WeaponInfo weaponInfo)
     {
-        //Assert.IsTrue(_weapons.Count < capacity);
-        var weaponPrefab = weaponInfo.WeaponPrefab;
+        var weaponPrefab = weaponInfo.Prefab;
         var weapon = Instantiate(weaponPrefab, weaponsContainer).GetComponent<Weapon>();
         _weapons.Add(weapon);
         OnInventoryChange?.Invoke();
@@ -37,14 +33,14 @@ public class PlayerInventory : MonoBehaviour
     public void AddPassive(PassiveItemInfo passiveInfo)
     {
         PassiveItem passive = new PassiveItem() { info = passiveInfo, percentage = passiveInfo.BasePercentage };
-        _stats.ApplyStatUpgrade(passiveInfo.StatUpgradeId, passive.percentage);
+        _stats.ApplyStatUpgrade(passiveInfo.StatType, passive.percentage);
         _passives.Add(passive);
         OnInventoryChange?.Invoke();
     }
 
     public void UpgradePassive(PassiveItemInfo passiveInfo)
     {
-        _stats.ApplyStatUpgrade(passiveInfo.StatUpgradeId, 5f);
+        _stats.ApplyStatUpgrade(passiveInfo.StatType, 5f);
     }
 
     public bool HasItem(BaseItemInfo item)

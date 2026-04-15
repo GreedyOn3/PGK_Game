@@ -10,14 +10,12 @@ namespace UI
         public TextMeshProUGUI nameText;
         public TextMeshProUGUI descriptionText;
 
-        private StatUpgradeId _upgrade;
         private LevelUpChoice _choice;
         private LevelUpUi _levelUpUi;
 
         public void Initialize(LevelUpChoice choice, LevelUpUi levelUpUi)
         {
             _levelUpUi = levelUpUi;
-            //_upgrade = upgrade.Id;
             _choice = choice;
 
             BaseItemInfo item = choice.item;
@@ -28,7 +26,7 @@ namespace UI
 
         public void Pick()
         {
-            _levelUpUi.PickStatUpgrade(_choice);
+            _levelUpUi.PickUpgrade(_choice);
         }
     }
 }

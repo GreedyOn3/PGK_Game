@@ -3,8 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] private LevelInfos levelInfos;
-    [SerializeField] private PlayerPrefabs playerPrefabs;
+    [SerializeField] private GameObject playerCameraPrefab;
 
     private LevelInfo _levelInfo;
 
@@ -27,11 +26,11 @@ public class LevelManager : MonoBehaviour
 
         var persistentData = PersistentData.Instance;
 
-        _levelInfo = levelInfos.GetById(persistentData.selectedLevel);
-        SceneManager.LoadScene(SceneIndex.GetByLevelId(persistentData.selectedLevel), LoadSceneMode.Additive);
-        var playerPrefab = playerPrefabs.GetById(persistentData.selectedCharacter);
+        _levelInfo = persistentData.selectedLevel;
+        SceneManager.LoadScene(_levelInfo.LevelScene, LoadSceneMode.Additive);
+        var playerPrefab = persistentData.selectedCharacter.Prefab;
         var player = Instantiate(playerPrefab);
-        var playerCamera = Instantiate(playerPrefabs.PlayerCamera);
+        var playerCamera = Instantiate(playerCameraPrefab);
         player.GetComponent<PlayerCamera>().playerCamera = playerCamera.transform;
 
         Time.timeScale = 1.0f;
@@ -54,7 +53,7 @@ public class LevelManager : MonoBehaviour
         if (LevelTimeSeconds > _levelInfo.TimeLimitMinutes * 60.0f)
         {
             // TODO: Game over screen.
-            SceneManager.LoadScene(SceneIndex.MainMenu);
+            SceneManager.LoadScene("MainMenu");
         }
     }
 

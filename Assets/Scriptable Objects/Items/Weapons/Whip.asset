@@ -16,4 +16,4 @@ MonoBehaviour:
   <Name>k__BackingField: Whip
   <Description>k__BackingField: 
   <Weight>k__BackingField: 100
-  <WeaponPrefab>k__BackingField: {fileID: 4730451546945454033, guid: cc7de70a2c5e1b140befbc9ecac03133, type: 3}
+  <Prefab>k__BackingField: {fileID: 4730451546945454033, guid: cc7de70a2c5e1b140befbc9ecac03133, type: 3}

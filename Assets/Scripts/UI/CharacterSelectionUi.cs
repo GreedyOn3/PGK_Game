@@ -20,9 +20,9 @@ namespace UI
             }
         }
 
-        public void PickCharacter(CharacterId characterId)
+        public void PickCharacter(CharacterInfo characterInfo)
         {
-            mainMenu.PickCharacter(characterId);
+            mainMenu.PickCharacter(characterInfo);
         }
     }
 }

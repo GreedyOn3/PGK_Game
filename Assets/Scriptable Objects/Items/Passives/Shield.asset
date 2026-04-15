@@ -16,5 +16,5 @@ MonoBehaviour:
   <Name>k__BackingField: Shield
   <Description>k__BackingField: Defense +5%
   <Weight>k__BackingField: 100
-  <StatUpgradeId>k__BackingField: 2
+  <StatType>k__BackingField: 2
   <BasePercentage>k__BackingField: 5

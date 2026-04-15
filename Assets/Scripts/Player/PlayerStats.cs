@@ -13,39 +13,39 @@ public class PlayerStats : MonoBehaviour
 
     public PlayerStatsModifiers Modifiers { get; private set; }
 
-    public float MovementSpeed => ApplyStatModifier(baseStats.MovementSpeed, Modifiers.MovementSpeedModifier);
-    public float Attack => ApplyStatModifier(baseStats.Attack, Modifiers.AttackModifier);
-    public float Defense => ApplyStatModifier(baseStats.Defense, Modifiers.DefenseModifier);
-    public float PickupRange => ApplyStatModifier(baseStats.PickupRange, Modifiers.PickupRangeModifier);
+    public float MovementSpeed => ApplyStatModifier(baseStats.MovementSpeed, Modifiers.movementSpeedModifier);
+    public float Attack => ApplyStatModifier(baseStats.Attack, Modifiers.attackModifier);
+    public float Defense => ApplyStatModifier(baseStats.Defense, Modifiers.defenseModifier);
+    public float PickupRange => ApplyStatModifier(baseStats.PickupRange, Modifiers.pickupRangeModifier);
 
     private void Awake()
     {
         Modifiers = new PlayerStatsModifiers
         {
-            MovementSpeedModifier = characterStats.MovementSpeedModifier,
-            AttackModifier = characterStats.AttackModifier,
-            DefenseModifier = characterStats.DefenseModifier,
-            PickupRangeModifier = characterStats.PickupRangeModifier,
+            movementSpeedModifier = characterStats.MovementSpeedModifier,
+            attackModifier = characterStats.AttackModifier,
+            defenseModifier = characterStats.DefenseModifier,
+            pickupRangeModifier = characterStats.PickupRangeModifier,
         };
     }
 
-    public void ApplyStatUpgrade(StatUpgradeId upgrade, float percentage)
+    public void ApplyStatUpgrade(PlayerStatType statType, float percentage)
     {
         var modifiers = Modifiers;
 
-        switch (upgrade)
+        switch (statType)
         {
-            case StatUpgradeId.MovementSpeed:
-                modifiers.MovementSpeedModifier += percentage;
+            case PlayerStatType.MovementSpeed:
+                modifiers.movementSpeedModifier += percentage;
                 break;
-            case StatUpgradeId.Attack:
-                modifiers.AttackModifier += percentage;
+            case PlayerStatType.Attack:
+                modifiers.attackModifier += percentage;
                 break;
-            case StatUpgradeId.Defense:
-                modifiers.DefenseModifier += percentage;
+            case PlayerStatType.Defense:
+                modifiers.defenseModifier += percentage;
                 break;
-            case StatUpgradeId.PickupRange:
-                modifiers.PickupRangeModifier += percentage;
+            case PlayerStatType.PickupRange:
+                modifiers.pickupRangeModifier += percentage;
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
@@ -63,8 +63,16 @@ public class PlayerStats : MonoBehaviour
 
 public struct PlayerStatsModifiers
 {
-    public float MovementSpeedModifier;
-    public float AttackModifier;
-    public float DefenseModifier;
-    public float PickupRangeModifier;
+    public float movementSpeedModifier;
+    public float attackModifier;
+    public float defenseModifier;
+    public float pickupRangeModifier;
+}
+
+public enum PlayerStatType
+{
+    MovementSpeed,
+    Attack,
+    Defense,
+    PickupRange,
 }

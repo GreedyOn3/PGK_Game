@@ -22,16 +22,16 @@ namespace UI
             SwitchScreen(_characterSelectionScreen);
         }
 
-        public void PickCharacter(CharacterId characterId)
+        public void PickCharacter(CharacterInfo characterInfo)
         {
-            PersistentData.Instance.selectedCharacter = characterId;
+            PersistentData.Instance.selectedCharacter = characterInfo;
             SwitchScreen(_levelSelectionScreen);
         }
 
-        public void PickLevel(LevelId levelId)
+        public void PickLevel(LevelInfo levelInfo)
         {
-            PersistentData.Instance.selectedLevel = levelId;
-            SceneManager.LoadScene(SceneIndex.GameplayScene);
+            PersistentData.Instance.selectedLevel = levelInfo;
+            SceneManager.LoadScene("GameplayScene");
         }
 
         public void OnQuitButtonClicked()

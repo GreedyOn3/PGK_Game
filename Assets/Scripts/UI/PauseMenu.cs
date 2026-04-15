@@ -20,7 +20,7 @@ namespace UI
 
         public void OnQuitButtonClicked()
         {
-            SceneManager.LoadScene(SceneIndex.MainMenu);
+            SceneManager.LoadScene("MainMenu");
         }
 
         private void OnEnable()

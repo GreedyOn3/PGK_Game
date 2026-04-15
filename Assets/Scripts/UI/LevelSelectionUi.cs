@@ -20,9 +20,9 @@ namespace UI
             }
         }
 
-        public void PickLevel(LevelId levelId)
+        public void PickLevel(LevelInfo levelInfo)
         {
-            mainMenu.PickLevel(levelId);
+            mainMenu.PickLevel(levelInfo);
         }
     }
 }

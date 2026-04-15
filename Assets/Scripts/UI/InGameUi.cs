@@ -48,10 +48,10 @@ namespace UI
         {
             var modifiers = _player.Stats.Modifiers;
             var text = "Player stats\n";
-            text += GetStatModifierText("Movement speed", modifiers.MovementSpeedModifier);
-            text += GetStatModifierText("Attack", modifiers.AttackModifier);
-            text += GetStatModifierText("Defense", modifiers.DefenseModifier);
-            text += GetStatModifierText("Pickup range", modifiers.PickupRangeModifier);
+            text += GetStatModifierText("Movement speed", modifiers.movementSpeedModifier);
+            text += GetStatModifierText("Attack", modifiers.attackModifier);
+            text += GetStatModifierText("Defense", modifiers.defenseModifier);
+            text += GetStatModifierText("Pickup range", modifiers.pickupRangeModifier);
             statsText.text = text;
         }
 

@@ -6,13 +6,13 @@ namespace UI
 {
     public class CharacterCardUi : MonoBehaviour
     {
-        private CharacterId _characterId;
+        private CharacterInfo _characterInfo;
         private CharacterSelectionUi _characterSelectionUi;
 
         public void Initialize(CharacterInfo character, CharacterSelectionUi characterSelectionUi)
         {
             _characterSelectionUi = characterSelectionUi;
-            _characterId = character.Id;
+            _characterInfo = character;
             var image = transform.Find("Image").GetComponent<Image>();
             var textContainer = transform.Find("Text Container");
             var name = textContainer.transform.Find("Name").GetComponent<TextMeshProUGUI>();
@@ -24,7 +24,7 @@ namespace UI
 
         public void Pick()
         {
-            _characterSelectionUi.PickCharacter(_characterId);
+            _characterSelectionUi.PickCharacter(_characterInfo);
         }
     }
 }

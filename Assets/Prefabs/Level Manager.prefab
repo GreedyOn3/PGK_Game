@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelManager
   levelInfos: {fileID: 11400000, guid: e47d4dd7ebbe9c242aedb89effdf4273, type: 2}
-  playerPrefabs: {fileID: 11400000, guid: fe346808167210a4e977bde33d096dfa, type: 2}
+  playerCameraPrefab: {fileID: 1183712943621090413, guid: d8635fce6c767c143a149fc4c6bf740c, type: 3}
