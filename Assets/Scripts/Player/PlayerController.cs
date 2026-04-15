@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
         sm.Update();
 
         movement.maxGroundSpeed = stats.MovementSpeed;
-        movement.groundAcceleration = stats.MovementSpeed*10f;
+        movement.groundAcceleration = stats.MovementSpeed * 10f;
 
         if (gathering)
             animator.SetBool("Gathering", gathering.CheckForResources());

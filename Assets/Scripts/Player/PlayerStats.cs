@@ -15,7 +15,6 @@ public class PlayerStats : MonoBehaviour
 
     public float MovementSpeed => ApplyStatModifier(baseStats.MovementSpeed, Modifiers.movementSpeedModifier);
     public float Attack => ApplyStatModifier(baseStats.Attack, Modifiers.attackModifier);
-    public float Defense => ApplyStatModifier(baseStats.Defense, Modifiers.defenseModifier);
     public float PickupRange => ApplyStatModifier(baseStats.PickupRange, Modifiers.pickupRangeModifier);
 
     private void Awake()

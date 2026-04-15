@@ -6,11 +6,11 @@ public class Armament : MonoBehaviour
 {
     [SerializeField] protected float damageScaling = 1.0f;
 
-    protected PlayerReferences Player;
+    protected PlayerReferences player;
 
     private void Start()
     {
-        Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerReferences>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerReferences>();
     }
 
     protected void DamageEnemy(GameObject enemy)
@@ -19,7 +19,7 @@ public class Armament : MonoBehaviour
 
         var enemyHealth = enemy.GetComponent<EnemyHealth>();
         Assert.IsNotNull(enemyHealth, "Enemy should have an EnemyHealth component.");
-        enemyHealth.Remove((int)(Player.Stats.Attack * damageScaling));
+        enemyHealth.Remove((int)(player.Stats.Attack * damageScaling));
     }
 
     protected GameObject FindNearestEnemy(float range)

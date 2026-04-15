@@ -35,8 +35,10 @@ public class EnemyAttack : MonoBehaviour
     private void AttackPlayer(GameObject player)
     {
         var playerHealth = player.GetComponent<PlayerHealth>();
+        var playerStats = player.GetComponent<PlayerStats>();
         Assert.IsNotNull(playerHealth, "Player should have a PlayerHealth component.");
-        playerHealth.Remove(damage);
+        Assert.IsNotNull(playerStats, "Player should have a PlayerStats component.");
+        playerHealth.Remove((int)(damage / (1.0f + playerStats.Modifiers.defenseModifier / 100.0f)));
     }
 
     private void OnDrawGizmosSelected()
