@@ -9,12 +9,11 @@ public abstract class Weapon : Armament
 
     private void Start()
     {
-        Invoke(nameof(PerformAttack), cooldownSeconds);
+        InvokeRepeating(nameof(PerformAttack), cooldownSeconds, cooldownSeconds);
     }
 
     private void PerformAttack()
     {
-        Invoke(nameof(PerformAttack), cooldownSeconds);
         Attack();
     }
 }

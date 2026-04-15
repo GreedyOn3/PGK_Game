@@ -15,7 +15,7 @@ public class Armament : MonoBehaviour
 
     protected void DamageEnemy(GameObject enemy)
     {
-        if(enemy == null) return;
+        if (enemy == null) return;
 
         var enemyHealth = enemy.GetComponent<EnemyHealth>();
         Assert.IsNotNull(enemyHealth, "Enemy should have an EnemyHealth component.");
