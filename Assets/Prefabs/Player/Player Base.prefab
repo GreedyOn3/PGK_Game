@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SynchronizeTransform
   reference: {fileID: 0}
+  positionOffset: {x: 0, y: 0.78, z: 0}
 --- !u!1 &8473961373550710930
 GameObject:
   m_ObjectHideFlags: 0

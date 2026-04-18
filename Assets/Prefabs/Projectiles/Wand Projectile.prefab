@@ -155,6 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
   damageScaling: 1
+  effect: {fileID: 11400000, guid: d4bc917e8395a7a4cb4ee8bc45308633, type: 2}
 --- !u!114 &4933693586456978406
 MonoBehaviour:
   m_ObjectHideFlags: 0

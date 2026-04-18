@@ -5,10 +5,11 @@ using UnityEngine.Assertions;
 public class Armament : MonoBehaviour
 {
     [SerializeField] protected float damageScaling = 1.0f;
+    [SerializeField] protected EffectParams effect;
 
     protected PlayerReferences player;
 
-    private void Start()
+    protected virtual void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerReferences>();
     }
@@ -20,6 +21,8 @@ public class Armament : MonoBehaviour
         var enemyHealth = enemy.GetComponent<EnemyHealth>();
         Assert.IsNotNull(enemyHealth, "Enemy should have an EnemyHealth component.");
         enemyHealth.Remove((int)(player.Stats.Attack * damageScaling));
+        if (effect != null)
+            effect.Apply(enemy);
     }
 
     protected GameObject FindNearestEnemy(float range)

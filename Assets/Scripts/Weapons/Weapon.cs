@@ -7,8 +7,9 @@ public abstract class Weapon : Armament
 
     public abstract void Attack();
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         InvokeRepeating(nameof(PerformAttack), cooldownSeconds, cooldownSeconds);
     }
 

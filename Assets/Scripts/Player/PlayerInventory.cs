@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerReferences))]
+[RequireComponent(typeof(PlayerReferences), typeof(PlayerStats))]
 public class PlayerInventory : MonoBehaviour
 {
     [SerializeField] private WeaponInfo startingWeapon;
