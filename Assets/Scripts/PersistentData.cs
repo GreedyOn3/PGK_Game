@@ -6,6 +6,7 @@ public class PersistentData : MonoBehaviour
 
     public CharacterInfo selectedCharacter;
     public LevelInfo selectedLevel;
+    public PermanentUpgradeInfo[] permanentUpgrades;
 
     private void Awake()
     {
@@ -19,5 +20,15 @@ public class PersistentData : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
+    }
+
+    private void Start()
+    {
+        var saveData = SaveManager.instance.saveData;
+
+        foreach (var upgrade in permanentUpgrades)
+        {
+            saveData.LoadPermanentUpgrade(upgrade);
+        }
     }
 }

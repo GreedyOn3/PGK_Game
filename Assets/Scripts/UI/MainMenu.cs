@@ -5,21 +5,24 @@ namespace UI
 {
     public class MainMenu : MonoBehaviour
     {
-        private GameObject _titleScreen;
-        private GameObject _characterSelectionScreen;
-        private GameObject _levelSelectionScreen;
+        [SerializeField] private GameObject _titleScreen;
+        [SerializeField] private GameObject _characterSelectionScreen;
+        [SerializeField] private GameObject _levelSelectionScreen;
+        [SerializeField] private GameObject _permanentUpgradesScreen;
 
         private void Start()
         {
-            _titleScreen = transform.Find("Title Screen").gameObject;
-            _characterSelectionScreen = transform.Find("Character Selection").gameObject;
-            _levelSelectionScreen = transform.Find("Level Selection").gameObject;
             SwitchScreen(_titleScreen);
         }
 
         public void OnStartButtonClicked()
         {
             SwitchScreen(_characterSelectionScreen);
+        }
+
+        public void OnUpgradesButtonClicked()
+        {
+            SwitchScreen(_permanentUpgradesScreen);
         }
 
         public void PickCharacter(CharacterInfo characterInfo)
@@ -32,6 +35,11 @@ namespace UI
         {
             PersistentData.Instance.selectedLevel = levelInfo;
             SceneManager.LoadScene("GameplayScene");
+        }
+
+        public void ReturnToTitleScreen()
+        {
+            SwitchScreen(_titleScreen);
         }
 
         public void OnQuitButtonClicked()
@@ -48,6 +56,7 @@ namespace UI
             _titleScreen.SetActive(false);
             _characterSelectionScreen.SetActive(false);
             _levelSelectionScreen.SetActive(false);
+            _permanentUpgradesScreen.SetActive(false);
 
             screen.SetActive(true);
         }

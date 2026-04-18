@@ -23,7 +23,7 @@ public class SaveManager : MonoBehaviour
         }
     }
 
-    public SaveData saveData = new SaveData();
+    public SaveData saveData = new();
     private string saveFilePath;
 
     private void Awake()
@@ -68,30 +68,52 @@ public class SaveManager : MonoBehaviour
 [System.Serializable]
 public class SaveData
 {
-    //Special Resources
-    public List<ResourceEntry> specialResources = new List<ResourceEntry>();
+    // Special Resources
+    public List<ResourceEntry> specialResources = new();
     [System.NonSerialized]
-    public Dictionary<string, int> resourceMap = new Dictionary<string, int>();
+    public Dictionary<string, int> resourceMap = new();
+
+    public List<PermanentUpgradeEntry> permanentUpgrades = new();
+    // Permanent Upgrades
+    [System.NonSerialized]
+    public Dictionary<string, bool> permanentUpgradeMap = new();
 
     public void AddResource(ResourceData data, int amount)
     {
         string id = data.resourceName;
 
-        if(resourceMap.ContainsKey(id))
+        if (resourceMap.ContainsKey(id))
             resourceMap[id] += amount;
         else
             resourceMap[id] = amount;
+    }
+
+    public void SavePermanentUpgrade(PermanentUpgradeInfo upgrade)
+    {
+        permanentUpgradeMap[upgrade.UpgradeName] = upgrade.bought;
+    }
+
+    public void LoadPermanentUpgrade(PermanentUpgradeInfo upgrade)
+    {
+        if (permanentUpgradeMap.ContainsKey(upgrade.UpgradeName))
+            upgrade.bought = permanentUpgradeMap[upgrade.UpgradeName];
+        else
+            upgrade.bought = false;
     }
 
     public void SyncMapFromList()
     {
         resourceMap.Clear();
         foreach (var entry in specialResources) resourceMap[entry.key] = entry.value;
+        permanentUpgradeMap.Clear();
+        foreach (var entry in permanentUpgrades) permanentUpgradeMap[entry.key] = entry.value;
     }
 
     public void SyncListFromMap()
     {
         specialResources.Clear();
         foreach (var kv in resourceMap) specialResources.Add(new ResourceEntry(kv.Key, kv.Value));
+        permanentUpgrades.Clear();
+        foreach (var kv in permanentUpgradeMap) permanentUpgrades.Add(new PermanentUpgradeEntry(kv.Key, kv.Value));
     }
 }

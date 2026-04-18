@@ -46,3 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PersistentData
   selectedCharacter: {fileID: 11400000, guid: 0a5f8b9cf72a25e4ca64f91f2fef039a, type: 2}
   selectedLevel: {fileID: 11400000, guid: 6991c5db7394adf4490cc3b6861116d1, type: 2}
+  permanentUpgrades:
+  - {fileID: 11400000, guid: 19ba32e6273d27d4bb1a49deee2c98a9, type: 2}
+  - {fileID: 11400000, guid: 9ce7cdb9a9249e441b6b4d77f929895b, type: 2}
+  - {fileID: 11400000, guid: df402837e630e0d4fbc49b8712bbe873, type: 2}

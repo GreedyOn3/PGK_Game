@@ -26,6 +26,13 @@ public class PlayerStats : MonoBehaviour
             defenseModifier = characterStats.DefenseModifier,
             pickupRangeModifier = characterStats.PickupRangeModifier,
         };
+
+        var persistentData = PersistentData.Instance;
+        foreach (var permanentUpgrade in persistentData.permanentUpgrades)
+        {
+            if (permanentUpgrade.bought)
+                ApplyPermanentStatUpgrade(permanentUpgrade);
+        }
     }
 
     public void ApplyStatUpgrade(PlayerStatType statType, float percentage)
@@ -51,6 +58,11 @@ public class PlayerStats : MonoBehaviour
         }
 
         Modifiers = modifiers;
+    }
+
+    private void ApplyPermanentStatUpgrade(PermanentUpgradeInfo upgrade)
+    {
+        ApplyStatUpgrade(upgrade.StatType, upgrade.IncreasePercentage);
     }
 
     private static float ApplyStatModifier(float baseValue, float modifier)
