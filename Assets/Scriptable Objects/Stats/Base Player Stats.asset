@@ -12,3 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c3b128b85bde424bae4fef3bafbfa6a, type: 3}
   m_Name: Base Player Stats
   m_EditorClassIdentifier: Assembly-CSharp::BasePlayerStats
+  BaseStats:
+  - Type: 0
+    BaseValue: 100
+    isPercentage: 0
+  - Type: 3
+    BaseValue: 8
+    isPercentage: 0
+  - Type: 4
+    BaseValue: 5
+    isPercentage: 0

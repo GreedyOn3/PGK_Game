@@ -12,7 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f16609c25d339f4ea2d7cd6e67774a9, type: 3}
   m_Name: Lumberjack Stats
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStatsModifiers
-  <MovementSpeedModifier>k__BackingField: 0
-  <AttackModifier>k__BackingField: 10
-  <DefenseModifier>k__BackingField: 0
-  <PickupRangeModifier>k__BackingField: 0
+  Stats:
+  - Type: 0
+    BaseValue: 0
+    isPercentage: 0
+  - Type: 1
+    BaseValue: 10
+    isPercentage: 1
+  - Type: 2
+    BaseValue: 0
+    isPercentage: 1
+  - Type: 3
+    BaseValue: 0
+    isPercentage: 1
+  - Type: 4
+    BaseValue: 0
+    isPercentage: 1
+  - Type: 5
+    BaseValue: 0
+    isPercentage: 1
