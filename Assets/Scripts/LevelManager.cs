@@ -6,7 +6,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject playerCameraPrefab;
 
     private LevelInfo _levelInfo;
-    private LevelStats _levelStats;
+    private PlayerReferences _player;
 
     public float LevelTimeSeconds { get; private set; }
     public float LevelTimeMinutes => LevelTimeSeconds / 60.0f;
@@ -26,14 +26,15 @@ public class LevelManager : MonoBehaviour
         }
 
         var persistentData = PersistentData.Instance;
+        persistentData.levelStats = new LevelStats();
 
         _levelInfo = persistentData.selectedLevel;
-        _levelStats = new LevelStats();
         SceneManager.LoadScene(_levelInfo.LevelScene, LoadSceneMode.Additive);
         var playerPrefab = persistentData.selectedCharacter.Prefab;
         var player = Instantiate(playerPrefab);
         var playerCamera = Instantiate(playerCameraPrefab);
         player.GetComponent<PlayerCamera>().playerCamera = playerCamera.transform;
+        _player = player.GetComponent<PlayerReferences>();
 
         Time.timeScale = 1.0f;
     }
@@ -72,9 +73,12 @@ public class LevelManager : MonoBehaviour
 
     public void GameOver()
     {
-        _levelStats.survivedTimeMinutes = (int)LevelTimeMinutes;
-        _levelStats.survivedTimeSeconds = (int)LevelTimeSeconds;
-        PersistentData.Instance.levelStats = _levelStats;
+        var persistentData = PersistentData.Instance;
+        persistentData.levelStats.survivedTimeMinutes = (int)LevelTimeMinutes;
+        persistentData.levelStats.survivedTimeSeconds = (int)LevelTimeSeconds;
+        persistentData.levelStats.playerLevelReached = _player.Xp.Level;
+        persistentData.levelStats.weaponsCollected = _player.Inventory.GetWeaponCount();
+        persistentData.levelStats.passivesCollected = _player.Inventory.GetPassivesCount();
         SceneManager.LoadScene("GameOver");
     }
 
@@ -86,18 +90,5 @@ public class LevelManager : MonoBehaviour
     public float GetLevelTimeLimitMinutes()
     {
         return _levelInfo.TimeLimitMinutes;
-    }
-}
-
-public struct LevelStats
-{
-    public int survivedTimeMinutes;
-    public int survivedTimeSeconds;
-
-    public string GetStatsText()
-    {
-        var text = "";
-        text += $"Time survived: {Util.FormatLevelTime(survivedTimeMinutes, survivedTimeSeconds)}\n";
-        return text;
     }
 }

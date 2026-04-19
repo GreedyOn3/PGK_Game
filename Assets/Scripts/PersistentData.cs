@@ -33,3 +33,26 @@ public class PersistentData : MonoBehaviour
         }
     }
 }
+
+public struct LevelStats
+{
+    public int survivedTimeMinutes;
+    public int survivedTimeSeconds;
+    public int playerLevelReached;
+    public int totalDamageDealt;
+    public int totalDamageTaken;
+    public int weaponsCollected;
+    public int passivesCollected;
+
+    public string GetStatsText()
+    {
+        var text = "";
+        text += $"Time survived: {Util.FormatLevelTime(survivedTimeMinutes, survivedTimeSeconds)}\n";
+        text += $"Level reached: {playerLevelReached}\n";
+        text += $"Total damage dealt: {totalDamageDealt}\n";
+        text += $"Total damage taken: {totalDamageTaken}\n";
+        text += $"Weapons collected: {weaponsCollected}\n";
+        text += $"Passives collected: {passivesCollected}\n";
+        return text;
+    }
+}

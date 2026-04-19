@@ -20,7 +20,9 @@ public class Armament : MonoBehaviour
 
         var enemyHealth = enemy.GetComponent<EnemyHealth>();
         Assert.IsNotNull(enemyHealth, "Enemy should have an EnemyHealth component.");
-        enemyHealth.Remove((int)(player.Stats.Attack * damageScaling));
+        var damageAmount = (int)(player.Stats.Attack * damageScaling);
+        PersistentData.Instance.levelStats.totalDamageDealt += damageAmount;
+        enemyHealth.Remove(damageAmount);
         if (effect != null)
             effect.Apply(enemy);
     }
