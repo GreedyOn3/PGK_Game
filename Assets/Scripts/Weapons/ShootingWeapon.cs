@@ -21,6 +21,7 @@ public class ShootingWeapon : Weapon
         var firePosition = transform.position;
         var direction = (enemy.transform.position - firePosition).normalized;
         var projectile = Instantiate(projectilePrefab, firePosition, Quaternion.identity);
+        projectile.GetComponent<Projectile>().Init(this);
         projectile.transform.forward = direction;
 
         var rigidBody = projectile.GetComponent<Rigidbody>();

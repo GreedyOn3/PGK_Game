@@ -28,7 +28,7 @@ public class AttractItem : MonoBehaviour
         var toPlayer = _player.transform.position - transform.position;
         var distanceToPlayer = toPlayer.magnitude;
 
-        if (distanceToPlayer < _playerStats.PickupRange)
+        if (distanceToPlayer < _playerStats.GetStatValue(StatType.PickupRange))
         {
             var playerDirection = toPlayer.normalized;
             var attractionModifier = _attractionTime * _attractionTime * attractionForceSpeedup;

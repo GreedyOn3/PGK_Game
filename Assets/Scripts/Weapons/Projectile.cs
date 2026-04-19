@@ -1,9 +1,15 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody), typeof(Lifetime))]
-public class Projectile : Armament
+public class Projectile : MonoBehaviour
 {
+    private Weapon source;
     private bool _active = true;
+
+    public void Init(Weapon source)
+    {
+        this.source = source;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,7 +20,7 @@ public class Projectile : Armament
 
         if (other.CompareTag("Enemy"))
         {
-            DamageEnemy(other.gameObject);
+            if(source) source.DamageEnemy(other.gameObject);
             _active = false;
             Destroy(gameObject);
         }

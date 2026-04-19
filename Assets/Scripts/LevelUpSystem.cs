@@ -44,14 +44,11 @@ public class LevelUpSystem : MonoBehaviour
 
     public List<LevelUpChoice> GenerateLevelUp(PlayerInventory inv)
     {
-        var pool = BuildPool(inv);
-
-        if (pool.Count == 0)
+        List<LevelUpChoice> workingPool = BuildPool(inv);
+        if (workingPool.Count == 0)
             return new List<LevelUpChoice>();
 
         List<LevelUpChoice> results = new();
-        List<LevelUpChoice> workingPool = new(pool);
-
         for (int i = 0; i < choicesCount; i++)
         {
             if (workingPool.Count == 0)

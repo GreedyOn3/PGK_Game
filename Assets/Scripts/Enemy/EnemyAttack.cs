@@ -38,7 +38,7 @@ public class EnemyAttack : MonoBehaviour
         var playerStats = player.GetComponent<PlayerStats>();
         Assert.IsNotNull(playerHealth, "Player should have a PlayerHealth component.");
         Assert.IsNotNull(playerStats, "Player should have a PlayerStats component.");
-        var damageAmount = (int)(damage / (1.0f + playerStats.Modifiers.defenseModifier / 100.0f));
+        var damageAmount = (int)(damage / (1.0f + playerStats.GetModifierValue(StatType.Defense) / 100.0f));
         PersistentData.Instance.levelStats.totalDamageTaken += damageAmount;
         playerHealth.Remove(damageAmount);
     }

@@ -43,12 +43,13 @@ namespace UI
 
         private void UpdatePlayerStatsDisplay()
         {
-            var modifiers = _player.Stats.Modifiers;
+            //var modifiers = _player.Stats.Modifiers;
+            PlayerStats stats = _player.Stats;
             var text = "Player stats\n";
-            text += GetStatModifierText("Movement speed", modifiers.movementSpeedModifier);
-            text += GetStatModifierText("Attack", modifiers.attackModifier);
-            text += GetStatModifierText("Defense", modifiers.defenseModifier);
-            text += GetStatModifierText("Pickup range", modifiers.pickupRangeModifier);
+            text += GetStatModifierText("Movement speed", stats.GetModifierValue(StatType.MoveSpeed));//modifiers.MovementSpeedModifier);
+            text += GetStatModifierText("Attack", stats.GetModifierValue(StatType.Attack));//modifiers.AttackModifier);
+            text += GetStatModifierText("Defense", stats.GetModifierValue(StatType.Defense));//modifiers.DefenseModifier);
+            text += GetStatModifierText("Pickup range", stats.GetModifierValue(StatType.PickupRange));//modifiers.PickupRangeModifier);
             statsText.text = text;
         }
 

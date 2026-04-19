@@ -32,15 +32,17 @@ public class PlayerInventory : MonoBehaviour
 
     public void AddPassive(PassiveItemInfo passiveInfo)
     {
-        PassiveItem passive = new PassiveItem() { info = passiveInfo, percentage = passiveInfo.BasePercentage };
-        _stats.ApplyStatUpgrade(passiveInfo.StatType, passive.percentage);
+        PassiveItem passive = new PassiveItem() { info = passiveInfo, modifier = _stats.GetStatModifier(passiveInfo.StatType) };
+        //_stats.ApplyStatUpgrade(passiveInfo.StatUpgradeId, passive.percentage);
+        _stats.IncreaseModifier(passiveInfo.StatType, passiveInfo.BasePercentage);
         _passives.Add(passive);
         OnInventoryChange?.Invoke();
     }
 
     public void UpgradePassive(PassiveItemInfo passiveInfo)
     {
-        _stats.ApplyStatUpgrade(passiveInfo.StatType, 5f);
+        //_stats.ApplyStatUpgrade(passiveInfo.StatUpgradeId, 5f);
+        _stats.IncreaseModifier(passiveInfo.StatType, passiveInfo.BasePercentage);
     }
 
     public bool HasItem(BaseItemInfo item)

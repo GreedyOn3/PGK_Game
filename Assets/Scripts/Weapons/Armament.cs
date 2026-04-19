@@ -4,17 +4,17 @@ using UnityEngine.Assertions;
 // Abstract class representing a projectile or weapon that can damage an enemy.
 public class Armament : MonoBehaviour
 {
-    [SerializeField] protected float damageScaling = 1.0f;
+    //[SerializeField] protected float damageScaling = 1.0f;
     [SerializeField] protected EffectParams effect;
 
     protected PlayerReferences player;
 
-    protected virtual void Start()
+    private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerReferences>();
     }
 
-    protected void DamageEnemy(GameObject enemy)
+    /*protected void DamageEnemy(GameObject enemy)
     {
         if (enemy == null) return;
 
@@ -25,7 +25,7 @@ public class Armament : MonoBehaviour
         enemyHealth.Remove(damageAmount);
         if (effect != null)
             effect.Apply(enemy);
-    }
+    }*/
 
     protected GameObject FindNearestEnemy(float range)
     {

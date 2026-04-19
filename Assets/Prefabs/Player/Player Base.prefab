@@ -168,6 +168,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Experience
   value: 0
   maxValue: 100
+  specialLevels:
+  - Level: 20
+    Amount: 200
 --- !u!114 &4646245972546279748
 MonoBehaviour:
   m_ObjectHideFlags: 0

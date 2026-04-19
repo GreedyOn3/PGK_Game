@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
@@ -11,21 +12,22 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private BasePlayerStats baseStats;
     [SerializeField] private CharacterStats characterStats;
 
-    public PlayerStatsModifiers Modifiers { get; private set; }
-
-    public float MovementSpeed => ApplyStatModifier(baseStats.MovementSpeed, Modifiers.movementSpeedModifier);
-    public float Attack => ApplyStatModifier(baseStats.Attack, Modifiers.attackModifier);
-    public float PickupRange => ApplyStatModifier(baseStats.PickupRange, Modifiers.pickupRangeModifier);
+    private Dictionary<StatType, Stat> _stats = new Dictionary<StatType, Stat>();
+    private Dictionary<StatType, StatModifier> _modifiers = new Dictionary<StatType, StatModifier>();
 
     private void Awake()
     {
-        Modifiers = new PlayerStatsModifiers
+        foreach (StatInfo statInfo in baseStats.BaseStats)
+            _stats.Add(statInfo.Type, new Stat(statInfo.BaseValue));
+
+        foreach (StatInfo statInfo in characterStats.Stats)
         {
-            movementSpeedModifier = characterStats.MovementSpeedModifier,
-            attackModifier = characterStats.AttackModifier,
-            defenseModifier = characterStats.DefenseModifier,
-            pickupRangeModifier = characterStats.PickupRangeModifier,
-        };
+            StatModifier mod = new StatModifier(statInfo.BaseValue, statInfo.isPercentage);
+            _modifiers.Add(statInfo.Type, mod);
+
+            if(_stats.ContainsKey(statInfo.Type))
+                _stats[statInfo.Type].AddModifier(mod);
+        }
 
         var persistentData = PersistentData.Instance;
         foreach (var permanentUpgrade in persistentData.permanentUpgrades)
@@ -35,7 +37,7 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    public void ApplyStatUpgrade(PlayerStatType statType, float percentage)
+    /*public void ApplyStatUpgrade(StatUpgradeId upgrade, float percentage)
     {
         var modifiers = Modifiers;
 
@@ -60,30 +62,55 @@ public class PlayerStats : MonoBehaviour
         Modifiers = modifiers;
     }
 
-    private void ApplyPermanentStatUpgrade(PermanentUpgradeInfo upgrade)
-    {
-        ApplyStatUpgrade(upgrade.StatType, upgrade.IncreasePercentage);
-    }
-
     private static float ApplyStatModifier(float baseValue, float modifier)
     {
         var multiplier = 1.0f + modifier / 100.0f;
         return baseValue * multiplier;
+    }*/
+
+    private void ApplyPermanentStatUpgrade(PermanentUpgradeInfo upgrade)
+    {
+        //ApplyStatUpgrade(upgrade.StatType, upgrade.IncreasePercentage);
+        IncreaseModifier(upgrade.StatType, upgrade.IncreasePercentage);
+    }
+
+    public float CalculateWeaponStat(StatType type, Weapon weapon)
+    {
+        if (!_modifiers.TryGetValue(type, out StatModifier mod)) return 0f;
+
+        if (mod.isPercentage)
+            return weapon.GetStatValue(type) * (1f + mod.value / 100f);
+        else
+            return weapon.GetStatValue(type) + mod.value;
+    }
+
+    public float GetStatValue(StatType type)
+    {
+        if (_stats.TryGetValue(type, out Stat stat))
+            return stat.GetValue();
+
+        return 0f;
+    }
+
+    public StatModifier GetStatModifier(StatType type)
+    {
+        if (_modifiers.TryGetValue(type, out StatModifier mod))
+            return mod;
+
+        return null;
+    }
+    public float GetModifierValue(StatType type)
+    {
+        if (_modifiers.TryGetValue(type, out StatModifier mod))
+            return mod.value;
+
+        return 0f;
+    }
+
+    public void IncreaseModifier(StatType type, float amount)
+    {
+        if (!_modifiers.TryGetValue(type, out StatModifier mod)) return;
+        mod.value += amount;
     }
 }
 
-public struct PlayerStatsModifiers
-{
-    public float movementSpeedModifier;
-    public float attackModifier;
-    public float defenseModifier;
-    public float pickupRangeModifier;
-}
-
-public enum PlayerStatType
-{
-    MovementSpeed,
-    Attack,
-    Defense,
-    PickupRange,
-}
