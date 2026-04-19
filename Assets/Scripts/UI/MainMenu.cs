@@ -5,30 +5,30 @@ namespace UI
 {
     public class MainMenu : MonoBehaviour
     {
-        [SerializeField] private GameObject _titleScreen;
-        [SerializeField] private GameObject _characterSelectionScreen;
-        [SerializeField] private GameObject _levelSelectionScreen;
-        [SerializeField] private GameObject _permanentUpgradesScreen;
+        [SerializeField] private GameObject titleScreen;
+        [SerializeField] private GameObject characterSelectionScreen;
+        [SerializeField] private GameObject levelSelectionScreen;
+        [SerializeField] private GameObject permanentUpgradesScreen;
 
         private void Start()
         {
-            SwitchScreen(_titleScreen);
+            SwitchScreen(titleScreen);
         }
 
         public void OnStartButtonClicked()
         {
-            SwitchScreen(_characterSelectionScreen);
+            SwitchScreen(characterSelectionScreen);
         }
 
         public void OnUpgradesButtonClicked()
         {
-            SwitchScreen(_permanentUpgradesScreen);
+            SwitchScreen(permanentUpgradesScreen);
         }
 
         public void PickCharacter(CharacterInfo characterInfo)
         {
             PersistentData.Instance.selectedCharacter = characterInfo;
-            SwitchScreen(_levelSelectionScreen);
+            SwitchScreen(levelSelectionScreen);
         }
 
         public void PickLevel(LevelInfo levelInfo)
@@ -39,7 +39,7 @@ namespace UI
 
         public void ReturnToTitleScreen()
         {
-            SwitchScreen(_titleScreen);
+            SwitchScreen(titleScreen);
         }
 
         public void OnQuitButtonClicked()
@@ -53,10 +53,10 @@ namespace UI
 
         private void SwitchScreen(GameObject screen)
         {
-            _titleScreen.SetActive(false);
-            _characterSelectionScreen.SetActive(false);
-            _levelSelectionScreen.SetActive(false);
-            _permanentUpgradesScreen.SetActive(false);
+            titleScreen.SetActive(false);
+            characterSelectionScreen.SetActive(false);
+            levelSelectionScreen.SetActive(false);
+            permanentUpgradesScreen.SetActive(false);
 
             screen.SetActive(true);
         }

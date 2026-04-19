@@ -6,6 +6,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject playerCameraPrefab;
 
     private LevelInfo _levelInfo;
+    private LevelStats _levelStats;
 
     public float LevelTimeSeconds { get; private set; }
     public float LevelTimeMinutes => LevelTimeSeconds / 60.0f;
@@ -27,6 +28,7 @@ public class LevelManager : MonoBehaviour
         var persistentData = PersistentData.Instance;
 
         _levelInfo = persistentData.selectedLevel;
+        _levelStats = new LevelStats();
         SceneManager.LoadScene(_levelInfo.LevelScene, LoadSceneMode.Additive);
         var playerPrefab = persistentData.selectedCharacter.Prefab;
         var player = Instantiate(playerPrefab);
@@ -52,8 +54,7 @@ public class LevelManager : MonoBehaviour
     {
         if (LevelTimeSeconds > _levelInfo.TimeLimitMinutes * 60.0f)
         {
-            // TODO: Game over screen.
-            SceneManager.LoadScene("MainMenu");
+            GameOver();
         }
     }
 
@@ -69,6 +70,14 @@ public class LevelManager : MonoBehaviour
         LevelPaused = false;
     }
 
+    public void GameOver()
+    {
+        _levelStats.survivedTimeMinutes = (int)LevelTimeMinutes;
+        _levelStats.survivedTimeSeconds = (int)LevelTimeSeconds;
+        PersistentData.Instance.levelStats = _levelStats;
+        SceneManager.LoadScene("GameOver");
+    }
+
     public string GetLevelName()
     {
         return _levelInfo.LevelName;
@@ -77,5 +86,18 @@ public class LevelManager : MonoBehaviour
     public float GetLevelTimeLimitMinutes()
     {
         return _levelInfo.TimeLimitMinutes;
+    }
+}
+
+public struct LevelStats
+{
+    public int survivedTimeMinutes;
+    public int survivedTimeSeconds;
+
+    public string GetStatsText()
+    {
+        var text = "";
+        text += $"Time survived: {Util.FormatLevelTime(survivedTimeMinutes, survivedTimeSeconds)}\n";
+        return text;
     }
 }

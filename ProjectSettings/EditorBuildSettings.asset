@@ -14,5 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/LevelForest.unity
     guid: bd9a18741ef897e4ebe195cb13bf635c
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 3e6da846627a23b4eb127a5c9ce829ed
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

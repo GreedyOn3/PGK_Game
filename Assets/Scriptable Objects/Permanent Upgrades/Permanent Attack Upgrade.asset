@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PermanentUpgradeInfo
   <Image>k__BackingField: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   <UpgradeName>k__BackingField: Attack
-  <Description>k__BackingField: Attack +200%
+  <Description>k__BackingField: Attack +10%
   <StatType>k__BackingField: 1
-  <IncreasePercentage>k__BackingField: 200
+  <IncreasePercentage>k__BackingField: 10
   bought: 0

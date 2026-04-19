@@ -36,12 +36,9 @@ namespace UI
             UpdatePlayerStatsDisplay();
 
             var levelManager = LevelManager.Instance;
-            var levelTime = (int)levelManager.LevelTimeSeconds;
-            var levelTimeSeconds = levelTime % 60;
-            var levelTimeSecondsText = levelTimeSeconds < 10 ? $"0{levelTimeSeconds}" : $"{levelTimeSeconds}";
-            var levelTimeMinutes = levelTime / 60;
-            var levelTimeMinutesText = levelTimeMinutes < 10 ? $"0{levelTimeMinutes}" : $"{levelTimeMinutes}";
-            timeText.text = $"{levelTimeMinutesText}:{levelTimeSecondsText}";
+            var levelTimeMinutes = (int)levelManager.LevelTimeMinutes;
+            var levelTimeSeconds = (int)levelManager.LevelTimeSeconds;
+            timeText.text = Util.FormatLevelTime(levelTimeMinutes, levelTimeSeconds);
         }
 
         private void UpdatePlayerStatsDisplay()

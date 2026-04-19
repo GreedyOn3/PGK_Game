@@ -7,6 +7,7 @@ public class PersistentData : MonoBehaviour
     public CharacterInfo selectedCharacter;
     public LevelInfo selectedLevel;
     public PermanentUpgradeInfo[] permanentUpgrades;
+    public LevelStats levelStats = new();
 
     private void Awake()
     {
