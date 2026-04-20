@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterInfo
   <Image>k__BackingField: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   <CharacterName>k__BackingField: Lumberjack
-  <Description>k__BackingField: 
+  <Description>k__BackingField: ...
   <Prefab>k__BackingField: {fileID: 6697502103162544868, guid: 4d363b42d66075043bf5b7bf38849613, type: 3}

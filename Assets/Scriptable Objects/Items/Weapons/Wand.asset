@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WeaponInfo
   <Image>k__BackingField: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   <Name>k__BackingField: Wand
-  <Description>k__BackingField: 
+  <Description>k__BackingField: ...
   <Weight>k__BackingField: 100
   <Prefab>k__BackingField: {fileID: 3056926627896016196, guid: 4a32e0aecb76eed4f8cab2f96a586177, type: 3}
   <UsedStats>k__BackingField:

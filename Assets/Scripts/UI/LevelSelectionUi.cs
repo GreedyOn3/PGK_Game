@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.Assertions;
+using UnityEngine.UI;
 
 namespace UI
 {
@@ -7,16 +7,16 @@ namespace UI
     {
         [SerializeField] private MainMenu mainMenu;
         [SerializeField] private LevelInfo[] levelInfos;
-        [SerializeField] private GameObject levelCardPrefab;
+        [SerializeField] private GameObject cardPrefab;
 
         private void Start()
         {
             foreach (var level in levelInfos)
             {
-                var card = Instantiate(levelCardPrefab, transform);
-                var levelCardUi = card.GetComponent<LevelCardUi>();
-                Assert.IsNotNull(levelCardUi, "Level card should have a LevelCardUi component.");
-                levelCardUi.Initialize(level, this);
+                var card = Instantiate(cardPrefab, transform);
+                var cardUi = card.AddComponent<LevelCardUi>();
+                cardUi.Initialize(level, this);
+                card.GetComponent<Button>().onClick.AddListener(cardUi.Pick);
             }
         }
 
