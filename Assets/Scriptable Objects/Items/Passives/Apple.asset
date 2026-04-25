@@ -16,5 +16,8 @@ MonoBehaviour:
   <Name>k__BackingField: Apple
   <Description>k__BackingField: Attack +5%
   <Weight>k__BackingField: 100
-  <StatType>k__BackingField: 1
-  <BasePercentage>k__BackingField: 5
+  Stat:
+    Type: 1
+    Value: 5
+    IsPercentage: 0
+  BaseValue: 5

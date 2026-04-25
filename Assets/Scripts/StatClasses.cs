@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEngine;
 
 public class FlatStatAttribute : Attribute { }
+[Obfuscation(Exclude = true)]
 public enum StatType
 {
     [FlatStat] MaxHealth,
@@ -40,6 +41,20 @@ public class Stat
 
         return finalValue * (1 + (percentageSum / 100f));
     }
+
+    public static string GetDisplayName(StatType type)
+    {
+        return type switch
+        {
+            StatType.MaxHealth => "Max Health",
+            StatType.Attack => "Damage",
+            StatType.Cooldown => "Attack Speed",
+            StatType.MoveSpeed => "Move Speed",
+            StatType.PickupRange => "Pickup Range",
+            StatType.Defense => "Defense",
+            _ => type.ToString()
+        };
+    }
 }
 
 public class StatModifier
@@ -58,8 +73,8 @@ public class StatModifier
 public struct StatInfo
 {
     public StatType Type;
-    public float BaseValue;
-    public bool isPercentage;
+    public float Value;
+    public bool IsPercentage;
 }
 
 [CustomPropertyDrawer(typeof(StatInfo))]
@@ -69,15 +84,12 @@ public class StatInfoDrawer : PropertyDrawer
     {
         EditorGUI.BeginProperty(position, label, property);
 
-        int indent = EditorGUI.indentLevel;
-        EditorGUI.indentLevel = 0;
-
-        float gap = 5f;
+        float spacing = 5f;
         float percentWidth = 30f;
-        float halfWidth = (position.width / 2f) - gap;
+        float halfWidth = (position.width / 2f) - spacing;
 
         Rect typeRect = new Rect(position.x, position.y, halfWidth, position.height);
-        Rect valueRect = new Rect(position.x + halfWidth + gap, position.y, halfWidth, position.height);
+        Rect valueRect = new Rect(position.x + halfWidth + spacing, position.y, halfWidth, position.height);
         Rect suffixRect = new Rect(position.x + position.width - percentWidth, position.y, percentWidth, position.height);
 
         SerializedProperty typeProp = property.FindPropertyRelative("Type");
@@ -98,14 +110,13 @@ public class StatInfoDrawer : PropertyDrawer
             EditorGUI.PropertyField(typeRect, typeProp, GUIContent.none);
         }
 
-        EditorGUI.PropertyField(valueRect, property.FindPropertyRelative("BaseValue"), GUIContent.none);
+        EditorGUI.PropertyField(valueRect, property.FindPropertyRelative("Value"), GUIContent.none);
         if (isCharacterStats && isPercentage)
         {
             GUIStyle suffixStyle = new GUIStyle(EditorStyles.miniLabel) { alignment = TextAnchor.MiddleLeft };
             EditorGUI.LabelField(suffixRect, "%", suffixStyle);
         }
 
-        EditorGUI.indentLevel = indent;
         EditorGUI.EndProperty();
     }
 }

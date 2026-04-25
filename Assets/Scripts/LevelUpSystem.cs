@@ -7,14 +7,16 @@ public class LevelUpSystem : MonoBehaviour
 {
     [Header("UI")]
     public LevelUpUi levelUpUI;
-    [Header("Item Pools")]
+    [Header("Item Pools & Rarities")]
     public List<WeaponInfo> allWeapons;
     public List<PassiveItemInfo> allPassives;
+    public List<ChoiceRarity> choiceRarities;
     [Header("Limits")]
     public int choicesCount = 3;
 
-    private int maxWeapons = 6;
-    private int maxPassives = 6;
+    private Dictionary<WeaponInfo, List<StatInfo>> _weaponUpgrades = new();
+    private int _maxWeapons = 6;
+    private int _maxPassives = 6;
 
     public static LevelUpSystem Instance { get; private set; }
     private PlayerReferences _player;
@@ -31,8 +33,8 @@ public class LevelUpSystem : MonoBehaviour
     {
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerReferences>();
         _player.Xp.OnLevelUp += LevelUp;
-        maxWeapons = _player.Inventory.GetWeaponCapacity();
-        maxPassives = _player.Inventory.GetPassivesCapacity();
+        _maxWeapons = _player.Inventory.GetWeaponCapacity();
+        _maxPassives = _player.Inventory.GetPassivesCapacity();
     }
 
     private void LevelUp()
@@ -40,6 +42,11 @@ public class LevelUpSystem : MonoBehaviour
         List<LevelUpChoice> randomChoices = GenerateLevelUp(_player.Inventory);
         if(randomChoices.Count > 0)
             levelUpUI.Show(randomChoices);
+    }
+
+    public void CacheWeaponUpgrades(WeaponInfo weapon)
+    {
+        _weaponUpgrades.Add(weapon, weapon.UpgradePool);
     }
 
     public List<LevelUpChoice> GenerateLevelUp(PlayerInventory inv)
@@ -54,7 +61,18 @@ public class LevelUpSystem : MonoBehaviour
             if (workingPool.Count == 0)
                 break;
 
-            LevelUpChoice choice = GetRandomWeighted(workingPool, c => c.item.Weight);
+            LevelUpChoice choice = GetRandomWeighted(workingPool, c => c.Item.Weight);
+            if (choice.Type == ChoiceType.UpgradeWeapon || choice.Type == ChoiceType.UpgradePassive)
+            {
+                choice.Rarity = GetRandomWeighted(choiceRarities, r => r.Weight);
+
+                StatInfo stat = (choice.Type == ChoiceType.UpgradeWeapon) ? GetRandom(_weaponUpgrades[(WeaponInfo)choice.Item]) : ((PassiveItemInfo)choice.Item).Stat;
+                stat.Value *= choice.Rarity.Multiplier;
+                if (choice.Type == ChoiceType.UpgradePassive) 
+                    stat.IsPercentage = true;
+
+                choice.Stats.Add(stat);
+            }
 
             results.Add(choice);
             workingPool.Remove(choice);
@@ -65,33 +83,33 @@ public class LevelUpSystem : MonoBehaviour
 
     List<LevelUpChoice> BuildPool(PlayerInventory inv)
     {
-        var pool = new List<LevelUpChoice>();
+        List<LevelUpChoice> pool = new();
 
-        if (inv.GetWeapons().Count < maxWeapons)
+        if (inv.GetWeapons().Count < _maxWeapons)
         {
-            foreach (var item in allWeapons)
+            foreach (WeaponInfo item in allWeapons)
             {
                 if (!inv.HasItem(item))
                 {
                     pool.Add(new LevelUpChoice
                     {
-                        item = item,
-                        type = ChoiceType.NewWeapon
+                        Item = item,
+                        Type = ChoiceType.NewWeapon
                     });
                 }
             }
         }
 
-        if (inv.GetPassives().Count < maxPassives)
+        if (inv.GetPassives().Count < _maxPassives)
         {
-            foreach (var item in allPassives)
+            foreach (PassiveItemInfo item in allPassives)
             {
                 if (!inv.HasItem(item))
                 {
                     pool.Add(new LevelUpChoice
                     {
-                        item = item,
-                        type = ChoiceType.NewPassive
+                        Item = item,
+                        Type = ChoiceType.NewPassive
                     });
                 }
             }
@@ -101,8 +119,17 @@ public class LevelUpSystem : MonoBehaviour
         {
             pool.Add(new LevelUpChoice
             {
-                item = passive.info,
-                type = ChoiceType.UpgradePassive
+                Item = passive.info,
+                Type = ChoiceType.UpgradePassive
+            });
+        }
+
+        foreach (var (weapon, _) in _weaponUpgrades)
+        {
+            pool.Add(new LevelUpChoice
+            {
+                Item = weapon,
+                Type = ChoiceType.UpgradeWeapon
             });
         }
 
@@ -111,18 +138,21 @@ public class LevelUpSystem : MonoBehaviour
 
     public void ApplyChoice(LevelUpChoice choice, PlayerInventory inv)
     {
-        switch (choice.type)
+        switch (choice.Type)
         {
             case ChoiceType.NewWeapon:
-                inv.AddWeapon((WeaponInfo)choice.item);
+                inv.AddWeapon((WeaponInfo)choice.Item);
                 break;
 
             case ChoiceType.NewPassive:
-                inv.AddPassive((PassiveItemInfo)choice.item);
+                inv.AddPassive((PassiveItemInfo)choice.Item);
                 break;
 
             case ChoiceType.UpgradePassive:
-                inv.UpgradePassive((PassiveItemInfo)choice.item);
+                inv.UpgradePassive((PassiveItemInfo)choice.Item, choice.Stats[0].Value);
+                break;
+            case ChoiceType.UpgradeWeapon:
+                inv.UpgradeWeapon((WeaponInfo)choice.Item, choice.Stats);
                 break;
         }
     }
@@ -144,18 +174,36 @@ public class LevelUpSystem : MonoBehaviour
 
         return items[^1];
     }
+
+    T GetRandom<T>(List<T> items)
+    {
+        return items[UnityEngine.Random.Range(0, items.Count)];
+    }
 }
 
 [Serializable]
 public class LevelUpChoice
 {
-    public BaseItemInfo item;
-    public ChoiceType type;
+    public BaseItemInfo Item;
+    public ChoiceType Type;
+
+    public ChoiceRarity Rarity;
+    public List<StatInfo> Stats = new();
+}
+
+[Serializable]
+public class ChoiceRarity
+{
+    public string Name;
+    public Color color;
+    public float Weight;
+    public float Multiplier;
 }
 
 public enum ChoiceType
 {
     NewWeapon,
     NewPassive,
-    UpgradePassive
+    UpgradePassive,
+    UpgradeWeapon
 }

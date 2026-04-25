@@ -17,10 +17,18 @@ MonoBehaviour:
   <Description>k__BackingField: ...
   <Weight>k__BackingField: 100
   <Prefab>k__BackingField: {fileID: 3056926627896016196, guid: 4a32e0aecb76eed4f8cab2f96a586177, type: 3}
-  <UsedStats>k__BackingField:
-  - Type: 1
-    BaseValue: 5
-    isPercentage: 0
-  - Type: 2
-    BaseValue: 0.5
-    isPercentage: 0
+  Stats:
+  - Stat:
+      Type: 1
+      Value: 5
+      IsPercentage: 0
+    UpgradeIncrement: 2
+    IsPercentage: 0
+    IsUpgradable: 1
+  - Stat:
+      Type: 2
+      Value: 0.5
+      IsPercentage: 0
+    UpgradeIncrement: 0
+    IsPercentage: 0
+    IsUpgradable: 0

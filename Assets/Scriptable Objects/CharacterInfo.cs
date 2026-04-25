@@ -1,9 +1,6 @@
-using System;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "CharacterInfo", menuName = "Scriptable Objects/CharacterInfo")]
+[CreateAssetMenu(fileName = "CharacterInfo", menuName = "Scriptable Objects/Character Info")]
 public class CharacterInfo : ScriptableObject
 {
     [field: SerializeField] public Sprite Image { get; private set; }

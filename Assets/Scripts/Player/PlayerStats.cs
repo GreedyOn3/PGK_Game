@@ -18,11 +18,11 @@ public class PlayerStats : MonoBehaviour
     private void Awake()
     {
         foreach (StatInfo statInfo in baseStats.BaseStats)
-            _stats.Add(statInfo.Type, new Stat(statInfo.BaseValue));
+            _stats.Add(statInfo.Type, new Stat(statInfo.Value));
 
         foreach (StatInfo statInfo in characterStats.Stats)
         {
-            StatModifier mod = new StatModifier(statInfo.BaseValue, statInfo.isPercentage);
+            StatModifier mod = new StatModifier(statInfo.Value, statInfo.IsPercentage);
             _modifiers.Add(statInfo.Type, mod);
 
             if(_stats.ContainsKey(statInfo.Type))

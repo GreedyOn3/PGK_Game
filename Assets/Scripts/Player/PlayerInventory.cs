@@ -27,22 +27,33 @@ public class PlayerInventory : MonoBehaviour
         var weaponPrefab = weaponInfo.Prefab;
         var weapon = Instantiate(weaponPrefab, weaponsContainer).GetComponent<Weapon>();
         _weapons.Add(weapon);
+        LevelUpSystem.Instance.CacheWeaponUpgrades(weaponInfo);
         OnInventoryChange?.Invoke();
     }
 
     public void AddPassive(PassiveItemInfo passiveInfo)
     {
-        PassiveItem passive = new PassiveItem() { info = passiveInfo, modifier = _stats.GetStatModifier(passiveInfo.StatType) };
+        PassiveItem passive = new PassiveItem() { info = passiveInfo, modifier = _stats.GetStatModifier(passiveInfo.Stat.Type) };
         //_stats.ApplyStatUpgrade(passiveInfo.StatUpgradeId, passive.percentage);
-        _stats.IncreaseModifier(passiveInfo.StatType, passiveInfo.BasePercentage);
+        _stats.IncreaseModifier(passiveInfo.Stat.Type, passiveInfo.BaseValue);
         _passives.Add(passive);
         OnInventoryChange?.Invoke();
     }
 
-    public void UpgradePassive(PassiveItemInfo passiveInfo)
+    public void UpgradePassive(PassiveItemInfo passiveInfo, float amount)
     {
         //_stats.ApplyStatUpgrade(passiveInfo.StatUpgradeId, 5f);
-        _stats.IncreaseModifier(passiveInfo.StatType, passiveInfo.BasePercentage);
+        
+        _stats.IncreaseModifier(passiveInfo.Stat.Type, amount);
+    }
+    public void UpgradeWeapon(WeaponInfo weapon, List<StatInfo> stats)
+    {
+        Weapon foundWeapon = _weapons.Find(w => w.weaponInfo == weapon);
+        if(foundWeapon != null)
+        {
+            foreach (StatInfo stat in stats)
+                foundWeapon.AddModifier(stat.Type, stat.Value, stat.IsPercentage);
+        }
     }
 
     public bool HasItem(BaseItemInfo item)

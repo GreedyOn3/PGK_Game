@@ -14,20 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStatsModifiers
   Stats:
   - Type: 0
-    BaseValue: 0
-    isPercentage: 0
+    Value: 0
+    IsPercentage: 0
   - Type: 1
-    BaseValue: 0
-    isPercentage: 1
+    Value: 0
+    IsPercentage: 1
   - Type: 2
-    BaseValue: 0
-    isPercentage: 1
+    Value: 0
+    IsPercentage: 1
   - Type: 3
-    BaseValue: 0
-    isPercentage: 1
+    Value: 0
+    IsPercentage: 1
   - Type: 4
-    BaseValue: 0
-    isPercentage: 1
+    Value: 0
+    IsPercentage: 1
   - Type: 5
-    BaseValue: 10
-    isPercentage: 1
+    Value: 10
+    IsPercentage: 1

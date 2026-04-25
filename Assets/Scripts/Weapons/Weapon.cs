@@ -12,8 +12,8 @@ public abstract class Weapon : Armament
 
     private void Start()
     {
-        foreach (StatInfo statInfo in weaponInfo.UsedStats)
-            _stats.Add(statInfo.Type, new Stat(statInfo.BaseValue));
+        foreach (StatInfo statInfo in weaponInfo.BaseStats)
+            _stats.Add(statInfo.Type, new Stat(statInfo.Value));
 
         Invoke(nameof(PerformAttack), player.Stats.CalculateWeaponStat(StatType.Cooldown, this));
     }
@@ -45,5 +45,12 @@ public abstract class Weapon : Armament
             return stat.GetValue();
 
         return 0f;
+    }
+
+    public void AddModifier(StatType type, float value, bool isPercentage)
+    {
+        if (!_stats.TryGetValue(type, out Stat stat)) return;
+
+        stat.AddModifier(new StatModifier(value, isPercentage));
     }
 }

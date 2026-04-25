@@ -3,8 +3,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PassiveItemInfo", menuName = "Scriptable Objects/Passive Item Info")]
 public class PassiveItemInfo : BaseItemInfo
 {
-    [field: SerializeField] public StatType StatType { get; private set; }
-    [field: SerializeField] public float BasePercentage { get; private set; }
+    //[field: SerializeField] public StatType StatType { get; private set; }
+    [Header("Stat Info")]
+    public StatInfo Stat;
+    public float BaseValue;
 }
 
 [System.Serializable]

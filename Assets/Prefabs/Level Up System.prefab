@@ -53,4 +53,25 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9ee08e27045232241b00c9cacfb10d4d, type: 2}
   - {fileID: 11400000, guid: 18ae3a51c192a034a943ac64f16f3f82, type: 2}
   - {fileID: 11400000, guid: 251effa543783d843a30aad7fed7a289, type: 2}
+  choiceRarities:
+  - Name: Common
+    color: {r: 0.056737266, g: 0.8018868, b: 0.11931605, a: 1}
+    Weight: 60
+    Multiplier: 1
+  - Name: Uncommon
+    color: {r: 0.054901935, g: 0.58024454, b: 0.8, a: 1}
+    Weight: 20
+    Multiplier: 1.2
+  - Name: Rare
+    color: {r: 0.8, g: 0.054901935, b: 0.6979791, a: 1}
+    Weight: 10
+    Multiplier: 1.4
+  - Name: Epic
+    color: {r: 0.85882354, g: 0.09411765, b: 0.12713873, a: 1}
+    Weight: 8
+    Multiplier: 1.6
+  - Name: Legendary
+    color: {r: 0.9050032, g: 0.9622642, b: 0.031772893, a: 1}
+    Weight: 2
+    Multiplier: 2
   choicesCount: 3

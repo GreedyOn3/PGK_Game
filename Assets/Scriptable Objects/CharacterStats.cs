@@ -23,8 +23,8 @@ public class CharacterStats : ScriptableObject
             int existingIndex = Stats.FindIndex(s => s.Type == stat);
 
             FieldInfo fieldInfo = typeof(StatType).GetField(stat.ToString());
-            StatInfo statInfo = (existingIndex >= 0) ? Stats[existingIndex] : new StatInfo { Type = stat, BaseValue = 0f };
-            statInfo.isPercentage = !Attribute.IsDefined(fieldInfo, typeof(FlatStatAttribute));
+            StatInfo statInfo = (existingIndex >= 0) ? Stats[existingIndex] : new StatInfo { Type = stat, Value = 0f };
+            statInfo.IsPercentage = !Attribute.IsDefined(fieldInfo, typeof(FlatStatAttribute));
 
             syncedList.Add(statInfo);
         }

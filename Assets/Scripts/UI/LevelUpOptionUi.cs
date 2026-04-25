@@ -18,10 +18,20 @@ namespace UI
             _levelUpUi = levelUpUi;
             _choice = choice;
 
-            BaseItemInfo item = choice.item;
+            BaseItemInfo item = choice.Item;
             image.sprite = item.Image;
             nameText.text = item.Name;
-            descriptionText.text = item.Description;
+
+            if (choice.Type == ChoiceType.UpgradePassive || choice.Type == ChoiceType.UpgradeWeapon)
+            {
+                GetComponent<Image>().color = choice.Rarity.color;
+
+                foreach (StatInfo stat in choice.Stats)
+                    descriptionText.text = $"{Stat.GetDisplayName(stat.Type)} +{stat.Value}{((stat.IsPercentage) ? "%" : "")}\n";
+                descriptionText.text = descriptionText.text.TrimEnd('\n');
+            }
+            else
+                descriptionText.text = item.Description;
         }
 
         public void Pick()
