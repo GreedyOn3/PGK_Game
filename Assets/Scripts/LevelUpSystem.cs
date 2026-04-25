@@ -61,15 +61,15 @@ public class LevelUpSystem : MonoBehaviour
             if (workingPool.Count == 0)
                 break;
 
-            LevelUpChoice choice = GetRandomWeighted(workingPool, c => c.Item.Weight);
+            LevelUpChoice choice = GetRandomWeighted(workingPool);
             if (choice.Type == ChoiceType.UpgradeWeapon || choice.Type == ChoiceType.UpgradePassive)
             {
-                choice.Rarity = GetRandomWeighted(choiceRarities, r => r.Weight);
+                choice.Rarity = GetRandomWeighted(choiceRarities);
 
                 StatInfo stat = (choice.Type == ChoiceType.UpgradeWeapon) ? GetRandom(_weaponUpgrades[(WeaponInfo)choice.Item]) : ((PassiveItemInfo)choice.Item).Stat;
                 stat.Value *= choice.Rarity.Multiplier;
                 if (choice.Type == ChoiceType.UpgradePassive) 
-                    stat.IsPercentage = true;
+                    stat.IsPercentage = _player.Stats.GetStatModifier(stat.Type).isPercentage;
 
                 choice.Stats.Add(stat);
             }
@@ -157,17 +157,17 @@ public class LevelUpSystem : MonoBehaviour
         }
     }
 
-    T GetRandomWeighted<T>(List<T> items, Func<T, float> getWeight)
+    T GetRandomWeighted<T>(List<T> items) where T : IWeighted
     {
         float totalWeight = 0f;
         foreach (T item in items)
-            totalWeight += getWeight(item);
+            totalWeight += item.Weight;
 
         float randomPoint = UnityEngine.Random.Range(0, totalWeight);
         float current = 0f;
         foreach (T item in items)
         {
-            current += getWeight(item);
+            current += item.Weight;
             if (randomPoint <= current)
                 return item;
         }
@@ -181,22 +181,29 @@ public class LevelUpSystem : MonoBehaviour
     }
 }
 
+public interface IWeighted
+{
+    float Weight { get; }
+}
+
 [Serializable]
-public class LevelUpChoice
+public class LevelUpChoice : IWeighted
 {
     public BaseItemInfo Item;
     public ChoiceType Type;
 
     public ChoiceRarity Rarity;
     public List<StatInfo> Stats = new();
+
+    public float Weight => (Item != null) ? Item.Weight : 0f;
 }
 
 [Serializable]
-public class ChoiceRarity
+public class ChoiceRarity : IWeighted
 {
     public string Name;
     public Color color;
-    public float Weight;
+    [field: SerializeField] public float Weight { get; set; }
     public float Multiplier;
 }
 

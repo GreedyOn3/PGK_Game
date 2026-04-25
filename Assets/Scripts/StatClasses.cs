@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using UnityEditor;
 using UnityEngine;
@@ -16,14 +17,27 @@ public enum StatType
 public class Stat
 {
     public float baseValue;
-    private readonly List<StatModifier> modifiers = new List<StatModifier>();
+    public readonly List<StatModifier> modifiers = new List<StatModifier>();
 
     public Stat(float baseValue)
     {
         this.baseValue = baseValue;
     }
 
-    public void AddModifier(StatModifier mod) => modifiers.Add(mod);
+    public void AddModifier(StatModifier mod, bool asNew=false)
+    {
+        if (asNew)
+        {
+            modifiers.Add(mod);
+            return;
+        }
+
+        StatModifier foundMod = modifiers.Find(x => x.isPercentage == mod.isPercentage);
+        if (foundMod != null)
+            foundMod.value += mod.value;
+        else
+            modifiers.Add(mod);
+    }
     public void RemoveModifier(StatModifier mod) => modifiers.Remove(mod);
 
     public float GetValue()

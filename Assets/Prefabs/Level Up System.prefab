@@ -56,22 +56,22 @@ MonoBehaviour:
   choiceRarities:
   - Name: Common
     color: {r: 0.056737266, g: 0.8018868, b: 0.11931605, a: 1}
-    Weight: 60
+    <Weight>k__BackingField: 70
     Multiplier: 1
   - Name: Uncommon
     color: {r: 0.054901935, g: 0.58024454, b: 0.8, a: 1}
-    Weight: 20
+    <Weight>k__BackingField: 20
     Multiplier: 1.2
   - Name: Rare
     color: {r: 0.8, g: 0.054901935, b: 0.6979791, a: 1}
-    Weight: 10
+    <Weight>k__BackingField: 5
     Multiplier: 1.4
   - Name: Epic
     color: {r: 0.85882354, g: 0.09411765, b: 0.12713873, a: 1}
-    Weight: 8
+    <Weight>k__BackingField: 4
     Multiplier: 1.6
   - Name: Legendary
     color: {r: 0.9050032, g: 0.9622642, b: 0.031772893, a: 1}
-    Weight: 2
+    <Weight>k__BackingField: 1
     Multiplier: 2
   choicesCount: 3

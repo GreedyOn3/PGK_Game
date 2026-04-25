@@ -46,13 +46,9 @@ public class LevelManager : MonoBehaviour
         Debug.Log($"Selected level: {persistentData.selectedLevel}");
     }
 
-    private void FixedUpdate()
-    {
-        LevelTimeSeconds += Time.fixedDeltaTime;
-    }
-
     private void Update()
     {
+        LevelTimeSeconds += Time.deltaTime;
         if (LevelTimeSeconds > _levelInfo.TimeLimitMinutes * 60.0f)
         {
             GameOver();
