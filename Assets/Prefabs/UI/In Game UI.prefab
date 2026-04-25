@@ -686,6 +686,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4547966884052953710, guid: 2b5d23fd826cb2d49a93212825a047e3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4547966884052953710, guid: 2b5d23fd826cb2d49a93212825a047e3, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4547966884052953710, guid: 2b5d23fd826cb2d49a93212825a047e3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4547966884052953710, guid: 2b5d23fd826cb2d49a93212825a047e3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4660384420631336025, guid: 2b5d23fd826cb2d49a93212825a047e3, type: 3}
       propertyPath: m_Name
       value: Pause Menu
@@ -703,6 +719,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5652233738867953867, guid: 2b5d23fd826cb2d49a93212825a047e3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8658914350759199343, guid: 2b5d23fd826cb2d49a93212825a047e3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8658914350759199343, guid: 2b5d23fd826cb2d49a93212825a047e3, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8658914350759199343, guid: 2b5d23fd826cb2d49a93212825a047e3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8658914350759199343, guid: 2b5d23fd826cb2d49a93212825a047e3, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}

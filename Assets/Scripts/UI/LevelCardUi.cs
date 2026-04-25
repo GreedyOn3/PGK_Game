@@ -1,9 +1,8 @@
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
 
 namespace UI
 {
+    [RequireComponent(typeof(CardElements))]
     public class LevelCardUi : MonoBehaviour
     {
         private LevelInfo _levelInfo;
@@ -13,13 +12,10 @@ namespace UI
         {
             _levelSelectionUi = levelSelectionUi;
             _levelInfo = level;
-            var image = transform.Find("Image").GetComponent<Image>();
-            var textContainer = transform.Find("Text Container");
-            var name = textContainer.transform.Find("Name").GetComponent<TextMeshProUGUI>();
-            var description = textContainer.transform.Find("Description").GetComponent<TextMeshProUGUI>();
-            image.sprite = level.Image;
-            name.text = level.LevelName;
-            description.text = level.Description;
+            var cardElements = GetComponent<CardElements>();
+            cardElements.Image.sprite = level.Image;
+            cardElements.MainText.text = level.LevelName;
+            cardElements.SubText.text = level.Description;
         }
 
         public void Pick()

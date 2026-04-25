@@ -1,9 +1,8 @@
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
 
 namespace UI
 {
+    [RequireComponent(typeof(CardElements))]
     public class CharacterCardUi : MonoBehaviour
     {
         private CharacterInfo _characterInfo;
@@ -13,13 +12,10 @@ namespace UI
         {
             _characterSelectionUi = characterSelectionUi;
             _characterInfo = character;
-            var image = transform.Find("Image").GetComponent<Image>();
-            var textContainer = transform.Find("Text Container");
-            var name = textContainer.transform.Find("Name").GetComponent<TextMeshProUGUI>();
-            var description = textContainer.transform.Find("Description").GetComponent<TextMeshProUGUI>();
-            image.sprite = character.Image;
-            name.text = character.CharacterName;
-            description.text = character.Description;
+            var cardElements = GetComponent<CardElements>();
+            cardElements.Image.sprite = character.Image;
+            cardElements.MainText.text = character.CharacterName;
+            cardElements.SubText.text = character.Description;
         }
 
         public void Pick()
