@@ -45,14 +45,18 @@ namespace UI
             {
                 var weapon = weapons[i];
                 var slot = _weaponSlots[i];
-                slot.GetComponent<Image>().sprite = weapon.weaponInfo.Image;
+                var image = slot.transform.Find("Image").GetComponent<Image>();
+                image.sprite = weapon.weaponInfo.Image;
+                image.color = Color.white;
             }
 
             for (var i = 0; i < passives.Count; i++)
             {
                 var passive = passives[i];
                 var slot = _passiveSlots[i];
-                slot.GetComponent<Image>().sprite = passive.info.Image;
+                var image = slot.transform.Find("Image").GetComponent<Image>();
+                image.sprite = passive.info.Image;
+                image.color = Color.white;
             }
         }
     }
