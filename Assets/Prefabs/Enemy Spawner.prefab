@@ -49,6 +49,9 @@ MonoBehaviour:
   - enemyPrefab: {fileID: 1831605224621909188, guid: b18cfcdf29ebe2c46b102475f59fb163, type: 3}
     spawnIntervalSeconds: 5
     spawnPeriodMinutes: {x: 0, y: 30}
+  - enemyPrefab: {fileID: 6365338169194884362, guid: d59f1d292c458014dac4dddad55dcedc, type: 3}
+    spawnIntervalSeconds: 2.5
+    spawnPeriodMinutes: {x: 0, y: 30}
   waves:
   - enemyBatches:
     - enemyPrefab: {fileID: 5832452191371821113, guid: a71fd8f97988146479a87bb9e40f9400, type: 3}

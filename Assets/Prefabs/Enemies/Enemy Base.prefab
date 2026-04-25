@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6113100166705393270}
   - component: {fileID: 1417510687325160544}
   - component: {fileID: 1579356707425573641}
+  - component: {fileID: 8825152025450275868}
   - component: {fileID: -7704220916404606633}
   - component: {fileID: 2689787310007290388}
   - component: {fileID: -5772969448147980151}
@@ -162,6 +163,19 @@ MonoBehaviour:
   maxValue: 5
   damagePopupPrefab: {fileID: 3159081635972674440, guid: c1daf7da3a431714282e375ce6325eda, type: 3}
   damagePopupSpawnOffset: {x: 0, y: 0.5, z: 0}
+--- !u!114 &8825152025450275868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5832452191371821113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf4ab35d04f41e74eab7f00d5a5bb6ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimation
+  animator: {fileID: 0}
 --- !u!114 &-7704220916404606633
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1533,7 +1533,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2703914911238484787, guid: 7ad971847c5b55040817ddf368a84b33, type: 3}
       propertyPath: regularSpawns.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2703914911238484787, guid: 7ad971847c5b55040817ddf368a84b33, type: 3}
       propertyPath: waves.Array.data[1].startTimeMinutes
@@ -1550,14 +1550,18 @@ PrefabInstance:
     - target: {fileID: 2703914911238484787, guid: 7ad971847c5b55040817ddf368a84b33, type: 3}
       propertyPath: regularSpawns.Array.data[0].enemyPrefab
       value: 
-      objectReference: {fileID: 3203237630751724685, guid: c83715e0a904f5d438165a02a2c2f93d, type: 3}
+      objectReference: {fileID: 6365338169194884362, guid: d59f1d292c458014dac4dddad55dcedc, type: 3}
     - target: {fileID: 2703914911238484787, guid: 7ad971847c5b55040817ddf368a84b33, type: 3}
       propertyPath: regularSpawns.Array.data[1].enemyPrefab
       value: 
-      objectReference: {fileID: 3668163769187234280, guid: 35b26d81782642f41b025d39d203a283, type: 3}
+      objectReference: {fileID: 6365338169194884362, guid: d59f1d292c458014dac4dddad55dcedc, type: 3}
+    - target: {fileID: 2703914911238484787, guid: 7ad971847c5b55040817ddf368a84b33, type: 3}
+      propertyPath: regularSpawns.Array.data[2].enemyPrefab
+      value: 
+      objectReference: {fileID: 6365338169194884362, guid: d59f1d292c458014dac4dddad55dcedc, type: 3}
     - target: {fileID: 2703914911238484787, guid: 7ad971847c5b55040817ddf368a84b33, type: 3}
       propertyPath: regularSpawns.Array.data[0].spawnIntervalSeconds
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2703914911238484787, guid: 7ad971847c5b55040817ddf368a84b33, type: 3}
       propertyPath: regularSpawns.Array.data[1].spawnIntervalSeconds
@@ -1565,6 +1569,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2703914911238484787, guid: 7ad971847c5b55040817ddf368a84b33, type: 3}
       propertyPath: regularSpawns.Array.data[1].spawnPeriodMinutes.y
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2703914911238484787, guid: 7ad971847c5b55040817ddf368a84b33, type: 3}
+      propertyPath: regularSpawns.Array.data[2].spawnIntervalSeconds
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2703914911238484787, guid: 7ad971847c5b55040817ddf368a84b33, type: 3}
+      propertyPath: regularSpawns.Array.data[2].spawnPeriodMinutes.y
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7004238072351893412, guid: 7ad971847c5b55040817ddf368a84b33, type: 3}

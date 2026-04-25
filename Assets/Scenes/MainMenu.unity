@@ -239,8 +239,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: minibonk
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: aefcf570532202a42af3311773ff2952, type: 2}
-  m_sharedMaterial: {fileID: -4267050672305185707, guid: aefcf570532202a42af3311773ff2952, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -661,6 +661,14 @@ PrefabInstance:
       propertyPath: m_text
       value: Upgrades
       objectReference: {fileID: 0}
+    - target: {fileID: 4644804594774969557, guid: f6c0b2e8ec4a090408b09aa2b957f830, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: aefcf570532202a42af3311773ff2952, type: 2}
+    - target: {fileID: 4644804594774969557, guid: f6c0b2e8ec4a090408b09aa2b957f830, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -4267050672305185707, guid: aefcf570532202a42af3311773ff2952, type: 2}
     - target: {fileID: 4891955338639552168, guid: f6c0b2e8ec4a090408b09aa2b957f830, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1328,6 +1336,14 @@ PrefabInstance:
       propertyPath: m_text
       value: Quit
       objectReference: {fileID: 0}
+    - target: {fileID: 4644804594774969557, guid: f6c0b2e8ec4a090408b09aa2b957f830, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: aefcf570532202a42af3311773ff2952, type: 2}
+    - target: {fileID: 4644804594774969557, guid: f6c0b2e8ec4a090408b09aa2b957f830, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -4267050672305185707, guid: aefcf570532202a42af3311773ff2952, type: 2}
     - target: {fileID: 4891955338639552168, guid: f6c0b2e8ec4a090408b09aa2b957f830, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1743,6 +1759,14 @@ PrefabInstance:
       propertyPath: m_text
       value: Start
       objectReference: {fileID: 0}
+    - target: {fileID: 4644804594774969557, guid: f6c0b2e8ec4a090408b09aa2b957f830, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: aefcf570532202a42af3311773ff2952, type: 2}
+    - target: {fileID: 4644804594774969557, guid: f6c0b2e8ec4a090408b09aa2b957f830, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -4267050672305185707, guid: aefcf570532202a42af3311773ff2952, type: 2}
     - target: {fileID: 4891955338639552168, guid: f6c0b2e8ec4a090408b09aa2b957f830, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

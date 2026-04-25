@@ -9,15 +9,16 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] private LayerMask playerLayer;
 
     private float _attackTimer;
+    private EnemyAnimation _animation;
+
+    private void Awake()
+    {
+        _animation = GetComponent<EnemyAnimation>();
+    }
 
     private void FixedUpdate()
     {
         _attackTimer += Time.fixedDeltaTime;
-
-        if (_attackTimer < attackCooldownSeconds)
-        {
-            return;
-        }
 
         var boxCenter = transform.position + transform.forward * (hitBoxSize.z / 2.0f);
         var hitColliders = Physics.OverlapBox(boxCenter, hitBoxSize / 2.0f, transform.rotation, playerLayer);
@@ -26,10 +27,14 @@ public class EnemyAttack : MonoBehaviour
         {
             if (collider.CompareTag("Player"))
             {
-                AttackPlayer(collider.gameObject);
-                _attackTimer = 0.0f;
+                if (_attackTimer >= attackCooldownSeconds)
+                {
+                    AttackPlayer(collider.gameObject);
+                    _attackTimer = 0.0f;
+                }
             }
         }
+        _animation.SetAttack(hitColliders.Length > 0);
     }
 
     private void AttackPlayer(GameObject player)
@@ -40,6 +45,7 @@ public class EnemyAttack : MonoBehaviour
         Assert.IsNotNull(playerStats, "Player should have a PlayerStats component.");
         var damageAmount = (int)(damage / (1.0f + playerStats.GetModifierValue(StatType.Defense) / 100.0f));
         PersistentData.Instance.levelStats.totalDamageTaken += damageAmount;
+
         playerHealth.Remove(damageAmount);
     }
 
