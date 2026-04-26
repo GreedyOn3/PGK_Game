@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class PlayerXp : MonoBehaviour
@@ -13,6 +12,7 @@ public class PlayerXp : MonoBehaviour
 
     public int Value => value;
     public int MaxValue => maxValue;
+    public int GainRequiredForNextLevel => maxValue - Value;
 
     public int Level { get; private set; } = 0;
     public event Action OnLevelUp;
