@@ -8,8 +8,7 @@ namespace UI
 {
     public class InGameUi : MonoBehaviour
     {
-        [SerializeField] private InputActionReference pauseAction;
-        [SerializeField] private InputActionReference unpauseAction;
+        [SerializeField] private InputActionReference togglePauseAction;
 
         [SerializeField] private Slider healthSlider;
         [SerializeField] private Slider xpSlider;
@@ -43,13 +42,12 @@ namespace UI
 
         private void UpdatePlayerStatsDisplay()
         {
-            //var modifiers = _player.Stats.Modifiers;
             PlayerStats stats = _player.Stats;
             var text = "Player stats\n";
-            text += GetStatModifierText("Movement speed", stats.GetModifierValue(StatType.MoveSpeed));//modifiers.MovementSpeedModifier);
-            text += GetStatModifierText("Attack", stats.GetModifierValue(StatType.Attack));//modifiers.AttackModifier);
-            text += GetStatModifierText("Defense", stats.GetModifierValue(StatType.Defense));//modifiers.DefenseModifier);
-            text += GetStatModifierText("Pickup range", stats.GetModifierValue(StatType.PickupRange));//modifiers.PickupRangeModifier);
+            text += GetStatModifierText("Movement speed", stats.GetModifierValue(StatType.MoveSpeed));
+            text += GetStatModifierText("Attack", stats.GetModifierValue(StatType.Attack));
+            text += GetStatModifierText("Defense", stats.GetModifierValue(StatType.Defense));
+            text += GetStatModifierText("Pickup range", stats.GetModifierValue(StatType.PickupRange));
             statsText.text = text;
         }
 
@@ -60,14 +58,12 @@ namespace UI
 
         private void OnEnable()
         {
-            pauseAction.action.performed += TogglePauseMenu;
-            unpauseAction.action.performed += TogglePauseMenu;
+            togglePauseAction.action.performed += TogglePauseMenu;
         }
 
         private void OnDisable()
         {
-            pauseAction.action.performed -= TogglePauseMenu;
-            unpauseAction.action.performed -= TogglePauseMenu;
+            togglePauseAction.action.performed -= TogglePauseMenu;
         }
 
         private void TogglePauseMenu(InputAction.CallbackContext callbackContext)

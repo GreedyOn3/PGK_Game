@@ -124,8 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f7b0f7e9be14f8409e196bd81bec9a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HUD
-  pauseAction: {fileID: -34865874450063544, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  unpauseAction: {fileID: 1386112205256704531, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  togglePauseAction: {fileID: -153233670793002494, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   healthSlider: {fileID: 2297079071648365537}
   xpSlider: {fileID: 6442573561538913799}
   levelText: {fileID: 9045258172790817885}

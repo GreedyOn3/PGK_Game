@@ -8,6 +8,8 @@ public class Health : MonoBehaviour
     [SerializeField] private GameObject damagePopupPrefab;
     [SerializeField] private Vector3 damagePopupSpawnOffset = new(0.0f, 0.5f, 0.0f);
 
+    public bool invincible = false;
+
     public int Value => value;
     public int MaxValue => maxValue;
 
@@ -20,6 +22,9 @@ public class Health : MonoBehaviour
 
     public void Remove(int amount)
     {
+        if (invincible)
+            return;
+
         value = Math.Clamp(value - amount, 0, maxValue);
         SpawnDamagePopup(amount);
 

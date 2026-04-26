@@ -12,6 +12,7 @@ public class InputManager : MonoBehaviour
 
     private InputActionMap _gameplayActions;
     private InputActionMap _uiActions;
+    private InputActionMap _alwaysActions;
 
     private void Awake()
     {
@@ -26,6 +27,7 @@ public class InputManager : MonoBehaviour
 
         _gameplayActions = inputActions.FindActionMap("Gameplay");
         _uiActions = inputActions.FindActionMap("UI");
+        _alwaysActions = inputActions.FindActionMap("Always");
         SwitchInputMode(initialInputMode);
     }
 
@@ -50,6 +52,8 @@ public class InputManager : MonoBehaviour
             default:
                 throw new ArgumentOutOfRangeException();
         }
+
+        _alwaysActions.Enable();
     }
 }
 
