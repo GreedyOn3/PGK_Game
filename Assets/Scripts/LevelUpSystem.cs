@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UI;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
+using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 public class LevelUpSystem : MonoBehaviour
 {
@@ -37,9 +40,9 @@ public class LevelUpSystem : MonoBehaviour
         _maxPassives = _player.Inventory.GetPassivesCapacity();
     }
 
-    private void LevelUp()
+    private void LevelUp(PlayerXp xp)
     {
-        List<LevelUpChoice> randomChoices = GenerateLevelUp(_player.Inventory);
+        List<LevelUpChoice> randomChoices = GenerateLevelUp(_player.Inventory, xp.Level);
         if(randomChoices.Count > 0)
             levelUpUI.Show(randomChoices);
     }
@@ -49,39 +52,49 @@ public class LevelUpSystem : MonoBehaviour
         _weaponUpgrades.Add(weapon, weapon.UpgradePool);
     }
 
-    public List<LevelUpChoice> GenerateLevelUp(PlayerInventory inv)
+    public List<LevelUpChoice> GenerateLevelUp(PlayerInventory inv, int level)
     {
-        List<LevelUpChoice> workingPool = BuildPool(inv);
-        if (workingPool.Count == 0)
-            return new List<LevelUpChoice>();
-
+        List<LevelUpChoice> newItems = BuildNewPool(inv);
+        List<LevelUpChoice> upgrades = BuildUpgradePool(inv);
         List<LevelUpChoice> results = new();
-        for (int i = 0; i < choicesCount; i++)
+
+        int amount = (UnityEngine.Random.value < CalculateAdditionalChance()) ? choicesCount + 1 : choicesCount;
+
+        if (!inv.IsFull() && newItems.Count != 0)
         {
-            if (workingPool.Count == 0)
-                break;
-
-            LevelUpChoice choice = GetRandomWeighted(workingPool);
-            if (choice.Type == ChoiceType.UpgradeWeapon || choice.Type == ChoiceType.UpgradePassive)
+            float ownedChance = CalculateOwnedChance(level);
+            for (int i = 0; i < choicesCount - 1; i++)
             {
-                choice.Rarity = GetRandomWeighted(choiceRarities);
+                if (upgrades.Count <= 0) break;
+                bool guarantee = ( amount - (newItems.Count + results.Count) ) > 0;
 
-                StatInfo stat = (choice.Type == ChoiceType.UpgradeWeapon) ? GetRandom(_weaponUpgrades[(WeaponInfo)choice.Item]) : ((PassiveItemInfo)choice.Item).Stat;
-                stat.Value *= choice.Rarity.Multiplier;
-                if (choice.Type == ChoiceType.UpgradePassive) 
-                    stat.IsPercentage = _player.Stats.GetStatModifier(stat.Type).isPercentage;
-
-                choice.Stats.Add(stat);
+                if (guarantee || UnityEngine.Random.value < ownedChance)
+                    results.Add(GetRandomUpgrade(upgrades));
             }
 
-            results.Add(choice);
-            workingPool.Remove(choice);
+            for (int i = results.Count; i < amount; i++)
+            {
+                if (newItems.Count <= 0) break;
+
+                // Choosing random new item and adding to results
+                results.Add(GetRandomNewItem(newItems));
+            }
+        }
+        else
+        {
+            for (int i = 0; i < amount; i++)
+            {
+                if (upgrades.Count <= 0) break;
+
+                // Choosing random upgrade and adding to results
+                results.Add(GetRandomUpgrade(upgrades));
+            }
         }
 
         return results;
     }
 
-    List<LevelUpChoice> BuildPool(PlayerInventory inv)
+    List<LevelUpChoice> BuildNewPool(PlayerInventory inv)
     {
         List<LevelUpChoice> pool = new();
 
@@ -114,6 +127,13 @@ public class LevelUpSystem : MonoBehaviour
                 }
             }
         }
+
+        return pool;
+    }
+
+    List<LevelUpChoice> BuildUpgradePool(PlayerInventory inv)
+    {
+        List<LevelUpChoice> pool = new();
 
         foreach (PassiveItem passive in inv.GetPassives())
         {
@@ -155,6 +175,87 @@ public class LevelUpSystem : MonoBehaviour
                 inv.UpgradeWeapon((WeaponInfo)choice.Item, choice.Stats);
                 break;
         }
+    }
+
+    float CalculateAdditionalChance()
+    {
+        PlayerStats stats = _player.Stats;
+        float luck = 1f + (stats.GetStatModifier(StatType.Luck).value / 100f);
+
+        return 1f - (1f / luck);
+    }
+
+    float CalculateOwnedChance(int level)
+    {
+        PlayerStats stats = _player.Stats;
+        float luck = 1f + ( stats.GetStatModifier(StatType.Luck).value / 100f );
+        int x = (level % 2 == 0) ? 2 : 1;
+
+        return 1f + 0.3f * x - (1f / luck);
+    }
+
+    LevelUpChoice GetRandomUpgrade(List<LevelUpChoice> upgrades)
+    {
+        LevelUpChoice choice = GetRandomWeighted(upgrades);
+        choice.Rarity = GetRandomRarity();
+
+        // Choosing stat to upgrade
+        StatInfo stat = (choice.Type == ChoiceType.UpgradeWeapon) ?
+            GetRandom(_weaponUpgrades[(WeaponInfo)choice.Item]) :
+            ((PassiveItemInfo)choice.Item).Stat;
+
+        stat.Value *= choice.Rarity.Multiplier;
+        if (choice.Type == ChoiceType.UpgradePassive)
+            stat.IsPercentage = _player.Stats.GetStatModifier(stat.Type).isPercentage;
+
+        choice.Stats.Add(stat);
+
+        // Removing from current upgrades pool
+        upgrades.Remove(choice);
+        return choice;
+    }
+
+    LevelUpChoice GetRandomNewItem(List<LevelUpChoice> newItems)
+    {
+        // Choosing random new item
+        LevelUpChoice choice = GetRandomWeighted(newItems);
+
+        // Removing from current pool
+        newItems.Remove(choice);
+        return choice;
+    }
+
+    ChoiceRarity GetRandomRarity()
+    {
+        float luck = 1f + (_player.Stats.GetStatModifier(StatType.Luck).value / 100f);
+
+        float luckStrength = Mathf.Log(luck) * 1.5f;
+        float adjustValue = 1.5f;
+
+        int raritiesCount = choiceRarities.Count;
+
+        List<float> adjustedWeights = new();
+        float totalWeight = 0f;
+
+        for (int i = 0; i < raritiesCount; i++)
+        {
+            float exponent = ( (raritiesCount - 1) - i) * luckStrength;
+            float adjusted = choiceRarities[i].Weight * Mathf.Pow(adjustValue, -exponent);
+
+            adjustedWeights.Add(adjusted);
+            totalWeight += adjusted;
+        }
+
+        float randomPoint = UnityEngine.Random.Range(0, totalWeight);
+        float current = 0f;
+        for (int i = 0; i < raritiesCount; i++)
+        {
+            current += adjustedWeights[i];
+            if (randomPoint <= current)
+                return choiceRarities[i];
+        }
+
+        return choiceRarities[0];
     }
 
     T GetRandomWeighted<T>(List<T> items) where T : IWeighted

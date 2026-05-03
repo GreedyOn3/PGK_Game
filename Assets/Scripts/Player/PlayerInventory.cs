@@ -67,6 +67,8 @@ public class PlayerInventory : MonoBehaviour
     public int GetWeaponCount() => _weapons.Count;
     public int GetPassivesCount() => _passives.Count;
 
+    public bool IsFull() => (_weapons.Count + _passives.Count) == (weaponCapacity + passivesCapacity);
+
     public IReadOnlyList<Weapon> GetWeapons() => _weapons;
     public IReadOnlyList<PassiveItem> GetPassives() => _passives;
 }

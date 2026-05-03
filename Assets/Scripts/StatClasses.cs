@@ -10,7 +10,12 @@ public class FlatStatAttribute : Attribute { }
 public enum StatType
 {
     [FlatStat] MaxHealth,
-    Attack, Cooldown, MoveSpeed, PickupRange, Defense
+    Attack, 
+    Cooldown, 
+    MoveSpeed, 
+    PickupRange, 
+    Defense,
+    Luck
 }
 
 [Serializable]

@@ -31,3 +31,6 @@ MonoBehaviour:
   - Type: 5
     Value: 10
     IsPercentage: 1
+  - Type: 6
+    Value: 0
+    IsPercentage: 1

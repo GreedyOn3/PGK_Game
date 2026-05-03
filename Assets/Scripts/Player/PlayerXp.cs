@@ -15,7 +15,7 @@ public class PlayerXp : MonoBehaviour
     public int GainRequiredForNextLevel => maxValue - Value;
 
     public int Level { get; private set; } = 0;
-    public event Action OnLevelUp;
+    public event Action<PlayerXp> OnLevelUp;
 
     public void Add(int amount)
     {
@@ -54,7 +54,7 @@ public class PlayerXp : MonoBehaviour
         else
             maxValue += 220;
 
-        OnLevelUp?.Invoke();
+        OnLevelUp?.Invoke(this);
     }
 
     [Serializable]
