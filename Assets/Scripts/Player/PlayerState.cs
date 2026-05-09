@@ -26,7 +26,9 @@ public class GroundedState : PlayerState
     {
         if (player.CheckJumpBuffered())
         {
-            player.movement.Jump();
+            player.movement.Jump(player.GetGroundNormal());
+            player.ClearGroundedBuffer();
+
             player.SetAnimatorValue("Jump");
             if(player.jumpParticles) player.jumpParticles.Play();
             player.ClearJumpBuffer();
@@ -101,6 +103,15 @@ public class SlideState : PlayerState
 
         if (!player.IsSliding())
         {
+            if (player.IsGrounded())
+                sm.ChangeState(player.GroundedState);
+            else
+                sm.ChangeState(player.AirState);
+            return;
+        }
+
+        /*if (!player.IsSliding())
+        {
             sm.ChangeState(player.GroundedState);
             return;
         }
@@ -109,6 +120,6 @@ public class SlideState : PlayerState
         {
             sm.ChangeState(player.AirState);
             return;
-        }
+        }*/
     }
 }

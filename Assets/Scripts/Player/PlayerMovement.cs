@@ -1,6 +1,7 @@
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(CapsuleCollider))]
 public class PlayerMovement : Movement
 {
     public Transform visuals;
@@ -9,6 +10,7 @@ public class PlayerMovement : Movement
     public float maxGroundSpeed = 8f;
     public float groundAcceleration = 80f;
     public float groundFriction = 8f;
+    public float slopeLimit = 45f;
     public LayerMask groundMask;
 
     [Header("Slide")]
@@ -31,7 +33,16 @@ public class PlayerMovement : Movement
     public float wallCheckDistance = 0.8f;
     public float wallJumpPush = 8f;
 
-    CharacterController controller;
+    [Header("Surface Alignment")]
+    public float groundRayDistance = 15f;
+    public float groundAlignSmoothTime = 0.05f;
+    public float airAlignSmoothTime = 0.4f;
+
+    Rigidbody _rb;
+    CapsuleCollider _coll;
+    Vector3 _upRotationVel;
+    Vector3 _lastGroundedNormal;
+    bool _groundFound;
 
     Vector3 horizontalVelocity;
     float verticalVelocity;
@@ -40,7 +51,9 @@ public class PlayerMovement : Movement
 
     void Awake()
     {
-        controller = GetComponent<CharacterController>();
+        _rb = GetComponent<Rigidbody>();
+        _coll = GetComponent<CapsuleCollider>();
+        _lastGroundedNormal = Vector3.up;
     }
 
     public void SetMoveDir(Vector3 dir) { moveDir = dir; }
@@ -52,30 +65,46 @@ public class PlayerMovement : Movement
             GroundMove(groundHit, isSliding);
         else
             AirMove();
+        RotateTowards(moveDir, (_groundFound && verticalVelocity < 0f ? groundHit.normal : _lastGroundedNormal), grounded);
 
-        RotateTowards(moveDir, (grounded ? groundHit.normal : Vector3.up));
-
-        Vector3 velocity = horizontalVelocity;
+        Vector3 velocity = Vector3.zero;
         if (grounded)
             velocity = Vector3.ProjectOnPlane(horizontalVelocity, groundHit.normal).normalized * horizontalVelocity.magnitude;
+        else if (isSliding)
+            velocity = Vector3.ProjectOnPlane(horizontalVelocity, _lastGroundedNormal).normalized * horizontalVelocity.magnitude;
+        else
+            velocity = horizontalVelocity;
 
         Vector3 finalVelocity = velocity + Vector3.up * verticalVelocity;
         Debug.DrawRay(transform.position, finalVelocity, Color.blue);
-        controller.Move(finalVelocity * Time.deltaTime);
+        _rb.linearVelocity = finalVelocity;
     }
 
-    public void RotateTowards(Vector3 dir, Vector3 up)
+    public void RotateTowards(Vector3 dir, Vector3 up, bool grounded)
     {
         Transform toRotate = (visuals) ? visuals : transform;
 
-        Vector3 forward = Vector3.ProjectOnPlane((dir != Vector3.zero) ? dir : toRotate.forward, up).normalized;
-        toRotate.rotation = Quaternion.LookRotation(forward, up);
+        Vector3 currentUp = toRotate.up;
+        Vector3 smoothUp = Vector3.SmoothDamp(
+            toRotate.up,
+            up,
+            ref _upRotationVel,
+            grounded ? groundAlignSmoothTime : airAlignSmoothTime
+        ).normalized;
+
+        Vector3 forwardDir = (dir != Vector3.zero) ? dir : toRotate.forward;
+        Vector3 projectedForward = Vector3.ProjectOnPlane(forwardDir, smoothUp).normalized;
+
+        if (projectedForward.sqrMagnitude < 0.001f)
+            projectedForward = Vector3.ProjectOnPlane(toRotate.forward, smoothUp).normalized;
+
+        toRotate.rotation = Quaternion.LookRotation(projectedForward, smoothUp);
     }
 
     void GroundMove(RaycastHit groundHit, bool isSliding)
     {
         float slopeAngle = Vector3.Angle(Vector3.up, groundHit.normal);
-        float frictionMultiplier = Mathf.Clamp01(1f - (slopeAngle / controller.slopeLimit));
+        float frictionMultiplier = Mathf.Clamp01(1f - (slopeAngle / slopeLimit));
         float friction = isSliding ? slideFriction*frictionMultiplier : groundFriction;
         ApplyFriction(friction);
 
@@ -90,7 +119,7 @@ public class PlayerMovement : Movement
         }
 
         if (verticalVelocity < 0)
-            verticalVelocity = -1f;
+            verticalVelocity = (slopeAngle > 0f) ? 0f : -1f;
     }
 
     void AirMove()
@@ -140,10 +169,14 @@ public class PlayerMovement : Movement
         horizontalVelocity *= newSpeed / speed;
     }
 
-    public void Jump() 
-    { 
-        verticalVelocity = jumpForce;
-        horizontalVelocity *= 1f + jumpSpeedBoost;
+    public void Jump(Vector3 groundNormal) 
+    {
+        Vector3 currentSlopeVel = Vector3.ProjectOnPlane(horizontalVelocity, groundNormal).normalized * horizontalVelocity.magnitude;
+        Vector3 jumpDir = Vector3.Slerp(Vector3.up, groundNormal, 0.5f).normalized;
+        Vector3 finalJumpVel = currentSlopeVel + (jumpDir * jumpForce);
+
+        horizontalVelocity *= (1f + jumpSpeedBoost);
+        verticalVelocity = finalJumpVel.y;
     }
 
     public void WallJump(Vector3 normal)
@@ -154,18 +187,36 @@ public class PlayerMovement : Movement
 
     public bool GroundCheck(out RaycastHit hit)
     {
-        float sphereRadius = controller.radius * 0.95f;
-        float distance = (controller.height * 0.5f) - sphereRadius + 0.1f;
+        if (verticalVelocity > 0.1f)
+        {
+            hit = new RaycastHit();
+            _groundFound = false;
+            return false;
+        }
 
-        return Physics.SphereCast(
-            transform.position,
+        float sphereRadius = _coll.radius * 0.95f;
+        float distance = (_coll.height * 0.5f) - sphereRadius + 0.1f;
+
+        bool hasFooting = Physics.CheckSphere(
+            transform.position + Vector3.down * distance,
             sphereRadius,
-            Vector3.down,
-            out hit,
-            distance,
             groundMask,
             QueryTriggerInteraction.Ignore
         );
+
+        _groundFound = Physics.Raycast(
+            transform.position,
+            Vector3.down,
+            out hit,
+            (_coll.height * 0.5f) + groundRayDistance,
+            groundMask,
+            QueryTriggerInteraction.Ignore
+        );
+
+        bool grounded = hasFooting && _groundFound && (hit.distance <= 1.3f) && (Vector3.Angle(hit.normal, Vector3.up) <= slopeLimit);
+        if(grounded) _lastGroundedNormal = hit.normal;
+
+        return grounded;
     }
 
     public bool CheckWall(out RaycastHit hit, out bool right)

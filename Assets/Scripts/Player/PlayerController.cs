@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public PlayerStats stats;
     [Header("Timers")]
     public float jumpBufferTime = 0.15f;
+    public float groundedGraceTime = 0.1f;
 
     // States
     public GroundedState GroundedState { get; private set; }
@@ -24,6 +25,7 @@ public class PlayerController : MonoBehaviour
     // Is Grounded?
     bool isGrounded = false;
     RaycastHit groundHit;
+    private float groundedBufferTimer;
 
     // Input
     Vector2 moveDir;
@@ -65,7 +67,19 @@ public class PlayerController : MonoBehaviour
 
         movement.SetMoveDir(move);
 
-        isGrounded = movement.GroundCheck(out groundHit);
+        bool groundCheck = movement.GroundCheck(out groundHit);
+        if (groundCheck)
+        {
+            groundedBufferTimer = groundedGraceTime;
+            isGrounded = true;
+        }
+        else
+        {
+            groundedBufferTimer -= Time.deltaTime;
+            if (groundedBufferTimer <= 0f)
+                isGrounded = false;
+        }
+
         movement.UpdateMovement(isGrounded, groundHit, sliding);
     }
 
@@ -77,7 +91,9 @@ public class PlayerController : MonoBehaviour
     public bool CheckJumpBuffered() => (jumpBufferTimer > 0f);
     public bool IsSliding() => sliding;
     public void StopSliding() => sliding = false;
+    public void ClearGroundedBuffer() => groundedBufferTimer = 0f;
     public bool IsGrounded() => isGrounded;
+    public Vector3 GetGroundNormal() => groundHit.normal;
 
     private void OnMove(InputValue val)
     {

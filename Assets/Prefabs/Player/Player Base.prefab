@@ -56,7 +56,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6746373401210320191}
   - component: {fileID: 2603983238832906870}
-  - component: {fileID: 7535198466013395785}
   - component: {fileID: 4822155126531462329}
   - component: {fileID: -5167089272841205230}
   - component: {fileID: 2809181945823587291}
@@ -66,6 +65,8 @@ GameObject:
   - component: {fileID: 7328065228462681933}
   - component: {fileID: 4470370686211478460}
   - component: {fileID: -7623453730141397379}
+  - component: {fileID: 5527673971259860815}
+  - component: {fileID: 6783175442035356003}
   m_Layer: 3
   m_Name: Player Base
   m_TagString: Player
@@ -97,31 +98,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8473961373550710930}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!143 &7535198466013395785
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8473961373550710930}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4822155126531462329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,6 +130,7 @@ MonoBehaviour:
   maxValue: 100
   damagePopupPrefab: {fileID: 3258144711355226788, guid: 700e5252652cfac4d907d207befcef64, type: 3}
   damagePopupSpawnOffset: {x: 0, y: 0.5, z: 0}
+  invincible: 0
 --- !u!114 &2809181945823587291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,6 +232,7 @@ MonoBehaviour:
   gathering: {fileID: 0}
   stats: {fileID: 4822155126531462329}
   jumpBufferTime: 0.15
+  groundedGraceTime: 0.1
 --- !u!114 &4470370686211478460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,6 +249,7 @@ MonoBehaviour:
   maxGroundSpeed: 8
   groundAcceleration: 80
   groundFriction: 8
+  slopeLimit: 45
   groundMask:
     serializedVersion: 2
     m_Bits: 384
@@ -286,6 +265,9 @@ MonoBehaviour:
   gravity: -25
   wallCheckDistance: 0.8
   wallJumpPush: 8
+  groundRayDistance: 15
+  groundAlignSmoothTime: 0.05
+  airAlignSmoothTime: 0.4
 --- !u!114 &-7623453730141397379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,3 +290,53 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 3784
   cameraRadius: 0.4
+--- !u!136 &5527673971259860815
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8473961373550710930}
+  m_Material: {fileID: 13400000, guid: b85c121452f95414e89d89f3662efd0c, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &6783175442035356003
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8473961373550710930}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 112
+  m_CollisionDetection: 1
