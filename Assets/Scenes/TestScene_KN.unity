@@ -1093,6 +1093,57 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 1
+--- !u!1 &1358981946
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1358981951}
+  - component: {fileID: 1358981950}
+  m_Layer: 0
+  m_Name: TEST
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1358981950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358981946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6a30f5df1af33247a8bf89828be98a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelMapGenerator
+  mapSize: 20
+  elevationChance: 0.075
+  horizontalSpacing: 30
+  verticalSpacing: 30
+  blockPrefab: {fileID: 4130946280995169567, guid: f9ca859779762d548ba37ef120d65b0a, type: 3}
+  rampPrefab: {fileID: 5392996610901879080, guid: bb3762f00a5a2df4eb2d8077d5c564ec, type: 3}
+  bottomBlockPrefab: {fileID: 8115028433572112089, guid: 43dca5717fa51344f85b789929dade8a, type: 3}
+--- !u!4 &1358981951
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358981946}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.41227, y: 29.06, z: 15.00692}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1553929985
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1618,3 +1669,4 @@ SceneRoots:
   - {fileID: 1553929985}
   - {fileID: 745607500}
   - {fileID: 2064395812}
+  - {fileID: 1358981951}
