@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using UnityEditor;
 using UnityEngine;
@@ -22,7 +21,7 @@ public enum StatType
 public class Stat
 {
     public float baseValue;
-    public readonly List<StatModifier> modifiers = new List<StatModifier>();
+    public readonly List<StatModifier> modifiers = new();
 
     public Stat(float baseValue)
     {

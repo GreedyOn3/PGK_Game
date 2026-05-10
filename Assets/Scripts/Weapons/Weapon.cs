@@ -5,10 +5,19 @@ using UnityEngine.Assertions;
 public abstract class Weapon : Armament
 {
     public WeaponInfo weaponInfo;
-    //[SerializeField] protected float cooldownSeconds = 5.0f;
-    private Dictionary<StatType, Stat> _stats = new Dictionary<StatType, Stat>();
+
+    protected PlayerReferences player;
+
+    [SerializeField] private EffectParams effect;
+
+    private Dictionary<StatType, Stat> _stats = new();
 
     public abstract void Attack();
+
+    private void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerReferences>();
+    }
 
     private void Start()
     {
@@ -52,5 +61,26 @@ public abstract class Weapon : Armament
         if (!_stats.TryGetValue(type, out Stat stat)) return;
 
         stat.AddModifier(new StatModifier(value, isPercentage));
+    }
+
+    protected GameObject FindNearestEnemy(float range)
+    {
+        var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        GameObject nearestEnemy = null;
+        var shortestDistance = Mathf.Infinity;
+
+        foreach (var enemy in enemies)
+        {
+            var distance = Vector3.Distance(transform.position, enemy.transform.position);
+
+            if (distance < shortestDistance && distance <= range)
+            {
+                shortestDistance = distance;
+                nearestEnemy = enemy;
+            }
+        }
+
+        return nearestEnemy;
     }
 }

@@ -44,9 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddb88ff19c245a443b1319058267afec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Weapons.Wand
-  damageScaling: 1
   weaponInfo: {fileID: 11400000, guid: 1c1c5754b53d2ff43bc86362b9ee5b55, type: 2}
-  cooldownSeconds: 0.5
+  effect: {fileID: 11400000, guid: d4bc917e8395a7a4cb4ee8bc45308633, type: 2}
   range: 15
   projectileSpeed: 20
   projectilePrefab: {fileID: 3864531069361945626, guid: 53331e8b98dc73247a81bfab0f6d5c4b, type: 3}

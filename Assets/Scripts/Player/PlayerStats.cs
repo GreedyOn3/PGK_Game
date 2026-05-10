@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,8 +11,8 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private BasePlayerStats baseStats;
     [SerializeField] private CharacterStats characterStats;
 
-    private Dictionary<StatType, Stat> _stats = new Dictionary<StatType, Stat>();
-    private Dictionary<StatType, StatModifier> _modifiers = new Dictionary<StatType, StatModifier>();
+    private Dictionary<StatType, Stat> _stats = new();
+    private Dictionary<StatType, StatModifier> _modifiers = new();
 
     private void Awake()
     {
@@ -37,40 +36,8 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    /*public void ApplyStatUpgrade(StatUpgradeId upgrade, float percentage)
-    {
-        var modifiers = Modifiers;
-
-        switch (statType)
-        {
-            case PlayerStatType.MovementSpeed:
-                modifiers.movementSpeedModifier += percentage;
-                break;
-            case PlayerStatType.Attack:
-                modifiers.attackModifier += percentage;
-                break;
-            case PlayerStatType.Defense:
-                modifiers.defenseModifier += percentage;
-                break;
-            case PlayerStatType.PickupRange:
-                modifiers.pickupRangeModifier += percentage;
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
-
-        Modifiers = modifiers;
-    }
-
-    private static float ApplyStatModifier(float baseValue, float modifier)
-    {
-        var multiplier = 1.0f + modifier / 100.0f;
-        return baseValue * multiplier;
-    }*/
-
     private void ApplyPermanentStatUpgrade(PermanentUpgradeInfo upgrade)
     {
-        //ApplyStatUpgrade(upgrade.StatType, upgrade.IncreasePercentage);
         IncreaseModifier(upgrade.StatType, upgrade.IncreasePercentage);
     }
 
@@ -99,6 +66,7 @@ public class PlayerStats : MonoBehaviour
 
         return null;
     }
+
     public float GetModifierValue(StatType type)
     {
         if (_modifiers.TryGetValue(type, out StatModifier mod))
