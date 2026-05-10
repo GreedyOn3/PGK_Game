@@ -63,6 +63,14 @@ public class SaveManager : MonoBehaviour
             saveData.SyncMapFromList();
         }
     }
+
+    public void DeleteSavegame()
+    {
+        if (File.Exists(saveFilePath))
+        {
+            File.WriteAllText(saveFilePath, "");
+        }
+    }
 }
 
 [System.Serializable]
@@ -107,8 +115,7 @@ public class SaveData
         }
         else
         {
-            upgrade.bought = false;
-            upgrade.enabled = false;
+            upgrade.ResetUpgrade();
         }
     }
 

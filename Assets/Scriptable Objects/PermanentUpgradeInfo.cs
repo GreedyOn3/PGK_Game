@@ -11,6 +11,12 @@ public class PermanentUpgradeInfo : ScriptableObject
     [field: SerializeField] public float IncreasePercentage { get; private set; }
     public bool bought;
     public bool enabled;
+
+    public void ResetUpgrade()
+    {
+        bought = false;
+        enabled = false;
+    }
 }
 
 [System.Serializable]

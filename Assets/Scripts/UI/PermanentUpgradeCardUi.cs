@@ -18,29 +18,33 @@ namespace UI
         public void Initialize(PermanentUpgradeInfo upgrade)
         {
             _upgrade = upgrade;
+            UpdateUi();
+        }
+
+        public void UpdateUi()
+        {
+            image.sprite = _upgrade.Image;
+            nameText.text = _upgrade.UpgradeName;
+            descriptionText.text = _upgrade.Description;
+            buyButtonText.text = _upgrade.bought ? "Bought" : "Buy";
+
             buyButton.interactable = !_upgrade.bought;
             enabledToggle.isOn = _upgrade.enabled;
             enabledToggle.interactable = _upgrade.bought;
-            image.sprite = upgrade.Image;
-            nameText.text = upgrade.UpgradeName;
-            descriptionText.text = upgrade.Description;
-            buyButtonText.text = _upgrade.bought ? "Bought" : "Buy";
         }
 
         public void Buy()
         {
             _upgrade.bought = true;
             _upgrade.enabled = true;
-            buyButton.interactable = false;
-            enabledToggle.interactable = true;
-            enabledToggle.isOn = _upgrade.enabled;
-            buyButtonText.text = "Bought";
+            UpdateUi();
             SaveManager.instance.saveData.SavePermanentUpgrade(_upgrade);
         }
 
         public void OnToggleEnabled()
         {
             _upgrade.enabled = enabledToggle.isOn;
+            UpdateUi();
             SaveManager.instance.saveData.SavePermanentUpgrade(_upgrade);
         }
     }

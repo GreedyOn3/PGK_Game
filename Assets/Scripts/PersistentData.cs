@@ -32,6 +32,14 @@ public class PersistentData : MonoBehaviour
             saveData.LoadPermanentUpgrade(upgrade);
         }
     }
+
+    public void ResetPermanentUpgrades()
+    {
+        foreach (var upgrade in permanentUpgrades)
+        {
+            upgrade.ResetUpgrade();
+        }
+    }
 }
 
 public struct LevelStats
