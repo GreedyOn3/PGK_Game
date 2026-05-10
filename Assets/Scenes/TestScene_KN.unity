@@ -457,7 +457,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5682255622470247925, guid: 6b29515b19035d049b28f85a8ac4e1d8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.23
+      value: 226.8
       objectReference: {fileID: 0}
     - target: {fileID: 5682255622470247925, guid: 6b29515b19035d049b28f85a8ac4e1d8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1104,7 +1104,7 @@ GameObject:
   - component: {fileID: 1358981951}
   - component: {fileID: 1358981950}
   m_Layer: 0
-  m_Name: TEST
+  m_Name: LevelGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1123,9 +1123,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelMapGenerator
   mapSize: 20
-  elevationChance: 0.075
-  horizontalSpacing: 30
-  verticalSpacing: 30
+  elevationChance: 0.03
+  horizontalSpacing: 20
+  verticalSpacing: 20
   blockPrefab: {fileID: 4130946280995169567, guid: f9ca859779762d548ba37ef120d65b0a, type: 3}
   rampPrefab: {fileID: 5392996610901879080, guid: bb3762f00a5a2df4eb2d8077d5c564ec, type: 3}
   bottomBlockPrefab: {fileID: 8115028433572112089, guid: 43dca5717fa51344f85b789929dade8a, type: 3}
