@@ -18,3 +18,4 @@ MonoBehaviour:
   <StatType>k__BackingField: 1
   <IncreasePercentage>k__BackingField: 10
   bought: 0
+  enabled: 0

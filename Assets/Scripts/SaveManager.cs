@@ -76,7 +76,7 @@ public class SaveData
     public List<PermanentUpgradeEntry> permanentUpgrades = new();
     // Permanent Upgrades
     [System.NonSerialized]
-    public Dictionary<string, bool> permanentUpgradeMap = new();
+    public Dictionary<string, PermanentUpgradeEntry.Value> permanentUpgradeMap = new();
 
     public void AddResource(ResourceData data, int amount)
     {
@@ -90,15 +90,26 @@ public class SaveData
 
     public void SavePermanentUpgrade(PermanentUpgradeInfo upgrade)
     {
-        permanentUpgradeMap[upgrade.UpgradeName] = upgrade.bought;
+        permanentUpgradeMap[upgrade.UpgradeName] = new PermanentUpgradeEntry.Value
+        {
+            bought = upgrade.bought,
+            enabled = upgrade.enabled,
+        };
     }
 
     public void LoadPermanentUpgrade(PermanentUpgradeInfo upgrade)
     {
         if (permanentUpgradeMap.ContainsKey(upgrade.UpgradeName))
-            upgrade.bought = permanentUpgradeMap[upgrade.UpgradeName];
+        {
+            var value = permanentUpgradeMap[upgrade.UpgradeName];
+            upgrade.bought = value.bought;
+            upgrade.enabled = value.enabled;
+        }
         else
+        {
             upgrade.bought = false;
+            upgrade.enabled = false;
+        }
     }
 
     public void SyncMapFromList()

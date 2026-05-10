@@ -31,7 +31,7 @@ public class PlayerStats : MonoBehaviour
         var persistentData = PersistentData.Instance;
         foreach (var permanentUpgrade in persistentData.permanentUpgrades)
         {
-            if (permanentUpgrade.bought)
+            if (permanentUpgrade.bought && permanentUpgrade.enabled)
                 ApplyPermanentStatUpgrade(permanentUpgrade);
         }
     }

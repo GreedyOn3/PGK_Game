@@ -10,13 +10,21 @@ public class PermanentUpgradeInfo : ScriptableObject
     [field: SerializeField] public StatType StatType { get; private set; }
     [field: SerializeField] public float IncreasePercentage { get; private set; }
     public bool bought;
+    public bool enabled;
 }
 
 [System.Serializable]
 public class PermanentUpgradeEntry
 {
-    public string key;
-    public bool value;
+    [System.Serializable]
+    public struct Value
+    {
+        public bool bought;
+        public bool enabled;
+    }
 
-    public PermanentUpgradeEntry(string k, bool v) { key = k; value = v; }
+    public string key;
+    public Value value;
+
+    public PermanentUpgradeEntry(string k, Value v) { key = k; value = v; }
 }
