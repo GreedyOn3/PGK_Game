@@ -95,6 +95,7 @@ public struct StatInfo
     public bool IsPercentage;
 }
 
+#if UNITY_EDITOR
 [CustomPropertyDrawer(typeof(StatInfo))]
 public class StatInfoDrawer : PropertyDrawer
 {
@@ -138,3 +139,4 @@ public class StatInfoDrawer : PropertyDrawer
         EditorGUI.EndProperty();
     }
 }
+#endif

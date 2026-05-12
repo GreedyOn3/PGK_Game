@@ -8,6 +8,7 @@ namespace UI
     {
         [SerializeField] private MainMenu mainMenu;
         [SerializeField] private GameObject permanentUpgradeCardPrefab;
+        [SerializeField] private Transform cardsContainer;
 
         private readonly List<PermanentUpgradeCardUi> _upgradeCards = new();
 
@@ -16,7 +17,7 @@ namespace UI
             var upgrades = PersistentData.Instance.permanentUpgrades;
             foreach (var upgrade in upgrades)
             {
-                var card = Instantiate(permanentUpgradeCardPrefab, transform);
+                var card = Instantiate(permanentUpgradeCardPrefab, cardsContainer);
                 var cardUi = card.GetComponent<PermanentUpgradeCardUi>();
                 _upgradeCards.Add(cardUi);
                 Assert.IsNotNull(cardUi, "Permanent upgrade card should have a PermanentUpgradeCardUi component.");

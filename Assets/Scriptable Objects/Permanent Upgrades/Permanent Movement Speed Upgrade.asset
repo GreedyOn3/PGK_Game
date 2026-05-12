@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 663236d46e70356488519a878b6bad68, type: 3}
   m_Name: Permanent Movement Speed Upgrade
   m_EditorClassIdentifier: Assembly-CSharp::PermanentUpgradeInfo
-  <Image>k__BackingField: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  <Image>k__BackingField: {fileID: 21300000, guid: 6e6efc27a6e66df46a359683a359169e, type: 3}
   <UpgradeName>k__BackingField: Movement Speed
   <Description>k__BackingField: Movement Speed +10%
   <StatType>k__BackingField: 3

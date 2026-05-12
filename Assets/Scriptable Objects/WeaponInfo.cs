@@ -60,6 +60,7 @@ public struct WeaponStatEntry
     public bool IsUpgradable;
 }
 
+#if UNITY_EDITOR
 [CustomPropertyDrawer(typeof(WeaponStatEntry))]
 public class WeaponStatEntryDrawer : PropertyDrawer
 {
@@ -105,3 +106,4 @@ public class WeaponStatEntryDrawer : PropertyDrawer
         EditorGUI.EndProperty();
     }
 }
+#endif

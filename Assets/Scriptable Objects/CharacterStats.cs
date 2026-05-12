@@ -33,6 +33,7 @@ public class CharacterStats : ScriptableObject
     }
 }
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(CharacterStats))]
 public class CharacterStatsEditor : Editor
 {
@@ -58,3 +59,4 @@ public class CharacterStatsEditor : Editor
         serializedObject.ApplyModifiedProperties();
     }
 }
+#endif
