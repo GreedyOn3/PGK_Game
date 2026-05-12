@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1ba90681096d54db66a04871b39ff6, type: 3}
   m_Name: Claw
   m_EditorClassIdentifier: Assembly-CSharp::PassiveItemInfo
-  <Image>k__BackingField: {fileID: 0}
+  <Image>k__BackingField: {fileID: 21300000, guid: 3780aa37c8a21bb49ad05b8e49cbc21e, type: 3}
   <Name>k__BackingField: Claw
   <Description>k__BackingField: Pickup Range +5%
   <Weight>k__BackingField: 100

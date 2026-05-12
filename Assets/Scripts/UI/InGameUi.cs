@@ -48,6 +48,7 @@ namespace UI
             text += GetStatModifierText("Attack", stats.GetModifierValue(StatType.Attack));
             text += GetStatModifierText("Defense", stats.GetModifierValue(StatType.Defense));
             text += GetStatModifierText("Pickup range", stats.GetModifierValue(StatType.PickupRange));
+            text += GetStatModifierText("Luck", stats.GetModifierValue(StatType.Luck));
             statsText.text = text;
         }
 

@@ -321,6 +321,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6496172043532322990, guid: 528bd1df9e092a04c8edaa0bbee68efa, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: ae892450a4d304e4fb26fbb3e4764b87, type: 2}
+    - target: {fileID: 6496172043532322990, guid: 528bd1df9e092a04c8edaa0bbee68efa, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -4267050672305185707, guid: ae892450a4d304e4fb26fbb3e4764b87, type: 2}
+    - target: {fileID: 6496172043532322990, guid: 528bd1df9e092a04c8edaa0bbee68efa, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4292138196
+      objectReference: {fileID: 0}
+    - target: {fileID: 6496172043532322990, guid: 528bd1df9e092a04c8edaa0bbee68efa, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9167604337021493213, guid: 528bd1df9e092a04c8edaa0bbee68efa, type: 3}
       propertyPath: m_Name
       value: Text

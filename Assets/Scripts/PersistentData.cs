@@ -44,6 +44,7 @@ public class PersistentData : MonoBehaviour
 
 public struct LevelStats
 {
+    public bool victory;
     public int survivedTimeMinutes;
     public int survivedTimeSeconds;
     public int playerLevelReached;
@@ -55,6 +56,7 @@ public struct LevelStats
     public string GetStatsText()
     {
         var text = "";
+        text += victory ? "Victory!\n" : "Defeat!\n";
         text += $"Time survived: {Util.FormatLevelTime(survivedTimeMinutes, survivedTimeSeconds)}\n";
         text += $"Level reached: {playerLevelReached}\n";
         text += $"Total damage dealt: {totalDamageDealt}\n";

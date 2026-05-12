@@ -49,9 +49,10 @@ public class LevelManager : MonoBehaviour
     private void Update()
     {
         LevelTimeSeconds += Time.deltaTime;
+
         if (LevelTimeSeconds > _levelInfo.TimeLimitMinutes * 60.0f)
         {
-            GameOver();
+            GameOver(true);
         }
     }
 
@@ -67,9 +68,10 @@ public class LevelManager : MonoBehaviour
         LevelPaused = false;
     }
 
-    public void GameOver()
+    public void GameOver(bool victory)
     {
         var persistentData = PersistentData.Instance;
+        persistentData.levelStats.victory = victory;
         persistentData.levelStats.survivedTimeMinutes = (int)LevelTimeMinutes;
         persistentData.levelStats.survivedTimeSeconds = (int)LevelTimeSeconds;
         persistentData.levelStats.playerLevelReached = _player.Xp.Level;

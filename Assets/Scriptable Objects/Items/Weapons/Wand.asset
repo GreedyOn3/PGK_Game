@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40843d787c3397e41b209c16a0e7cfaf, type: 3}
   m_Name: Wand
   m_EditorClassIdentifier: Assembly-CSharp::WeaponInfo
-  <Image>k__BackingField: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  <Image>k__BackingField: {fileID: 21300000, guid: ca3db663c3d71384b88d69a199fe8b26, type: 3}
   <Name>k__BackingField: Wand
-  <Description>k__BackingField: ...
+  <Description>k__BackingField: Freezes enemies
   <Weight>k__BackingField: 100
   <Prefab>k__BackingField: {fileID: 3056926627896016196, guid: 4a32e0aecb76eed4f8cab2f96a586177, type: 3}
   Stats:

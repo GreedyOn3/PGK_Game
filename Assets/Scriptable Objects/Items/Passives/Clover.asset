@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1ba90681096d54db66a04871b39ff6, type: 3}
   m_Name: Clover
   m_EditorClassIdentifier: Assembly-CSharp::PassiveItemInfo
-  <Image>k__BackingField: {fileID: 0}
+  <Image>k__BackingField: {fileID: 21300000, guid: 742c8739c01a302408b84870ae9c88e4, type: 3}
   <Name>k__BackingField: Clover
   <Description>k__BackingField: Luck +5%
   <Weight>k__BackingField: 100
