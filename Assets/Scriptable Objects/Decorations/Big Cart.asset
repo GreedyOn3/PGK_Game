@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Big Cart
   m_EditorClassIdentifier: Assembly-CSharp::DecorationInfo
   prefab: {fileID: 4369568608766370207, guid: 068fcd58d94eb7a428d885a15bb48a8a, type: 3}
-  <Weight>k__BackingField: 20
+  <Weight>k__BackingField: 10

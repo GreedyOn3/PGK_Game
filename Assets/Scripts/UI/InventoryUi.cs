@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Assertions;
+using System.Collections.Generic;
 
 namespace UI
 {
@@ -8,18 +9,22 @@ namespace UI
     public class InventoryUi : MonoBehaviour
     {
         [SerializeField] private GameObject slotPrefab;
+        [SerializeField] private GameObject specialItemPrefab;
+
         [SerializeField] private Transform weaponsContainer;
         [SerializeField] private Transform passivesContainer;
+        [SerializeField] private Transform specialItemsContainer;
 
         private PlayerReferences _player;
         private GameObject[] _weaponSlots;
         private GameObject[] _passiveSlots;
 
-        private void Start()
+        private void Awake()
         {
             _player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerReferences>();
 
             _player.Inventory.OnInventoryChange += UpdateUi;
+            _player.Inventory.OnSpecialsChange += UpdateSpecialsUi;
 
             var weaponCapacity = _player.Inventory.GetWeaponCapacity();
             _weaponSlots = new GameObject[weaponCapacity];
@@ -57,6 +62,23 @@ namespace UI
                 var image = slot.transform.Find("Image").GetComponent<Image>();
                 image.sprite = passive.info.Image;
                 image.color = Color.white;
+            }
+        }
+
+        public void UpdateSpecialsUi()
+        {
+            Debug.Log("TEST");
+            Dictionary<SpecialItemInfo, SpecialItem> specials = _player.Inventory.GetSpecialItems();
+
+            foreach (Transform child in specialItemsContainer)
+            {
+                Destroy(child.gameObject);
+            }
+
+            foreach(var item in specials) 
+            {
+                Image img = Instantiate(specialItemPrefab, specialItemsContainer).GetComponent<Image>();
+                img.sprite = item.Key.Image;
             }
         }
     }

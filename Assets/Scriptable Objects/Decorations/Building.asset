@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Building
   m_EditorClassIdentifier: Assembly-CSharp::DecorationInfo
   prefab: {fileID: 1769924324250820485, guid: 70fe215430b02a44fabbb26a5b1635bb, type: 3}
-  <Weight>k__BackingField: 10
+  <Weight>k__BackingField: 5

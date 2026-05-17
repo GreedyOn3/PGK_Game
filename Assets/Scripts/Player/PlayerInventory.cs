@@ -1,25 +1,31 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerReferences), typeof(PlayerStats))]
 public class PlayerInventory : MonoBehaviour
 {
     [SerializeField] private WeaponInfo startingWeapon;
+    [SerializeField] private SpecialItemInfo startingSpecialItem; // FOR TESTING
 
     [SerializeField] private int weaponCapacity = 6;
     [SerializeField] private int passivesCapacity = 6;
     private readonly List<Weapon> _weapons = new();
     private readonly List<PassiveItem> _passives = new();
+    private readonly Dictionary<SpecialItemInfo, SpecialItem> _specials = new();
     [SerializeField] private Transform weaponsContainer;
+    [SerializeField] private Transform specialItemsContainer;
 
     private PlayerStats _stats;
     public event Action OnInventoryChange;
+    public event Action OnSpecialsChange;
 
     private void Start()
     {
         _stats = GetComponent<PlayerStats>();
         AddWeapon(startingWeapon);
+        AddSpecial(startingSpecialItem);
     }
 
     public void AddWeapon(WeaponInfo weaponInfo)
@@ -38,6 +44,24 @@ public class PlayerInventory : MonoBehaviour
         _stats.IncreaseModifier(passiveInfo.Stat.Type, passiveInfo.BaseValue);
         _passives.Add(passive);
         OnInventoryChange?.Invoke();
+    }
+
+    public void AddSpecial(SpecialItemInfo specialItemInfo)
+    {
+        if(_specials.ContainsKey(specialItemInfo))
+        {
+            _specials[specialItemInfo].Count++;
+        }
+        else
+        {
+            GameObject prefab = specialItemInfo.ItemPrefab;
+            SpecialItem special = Instantiate(prefab, specialItemsContainer).GetComponent<SpecialItem>();
+            special.Init(GetComponent<PlayerReferences>());
+
+            _specials.Add(specialItemInfo, special);
+        }
+
+        OnSpecialsChange?.Invoke();
     }
 
     public void UpgradePassive(PassiveItemInfo passiveInfo, float amount)
@@ -71,4 +95,5 @@ public class PlayerInventory : MonoBehaviour
 
     public IReadOnlyList<Weapon> GetWeapons() => _weapons;
     public IReadOnlyList<PassiveItem> GetPassives() => _passives;
+    public Dictionary<SpecialItemInfo, SpecialItem> GetSpecialItems() => _specials;
 }
