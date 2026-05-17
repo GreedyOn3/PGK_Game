@@ -5,8 +5,11 @@ public class LevelMapGenerator : MonoBehaviour
 {
     [Header("Map")]
     public int mapSize = 50;
+    public List<DecorationInfo> possibleDecorations;
     [Range(0f, 1f)]
     public float elevationChance = 0.075f;
+    [Range(0f, 1f)]
+    public float decorationChance = 0.05f;
 
     [Header("Spacing")]
     public float horizontalSpacing = 30f;
@@ -66,12 +69,20 @@ public class LevelMapGenerator : MonoBehaviour
             {
                 Cell cell = grid[i, j];
                 Vector3 pos = new Vector3(cell.x * horizontalSpacing, cell.elevation * verticalSpacing, cell.z * horizontalSpacing);
+                Transform cellParent = new GameObject("Cell").transform;
+                cellParent.SetParent(transform);
+                cellParent.transform.position = pos;
 
                 GameObject block;
                 if (cell.isRamp)
-                    block = Instantiate(rampPrefab, pos, GetRampRotation(cell.rampDirection), transform);
+                {
+                    block = Instantiate(rampPrefab, pos, GetRampRotation(cell.rampDirection), cellParent);
+                }
                 else
-                    block = Instantiate(blockPrefab, pos, Quaternion.identity, transform);
+                {
+                    block = Instantiate(blockPrefab, pos, Quaternion.identity, cellParent);
+                    if (Random.value < decorationChance) SpawnDecoration(cellParent);
+                }
                 block.transform.localScale = new Vector3(horizontalSpacing / 2f, verticalSpacing / 2f, horizontalSpacing / 2f);
 
                 if (cell.elevation > 0)
@@ -113,6 +124,22 @@ public class LevelMapGenerator : MonoBehaviour
         {
             lockedDirection = Vector2Int.zero;
         }
+    }
+
+    void SpawnDecoration(Transform cell)
+    {
+        if (possibleDecorations == null || possibleDecorations.Count == 0) return;
+
+        DecorationInfo decoration = Util.GetRandomWeighted(possibleDecorations);
+
+        float x = horizontalSpacing / 4f;
+        float y = verticalSpacing / 2f;
+        Vector3 position = new Vector3(Random.Range(-x, x), y, Random.Range(-x, x));
+        Vector3 rotation = new Vector3(0f, Random.Range(0, 360f), 0f);
+
+        Transform decorationTransform = Instantiate(decoration.prefab, cell).transform;
+        decorationTransform.localPosition = position;
+        decorationTransform.localEulerAngles = rotation;
     }
 
     void CreateBottomBlocks(int elevation, Transform blockTransform)

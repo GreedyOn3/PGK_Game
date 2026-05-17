@@ -1123,7 +1123,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelMapGenerator
   mapSize: 20
+  possibleDecorations:
+  - {fileID: 11400000, guid: 732a81bd656961d43beb71b019002488, type: 2}
+  - {fileID: 11400000, guid: 81979f8c3dacd364fb8627c868c29689, type: 2}
+  - {fileID: 11400000, guid: b60a3367bb68e4d4e91dab07ee3c7366, type: 2}
+  - {fileID: 11400000, guid: 25afd44bd59227542b0a3fbb1f3cd297, type: 2}
+  - {fileID: 11400000, guid: 6ebee5c5e5032b34b8263d4f572d9f95, type: 2}
+  - {fileID: 11400000, guid: 1a8483fc71eb64449846839813f51707, type: 2}
   elevationChance: 0.03
+  decorationChance: 0.05
   horizontalSpacing: 20
   verticalSpacing: 20
   blockPrefab: {fileID: 4130946280995169567, guid: f9ca859779762d548ba37ef120d65b0a, type: 3}

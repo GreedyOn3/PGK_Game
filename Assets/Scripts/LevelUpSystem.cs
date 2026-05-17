@@ -193,7 +193,7 @@ public class LevelUpSystem : MonoBehaviour
 
     LevelUpChoice GetRandomUpgrade(List<LevelUpChoice> upgrades)
     {
-        LevelUpChoice choice = GetRandomWeighted(upgrades);
+        LevelUpChoice choice = Util.GetRandomWeighted(upgrades);
         choice.Rarity = GetRandomRarity();
 
         // Choosing stat to upgrade
@@ -215,7 +215,7 @@ public class LevelUpSystem : MonoBehaviour
     LevelUpChoice GetRandomNewItem(List<LevelUpChoice> newItems)
     {
         // Choosing random new item
-        LevelUpChoice choice = GetRandomWeighted(newItems);
+        LevelUpChoice choice = Util.GetRandomWeighted(newItems);
 
         // Removing from current pool
         newItems.Remove(choice);
@@ -255,33 +255,10 @@ public class LevelUpSystem : MonoBehaviour
         return choiceRarities[0];
     }
 
-    T GetRandomWeighted<T>(List<T> items) where T : IWeighted
-    {
-        float totalWeight = 0f;
-        foreach (T item in items)
-            totalWeight += item.Weight;
-
-        float randomPoint = UnityEngine.Random.Range(0, totalWeight);
-        float current = 0f;
-        foreach (T item in items)
-        {
-            current += item.Weight;
-            if (randomPoint <= current)
-                return item;
-        }
-
-        return items[^1];
-    }
-
     T GetRandom<T>(List<T> items)
     {
         return items[UnityEngine.Random.Range(0, items.Count)];
     }
-}
-
-public interface IWeighted
-{
-    float Weight { get; }
 }
 
 [Serializable]
