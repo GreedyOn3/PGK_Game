@@ -19,7 +19,7 @@ namespace UI
         private GameObject[] _weaponSlots;
         private GameObject[] _passiveSlots;
 
-        private void Awake()
+        private void Start()
         {
             _player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerReferences>();
 
@@ -38,6 +38,7 @@ namespace UI
 
             Assert.IsTrue(_weaponSlots.Length == _player.Inventory.GetWeaponCapacity());
             UpdateUi();
+            UpdateSpecialsUi();
         }
 
         public void UpdateUi()
