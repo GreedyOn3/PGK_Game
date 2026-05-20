@@ -53,6 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelUpUi
   optionPrefab: {fileID: 3815363644658720567, guid: 3d55c713e2e80f446b86d5bf479487cd, type: 3}
   levelUpScreen: {fileID: 5095991790928600832}
+  blurVolume: {fileID: 0}
 --- !u!222 &8830219473948892771
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -146,7 +147,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1616740899746401628, guid: 05c537eef4b74ba4e8499bd9de024dd7, type: 3}
       propertyPath: m_fontSize
-      value: 37.05
+      value: 59.3
       objectReference: {fileID: 0}
     - target: {fileID: 1616740899746401628, guid: 05c537eef4b74ba4e8499bd9de024dd7, type: 3}
       propertyPath: m_fontAsset
@@ -206,7 +207,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4204056704836061899, guid: 05c537eef4b74ba4e8499bd9de024dd7, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 50
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 4204056704836061899, guid: 05c537eef4b74ba4e8499bd9de024dd7, type: 3}
       propertyPath: m_LocalPosition.x
