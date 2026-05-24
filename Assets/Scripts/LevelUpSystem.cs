@@ -39,6 +39,17 @@ public class LevelUpSystem : MonoBehaviour
 
     private void LevelUp(PlayerXp xp)
     {
+        if (xp.Level == 5)
+        {
+            var persistentData = PersistentData.Instance;
+            persistentData.UnlockAchievement(AchievementId.ReachLevel5);
+        }
+        else if (xp.Level == 10)
+        {
+            var persistentData = PersistentData.Instance;
+            persistentData.UnlockAchievement(AchievementId.ReachLevel10);
+        }
+
         List<LevelUpChoice> randomChoices = GenerateLevelUp(_player.Inventory, xp.Level);
         if(randomChoices.Count > 0)
             levelUpUI.Show(randomChoices);

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PersistentData : MonoBehaviour
@@ -7,6 +8,7 @@ public class PersistentData : MonoBehaviour
     public CharacterInfo selectedCharacter;
     public LevelInfo selectedLevel;
     public PermanentUpgradeInfo[] permanentUpgrades;
+    public AchievementInfo[] achievements;
     public LevelStats levelStats = new();
 
     private void Awake()
@@ -31,6 +33,21 @@ public class PersistentData : MonoBehaviour
         {
             saveData.LoadPermanentUpgrade(upgrade);
         }
+
+        foreach (var achievement in achievements)
+        {
+            saveData.LoadAchievement(achievement);
+        }
+    }
+
+    public void UnlockAchievement(AchievementId id)
+    {
+        var achievement = Array.Find(achievements, a => a.Id == id);
+
+        if (achievement != null)
+        {
+            achievement.Unlock();
+        }
     }
 
     public void ResetPermanentUpgrades()
@@ -38,6 +55,14 @@ public class PersistentData : MonoBehaviour
         foreach (var upgrade in permanentUpgrades)
         {
             upgrade.ResetUpgrade();
+        }
+    }
+
+    public void ResetAchievements()
+    {
+        foreach (var achievement in achievements)
+        {
+            achievement.ResetAchievement();
         }
     }
 }

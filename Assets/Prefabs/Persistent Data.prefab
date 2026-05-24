@@ -50,3 +50,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 19ba32e6273d27d4bb1a49deee2c98a9, type: 2}
   - {fileID: 11400000, guid: 9ce7cdb9a9249e441b6b4d77f929895b, type: 2}
   - {fileID: 11400000, guid: df402837e630e0d4fbc49b8712bbe873, type: 2}
+  achievements:
+  - {fileID: 11400000, guid: 584048fd4313bd64db07fe70ecc0c953, type: 2}
+  - {fileID: 11400000, guid: 177afc8ffbdf23647b0bb9d3e8155e13, type: 2}

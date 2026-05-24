@@ -9,6 +9,7 @@ namespace UI
         [SerializeField] private GameObject characterSelectionScreen;
         [SerializeField] private GameObject levelSelectionScreen;
         [SerializeField] private GameObject permanentUpgradesScreen;
+        [SerializeField] private GameObject achievementsScreen;
 
         private void Start()
         {
@@ -23,6 +24,11 @@ namespace UI
         public void OnUpgradesButtonClicked()
         {
             SwitchScreen(permanentUpgradesScreen);
+        }
+
+        public void OnAchievementsButtonClicked()
+        {
+            SwitchScreen(achievementsScreen);
         }
 
         public void PickCharacter(CharacterInfo characterInfo)
@@ -57,6 +63,7 @@ namespace UI
             characterSelectionScreen.SetActive(false);
             levelSelectionScreen.SetActive(false);
             permanentUpgradesScreen.SetActive(false);
+            achievementsScreen.SetActive(false);
 
             screen.SetActive(true);
         }

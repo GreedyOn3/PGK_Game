@@ -81,10 +81,15 @@ public class SaveData
     [System.NonSerialized]
     public Dictionary<string, int> resourceMap = new();
 
-    public List<PermanentUpgradeEntry> permanentUpgrades = new();
     // Permanent Upgrades
+    public List<PermanentUpgradeEntry> permanentUpgrades = new();
     [System.NonSerialized]
     public Dictionary<string, PermanentUpgradeEntry.Value> permanentUpgradeMap = new();
+
+    // Achievements
+    public List<AchievementEntry> achievements = new();
+    [System.NonSerialized]
+    public Dictionary<string, bool> achievementMap = new();
 
     public void AddResource(ResourceData data, int amount)
     {
@@ -119,12 +124,32 @@ public class SaveData
         }
     }
 
+    public void SaveAchievement(AchievementInfo achievement)
+    {
+        achievementMap[achievement.AchievementName] = achievement.unlocked;
+    }
+
+    public void LoadAchievement(AchievementInfo achievement)
+    {
+        if (achievementMap.ContainsKey(achievement.AchievementName))
+        {
+            var value = achievementMap[achievement.AchievementName];
+            achievement.unlocked = value;
+        }
+        else
+        {
+            achievement.ResetAchievement();
+        }
+    }
+
     public void SyncMapFromList()
     {
         resourceMap.Clear();
         foreach (var entry in specialResources) resourceMap[entry.key] = entry.value;
         permanentUpgradeMap.Clear();
         foreach (var entry in permanentUpgrades) permanentUpgradeMap[entry.key] = entry.value;
+        achievementMap.Clear();
+        foreach (var entry in achievements) achievementMap[entry.key] = entry.value;
     }
 
     public void SyncListFromMap()
@@ -133,5 +158,7 @@ public class SaveData
         foreach (var kv in resourceMap) specialResources.Add(new ResourceEntry(kv.Key, kv.Value));
         permanentUpgrades.Clear();
         foreach (var kv in permanentUpgradeMap) permanentUpgrades.Add(new PermanentUpgradeEntry(kv.Key, kv.Value));
+        achievements.Clear();
+        foreach (var kv in achievementMap) achievements.Add(new AchievementEntry(kv.Key, kv.Value));
     }
 }
