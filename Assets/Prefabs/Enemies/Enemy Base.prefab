@@ -196,7 +196,7 @@ MonoBehaviour:
   wallCheckHeight: -0.7
   wallClimbMask:
     serializedVersion: 2
-    m_Bits: 384
+    m_Bits: 385
 --- !u!114 &2689787310007290388
 MonoBehaviour:
   m_ObjectHideFlags: 0
