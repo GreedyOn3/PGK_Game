@@ -10,6 +10,7 @@ public class EnemyMovement : Movement
     [SerializeField] private float wallDetectionDistance = 0.75f;
     [SerializeField] private float wallDetectionRadius = 0.3f;
     [SerializeField] private float wallCheckHeight = -0.75f;
+    [SerializeField] private LayerMask wallClimbMask;
 
     private Rigidbody _rigidbody;
     private GameObject _player;
@@ -37,7 +38,7 @@ public class EnemyMovement : Movement
         Vector3 direction = _player.transform.position - transform.position;
         direction.y = 0f;
 
-        if (direction.sqrMagnitude < 0.001f) return;
+        if (direction.sqrMagnitude < 0.01f) return;
         direction.Normalize();
 
         Vector3 velocity = _rigidbody.linearVelocity;
@@ -49,7 +50,6 @@ public class EnemyMovement : Movement
             velocity.x = 0f;
             velocity.z = 0f;
             velocity.y = climbSpeed;
-            Debug.Log(velocity.y);
         }
 
         _rigidbody.linearVelocity = velocity;
@@ -59,7 +59,7 @@ public class EnemyMovement : Movement
     private bool ShouldClimb()
     {
         Vector3 origin = transform.position + Vector3.up * wallCheckHeight;
-        if (!Physics.SphereCast(origin, wallDetectionRadius, transform.forward, out RaycastHit hit, wallDetectionDistance))
+        if (!Physics.SphereCast(origin, wallDetectionRadius, transform.forward, out RaycastHit hit, wallDetectionDistance, wallClimbMask))
             return false;
 
         return hit.normal.y < 0.3f;
