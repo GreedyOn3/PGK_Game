@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 7328065228462681933}
   - component: {fileID: 4470370686211478460}
   - component: {fileID: -7623453730141397379}
+  - component: {fileID: 1036646928687533652}
   - component: {fileID: 5527673971259860815}
   - component: {fileID: 6783175442035356003}
   m_Layer: 3
@@ -324,6 +325,22 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 3784
   cameraRadius: 0.4
+--- !u!114 &1036646928687533652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8473961373550710930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b7c4ee7056dbca40aa18700eb6b7f7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInteraction
+  interactionDistance: 2
+  interactableMask:
+    serializedVersion: 2
+    m_Bits: 12288
 --- !u!136 &5527673971259860815
 CapsuleCollider:
   m_ObjectHideFlags: 0
