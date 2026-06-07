@@ -144,9 +144,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &1579356707425573641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,6 +163,7 @@ MonoBehaviour:
   maxValue: 5
   damagePopupPrefab: {fileID: 3159081635972674440, guid: c1daf7da3a431714282e375ce6325eda, type: 3}
   damagePopupSpawnOffset: {x: 0, y: 0.5, z: 0}
+  invincible: 0
 --- !u!114 &8825152025450275868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,6 +190,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   movementSpeed: 6
+  climbSpeed: 2
+  wallDetectionDistance: 0.75
+  wallDetectionRadius: 0.3
+  wallCheckHeight: -0.7
 --- !u!114 &2689787310007290388
 MonoBehaviour:
   m_ObjectHideFlags: 0
