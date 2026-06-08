@@ -5,11 +5,13 @@ public class BleedEffectParams : EffectParams
 {
     [field: SerializeField] public float DurationSeconds { get; private set; }
     [field: SerializeField] public int HealthReductionPerSecond { get; private set; }
+    [field: SerializeField] public GameObject Particles { get; private set; }
 
     public override void Apply(GameObject target)
     {
         var effect = target.AddComponent<BleedEffect>();
         effect.durationLeftSeconds = DurationSeconds;
         effect.healthReductionPerSecond = HealthReductionPerSecond;
+        effect.associatedObject = Instantiate(Particles, target.transform);
     }
 }

@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Wand Freeze Effect
   m_EditorClassIdentifier: Assembly-CSharp::FreezeEffectParams
   <DurationSeconds>k__BackingField: 2
+  <FreezeMaterial>k__BackingField: {fileID: 2100000, guid: dfabe1a2f50678041a8b5e7585253944, type: 2}

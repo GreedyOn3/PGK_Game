@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BleedEffectParams
   <DurationSeconds>k__BackingField: 3
   <HealthReductionPerSecond>k__BackingField: 1
+  <Particles>k__BackingField: {fileID: 176749969099446922, guid: 593875db88269e043b8a09ee78b97154, type: 3}
