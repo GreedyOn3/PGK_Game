@@ -72,6 +72,10 @@ PrefabInstance:
       propertyPath: gathering
       value: 
       objectReference: {fileID: 3121014839898134972}
+    - target: {fileID: 7328065228462681933, guid: eecca3e02d7aa5443b34cffdc368ec19, type: 3}
+      propertyPath: jumpParticles
+      value: 
+      objectReference: {fileID: 5481491522764063782}
     - target: {fileID: 8229114302271225908, guid: eecca3e02d7aa5443b34cffdc368ec19, type: 3}
       propertyPath: reference
       value: 
@@ -88,6 +92,17 @@ PrefabInstance:
       addedObject: {fileID: 8857637952781394142}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eecca3e02d7aa5443b34cffdc368ec19, type: 3}
+--- !u!114 &6316636416941143671 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9134130243309847553, guid: eecca3e02d7aa5443b34cffdc368ec19, type: 3}
+  m_PrefabInstance: {fileID: 2984690651174564470}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f1e283d04376774fa343e18f9cc87e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerReferences
 --- !u!114 &7746328645610563279 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4822155126531462329, guid: eecca3e02d7aa5443b34cffdc368ec19, type: 3}
@@ -116,13 +131,17 @@ PrefabInstance:
       propertyPath: stats
       value: 
       objectReference: {fileID: 7746328645610563279}
+    - target: {fileID: 3652067728951784509, guid: 4c7c4fbf2955ef9478ed2ea70e03ee07, type: 3}
+      propertyPath: references
+      value: 
+      objectReference: {fileID: 6316636416941143671}
     - target: {fileID: 4844423438771414712, guid: 4c7c4fbf2955ef9478ed2ea70e03ee07, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4844423438771414712, guid: 4c7c4fbf2955ef9478ed2ea70e03ee07, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.78
+      value: -0.97
       objectReference: {fileID: 0}
     - target: {fileID: 4844423438771414712, guid: 4c7c4fbf2955ef9478ed2ea70e03ee07, type: 3}
       propertyPath: m_LocalPosition.z
@@ -179,6 +198,11 @@ MonoBehaviour:
 --- !u!95 &5266373155192511223 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 8125502812573490321, guid: 4c7c4fbf2955ef9478ed2ea70e03ee07, type: 3}
+  m_PrefabInstance: {fileID: 4167658944921486950}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &5481491522764063782 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8486000806190678592, guid: 4c7c4fbf2955ef9478ed2ea70e03ee07, type: 3}
   m_PrefabInstance: {fileID: 4167658944921486950}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &8857637952781394142 stripped

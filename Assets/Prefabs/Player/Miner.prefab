@@ -781,7 +781,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerGathering
   stats: {fileID: 0}
-  checkRadius: 0.25
+  checkRadius: 0.35
   checkDistance: 1
   maxFound: 4
   resourceMask:

@@ -2995,6 +2995,7 @@ MonoBehaviour:
   characterInfos:
   - {fileID: 11400000, guid: 0a5f8b9cf72a25e4ca64f91f2fef039a, type: 2}
   - {fileID: 11400000, guid: 30d74108107baae40af1814392cff7ef, type: 2}
+  - {fileID: 11400000, guid: 2b0ef94d5baf4fe4f84a61fdb905fac6, type: 2}
   cardPrefab: {fileID: 7910331434076242529, guid: a4050f58ad7a63249a8e76d159c4997f, type: 3}
   cardsContainer: {fileID: 1155857580}
 --- !u!1 &1918702784
