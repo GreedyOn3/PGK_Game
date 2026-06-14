@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53fdc8089da06184aba297afe61b7192, type: 3}
+  m_Name: Item Pool
+  m_EditorClassIdentifier: Assembly-CSharp::ItemPool
+  choiceRarities:
+  - Name: Common
+    Color: {r: 0.056737266, g: 0.8018868, b: 0.11931605, a: 1}
+    <Weight>k__BackingField: 70
+    Multiplier: 1
+    SpecialItems:
+    - {fileID: 11400000, guid: 28506aab4b3856144aceaf1ca2ec8b68, type: 2}
+  - Name: Uncommon
+    Color: {r: 0.054901935, g: 0.58024454, b: 0.8, a: 1}
+    <Weight>k__BackingField: 10
+    Multiplier: 1.2
+    SpecialItems: []
+  - Name: Rare
+    Color: {r: 0.8, g: 0.054901935, b: 0.6979791, a: 1}
+    <Weight>k__BackingField: 6
+    Multiplier: 1.4
+    SpecialItems: []
+  - Name: Epic
+    Color: {r: 0.85882354, g: 0.09411765, b: 0.12713873, a: 1}
+    <Weight>k__BackingField: 2
+    Multiplier: 1.6
+    SpecialItems: []
+  - Name: Legendary
+    Color: {r: 0.9050032, g: 0.9622642, b: 0.031772893, a: 1}
+    <Weight>k__BackingField: 1.5
+    Multiplier: 2
+    SpecialItems: []
+  allWeapons:
+  - {fileID: 11400000, guid: 1c1c5754b53d2ff43bc86362b9ee5b55, type: 2}
+  - {fileID: 11400000, guid: 79904d54ce938d84f8afedc73f8400b0, type: 2}
+  allPassives:
+  - {fileID: 11400000, guid: 8564f4301f2edc54e9936c8a441f829f, type: 2}
+  - {fileID: 11400000, guid: 9ee08e27045232241b00c9cacfb10d4d, type: 2}
+  - {fileID: 11400000, guid: 18ae3a51c192a034a943ac64f16f3f82, type: 2}
+  - {fileID: 11400000, guid: 251effa543783d843a30aad7fed7a289, type: 2}
+  - {fileID: 11400000, guid: 3329eca1fef306c4fb564b80954bb3e9, type: 2}

@@ -22,7 +22,7 @@ namespace UI
             if (choice.Rarity != null)
             {
                 rarityText.text = choice.Rarity.Name;
-                rarityText.color = choice.Rarity.color;
+                rarityText.color = choice.Rarity.Color;
             }
             else
             {

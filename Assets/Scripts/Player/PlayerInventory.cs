@@ -48,6 +48,8 @@ public class PlayerInventory : MonoBehaviour
 
     public void AddSpecial(SpecialItemInfo specialItemInfo)
     {
+        if (specialItemInfo == null) return;
+
         if(_specials.ContainsKey(specialItemInfo))
         {
             _specials[specialItemInfo].Count++;

@@ -17,7 +17,6 @@ public class FreezeEffect : Effect
 
         if (freezeMaterial != null && _mesh != null)
         {
-            Debug.Log("TEST");
             _previousMaterial = _mesh.material;
             _mesh.material = freezeMaterial;
         }

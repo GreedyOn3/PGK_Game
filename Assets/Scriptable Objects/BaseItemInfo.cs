@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class BaseItemInfo : ScriptableObject
+public abstract class BaseItemInfo : ScriptableObject, IWeighted
 {
     [field: SerializeField] public Sprite Image { get; private set; }
     [field: SerializeField] public string Name { get; private set; }

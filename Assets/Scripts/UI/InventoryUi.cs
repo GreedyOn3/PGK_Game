@@ -68,7 +68,6 @@ namespace UI
 
         public void UpdateSpecialsUi()
         {
-            Debug.Log("TEST");
             Dictionary<SpecialItemInfo, SpecialItem> specials = _player.Inventory.GetSpecialItems();
 
             foreach (Transform child in specialItemsContainer)

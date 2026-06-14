@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class LevelUpSystem : MonoBehaviour
 {
+    public ItemPool itemPool;
     [Header("UI")]
     public LevelUpUi levelUpUI;
-    [Header("Item Pools & Rarities")]
-    public List<WeaponInfo> allWeapons;
-    public List<PassiveItemInfo> allPassives;
-    public List<ChoiceRarity> choiceRarities;
+    //public List<WeaponInfo> allWeapons;
+    //public List<PassiveItemInfo> allPassives;
+    //public List<ChoiceRarity> choiceRarities;
     [Header("Limits")]
     public int choicesCount = 3;
 
@@ -108,7 +108,7 @@ public class LevelUpSystem : MonoBehaviour
 
         if (inv.GetWeapons().Count < _maxWeapons)
         {
-            foreach (WeaponInfo item in allWeapons)
+            foreach (WeaponInfo item in itemPool.GetAllWeapons())
             {
                 if (!inv.HasItem(item))
                 {
@@ -123,7 +123,7 @@ public class LevelUpSystem : MonoBehaviour
 
         if (inv.GetPassives().Count < _maxPassives)
         {
-            foreach (PassiveItemInfo item in allPassives)
+            foreach (PassiveItemInfo item in itemPool.GetAllPassives())
             {
                 if (!inv.HasItem(item))
                 {
@@ -205,7 +205,7 @@ public class LevelUpSystem : MonoBehaviour
     LevelUpChoice GetRandomUpgrade(List<LevelUpChoice> upgrades)
     {
         LevelUpChoice choice = Util.GetRandomWeighted(upgrades);
-        choice.Rarity = GetRandomRarity();
+        choice.Rarity = itemPool.GetRandomRarity(_player.Stats);
 
         // Choosing stat to upgrade
         StatInfo stat = (choice.Type == ChoiceType.UpgradeWeapon) ?
@@ -233,7 +233,7 @@ public class LevelUpSystem : MonoBehaviour
         return choice;
     }
 
-    ChoiceRarity GetRandomRarity()
+    /*ChoiceRarity GetRandomRarity()
     {
         float luck = 1f + (_player.Stats.GetStatModifier(StatType.Luck).value / 100f);
 
@@ -264,7 +264,7 @@ public class LevelUpSystem : MonoBehaviour
         }
 
         return choiceRarities[0];
-    }
+    }*/
 
     T GetRandom<T>(List<T> items)
     {
@@ -282,15 +282,6 @@ public class LevelUpChoice : IWeighted
     public List<StatInfo> Stats = new();
 
     public float Weight => (Item != null) ? Item.Weight : 0f;
-}
-
-[Serializable]
-public class ChoiceRarity : IWeighted
-{
-    public string Name;
-    public Color color;
-    [field: SerializeField] public float Weight { get; set; }
-    public float Multiplier;
 }
 
 public enum ChoiceType
