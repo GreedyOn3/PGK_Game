@@ -4,8 +4,8 @@ public class FreezeEffect : Effect
 {
     public Material freezeMaterial;
     private Movement _movement;
-    private MeshRenderer _mesh;
-    private Material _previousMaterial;
+    private Renderer[] _meshRenderers;
+    private Material[] _previousMaterials;
 
     private void Start()
     {
@@ -13,12 +13,17 @@ public class FreezeEffect : Effect
         if (_movement != null)
             _movement.enabled = false;
 
-        _mesh = GetComponent<MeshRenderer>();
+        _meshRenderers = GetComponentsInChildren<Renderer>();
 
-        if (freezeMaterial != null && _mesh != null)
+        if (freezeMaterial != null && _meshRenderers != null && _meshRenderers.Length > 0)
         {
-            _previousMaterial = _mesh.material;
-            _mesh.material = freezeMaterial;
+            _previousMaterials = new Material[_meshRenderers.Length];
+            for (int i = 0; i < _meshRenderers.Length; i++)
+            {
+                Renderer renderer = _meshRenderers[i];
+                _previousMaterials[i] = renderer.sharedMaterial;
+                renderer.sharedMaterial = freezeMaterial;
+            }
         }
     }
 
@@ -35,7 +40,11 @@ public class FreezeEffect : Effect
         if (_movement != null)
             _movement.enabled = true;
 
-        if (_previousMaterial != null)
-            _mesh.material = _previousMaterial;
+        for (int i = 0; i < _meshRenderers.Length; i++)
+        {
+            Material previous = _previousMaterials[i];
+            if (previous)
+                _meshRenderers[i].sharedMaterial = previous;
+        }
     }
 }
