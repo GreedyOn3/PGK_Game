@@ -23,13 +23,13 @@ MonoBehaviour:
     Value: 0
     IsPercentage: 1
   - Type: 3
-    Value: 0
+    Value: 10
     IsPercentage: 1
   - Type: 4
     Value: 0
     IsPercentage: 1
   - Type: 5
-    Value: 10
+    Value: 0
     IsPercentage: 1
   - Type: 6
     Value: 0
