@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static Unity.Collections.AllocatorManager;
 
 public class LevelMapGenerator : MonoBehaviour
 {
@@ -43,17 +44,27 @@ public class LevelMapGenerator : MonoBehaviour
     Cell currentCell;
 
     Vector2Int lockedDirection;
+    int maxElevation;
+
+    MapObjectSpawner _objectSpawner;
+
+    private void Awake()
+    {
+        _objectSpawner = GetComponent<MapObjectSpawner>();
+    }
 
     void Start()
     {
         GenerateGrid();
         CreateMap();
+        _objectSpawner.Initialize(this);
     }
 
     void GenerateGrid()
     {
         grid = new Cell[mapSize, mapSize];
         currentCell = CreateCell(Random.Range(0, mapSize), Random.Range(0, mapSize), 0);
+        maxElevation = 0;
 
         while (currentCell != null)
         {
@@ -89,6 +100,7 @@ public class LevelMapGenerator : MonoBehaviour
                     CreateBottomBlocks(cell.elevation, block.transform);
             }
         }
+        Physics.SyncTransforms();
     }
 
     void Expand()
@@ -114,6 +126,8 @@ public class LevelMapGenerator : MonoBehaviour
         if (raise)
         {
             currentCell.elevation++;
+            if(currentCell.elevation > maxElevation) 
+                maxElevation = currentCell.elevation;
 
             currentCell.isRamp = true;
             currentCell.rampDirection = direction;
@@ -242,4 +256,6 @@ public class LevelMapGenerator : MonoBehaviour
 
         return Quaternion.Euler(0, 90, 0);
     }
+
+    public int GetMaxElevation() => maxElevation + 1;
 }

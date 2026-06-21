@@ -70,6 +70,8 @@ public class LevelManager : MonoBehaviour
 
     public void GameOver(bool victory)
     {
+        if (!PersistentData.Instance) return;
+
         var persistentData = PersistentData.Instance;
         persistentData.levelStats.victory = victory;
         persistentData.levelStats.survivedTimeMinutes = (int)LevelTimeMinutes;

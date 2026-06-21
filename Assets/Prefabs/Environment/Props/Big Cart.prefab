@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1445988196058213528}
   - component: {fileID: 5636987064653924358}
   - component: {fileID: 7112743652823580516}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: big_cart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5937792882551868118}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Big Cart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
