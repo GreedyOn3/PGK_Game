@@ -235,4 +235,9 @@ public class PlayerMovement : Movement
     public Vector3 GetMoveDir() => moveDir;
     public Vector3 GetHorizontalVelocity() => horizontalVelocity;
     public float GetCurrentSpeed() => horizontalVelocity.magnitude;
+    public void SetVelocity(Vector3 velocity) 
+    {
+        horizontalVelocity = new Vector3(velocity.x, 0f, velocity.z);
+        verticalVelocity = velocity.y;
+    }
 }

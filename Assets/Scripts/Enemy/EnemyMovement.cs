@@ -15,19 +15,21 @@ public class EnemyMovement : Movement
     private Rigidbody _rigidbody;
     private GameObject _player;
     private EnemyAnimation _animation;
+    private BossController _bossController;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _player = GameObject.FindGameObjectWithTag("Player");
         _animation = GetComponent<EnemyAnimation>();
+        _bossController = GetComponent<BossController>();
+        _player = GameObject.FindGameObjectWithTag("Player");
 
         _rigidbody.freezeRotation = true;
     }
 
     private void FixedUpdate()
     {
-        if (_animation.IsAttackPlaying()) return;
+        if (!CanMove()) return;
 
         MoveTowardsPlayer();
         _animation.SetSpeed(movementSpeed);
@@ -63,6 +65,17 @@ public class EnemyMovement : Movement
             return false;
 
         return hit.normal.y < 0.3f;
+    }
+
+    private bool CanMove()
+    {
+        bool canMove = true;
+        if (_bossController)
+            canMove = _bossController.IsAttacking() || _bossController.IsSpawning();
+        else
+            canMove = _animation.IsAttackPlaying();
+
+        return !canMove;
     }
 
     private void OnDrawGizmosSelected()

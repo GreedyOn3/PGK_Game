@@ -2,6 +2,6 @@ public class PlayerHealth : Health
 {
     protected override void OnZeroHealth()
     {
-        LevelManager.Instance.GameOver(false);
+        if(LevelManager.Instance) LevelManager.Instance.GameOver(false);
     }
 }
