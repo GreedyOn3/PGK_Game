@@ -234,6 +234,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: adcae072e84539446b423acef906004b, type: 3}
+--- !u!1001 &248655450
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 199726486286555788, guid: 2ee5280c7b19b3d47bc37bea4604241c, type: 3}
+      propertyPath: m_Name
+      value: Defense PowerUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470690578430691131, guid: 2ee5280c7b19b3d47bc37bea4604241c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -14.529379
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470690578430691131, guid: 2ee5280c7b19b3d47bc37bea4604241c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470690578430691131, guid: 2ee5280c7b19b3d47bc37bea4604241c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 13.570991
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470690578430691131, guid: 2ee5280c7b19b3d47bc37bea4604241c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470690578430691131, guid: 2ee5280c7b19b3d47bc37bea4604241c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470690578430691131, guid: 2ee5280c7b19b3d47bc37bea4604241c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470690578430691131, guid: 2ee5280c7b19b3d47bc37bea4604241c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470690578430691131, guid: 2ee5280c7b19b3d47bc37bea4604241c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470690578430691131, guid: 2ee5280c7b19b3d47bc37bea4604241c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470690578430691131, guid: 2ee5280c7b19b3d47bc37bea4604241c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2ee5280c7b19b3d47bc37bea4604241c, type: 3}
 --- !u!1001 &299907325
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1165,6 +1222,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 963869d3f1b39b942b80fe77d31c9d32, type: 3}
+--- !u!1001 &1500024802
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 199726486286555788, guid: 4e642070e3be2684b90c50154ce0f106, type: 3}
+      propertyPath: m_Name
+      value: Attack Speed PowerUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470690578430691131, guid: 4e642070e3be2684b90c50154ce0f106, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10.475558
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470690578430691131, guid: 4e642070e3be2684b90c50154ce0f106, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470690578430691131, guid: 4e642070e3be2684b90c50154ce0f106, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 12.893874
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470690578430691131, guid: 4e642070e3be2684b90c50154ce0f106, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470690578430691131, guid: 4e642070e3be2684b90c50154ce0f106, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470690578430691131, guid: 4e642070e3be2684b90c50154ce0f106, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470690578430691131, guid: 4e642070e3be2684b90c50154ce0f106, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470690578430691131, guid: 4e642070e3be2684b90c50154ce0f106, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470690578430691131, guid: 4e642070e3be2684b90c50154ce0f106, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470690578430691131, guid: 4e642070e3be2684b90c50154ce0f106, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4e642070e3be2684b90c50154ce0f106, type: 3}
 --- !u!1001 &1696197165
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1713,3 +1827,5 @@ SceneRoots:
   - {fileID: 1443864334}
   - {fileID: 299907325}
   - {fileID: 1817887587}
+  - {fileID: 248655450}
+  - {fileID: 1500024802}

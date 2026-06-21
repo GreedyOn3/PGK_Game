@@ -47,7 +47,6 @@ public class BossAttack : MonoBehaviour
 
     private void ExecuteBossAttack()
     {
-        Debug.Log("Boss attack triggered!");
         if(attackVisuals.Count > 0)
         {
             GameObject randomPrefab = attackVisuals[Random.Range(0, attackVisuals.Count - 1)];
@@ -66,7 +65,7 @@ public class BossAttack : MonoBehaviour
                 if (toPlayer.sqrMagnitude < 0.01f)
                     toPlayer = Random.onUnitSphere;
 
-                player.Health.Remove(attackDamage);
+                player.Health.Remove((int)(attackDamage / (1.0f + player.Stats.GetModifierValue(StatType.Defense) / 100.0f)));
                 player.Movement.SetVelocity(toPlayer * pushForce);
             }
         }

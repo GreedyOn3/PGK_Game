@@ -228,3 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::XpDrop
   obj: {fileID: 2016887137102623746, guid: adcae072e84539446b423acef906004b, type: 3}
+  powerupChance: 0.0075
+  powerUps:
+  - {fileID: 199726486286555788, guid: 4e642070e3be2684b90c50154ce0f106, type: 3}
+  - {fileID: 199726486286555788, guid: 2ee5280c7b19b3d47bc37bea4604241c, type: 3}

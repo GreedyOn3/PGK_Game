@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ public class PlayerStats : MonoBehaviour
 
     private Dictionary<StatType, Stat> _stats = new();
     private Dictionary<StatType, StatModifier> _modifiers = new();
+    private Dictionary<StatType, float> _buffs = new();
 
     private void Awake()
     {
@@ -79,6 +81,30 @@ public class PlayerStats : MonoBehaviour
     {
         if (!_modifiers.TryGetValue(type, out StatModifier mod)) return;
         mod.value += amount;
+    }
+
+    public void AddModifier(StatType type, StatModifier modifier)
+    {
+        if (!_stats.TryGetValue(type, out Stat stat)) return;
+        stat.AddModifier(modifier, true);
+    }
+
+    public void ApplyBuff(StatType type, float amount, float time)
+    {
+        if (_buffs.ContainsKey(type)) return;
+
+        IncreaseModifier(type, amount);
+        _buffs.Add(type, amount);
+        StartCoroutine(RemoveBuffAfterDelay(type, time));
+    }
+
+    private IEnumerator RemoveBuffAfterDelay(StatType type, float time)
+    {
+        yield return new WaitForSeconds(time);
+        if (!_buffs.TryGetValue(type, out float amount))  yield return null;
+
+        IncreaseModifier(type, -amount);
+        _buffs.Remove(type);
     }
 }
 

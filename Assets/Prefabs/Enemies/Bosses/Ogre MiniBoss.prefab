@@ -1354,8 +1354,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f3c69901315ea438cafe2be2581bcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  value: 20
-  maxValue: 20
+  value: 500
+  maxValue: 500
   damagePopupPrefab: {fileID: 3159081635972674440, guid: c1daf7da3a431714282e375ce6325eda, type: 3}
   damagePopupSpawnOffset: {x: 0, y: 0.5, z: 0}
   invincible: 0

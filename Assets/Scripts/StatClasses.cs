@@ -49,6 +49,7 @@ public class Stat
         float finalValue = baseValue;
         float percentageSum = 0;
 
+        modifiers.RemoveAll((mod) => mod.until > 0f && Time.time >= mod.until);
         foreach (StatModifier mod in modifiers)
         {
             if (!mod.isPercentage)
@@ -79,11 +80,13 @@ public class StatModifier
 {
     public float value;
     public bool isPercentage;
+    public float until;
 
-    public StatModifier(float value, bool isPercentage)
+    public StatModifier(float value, bool isPercentage, float until = 0f)
     {
         this.value = value;
         this.isPercentage = isPercentage;
+        this.until = until;
     }
 }
 

@@ -7,7 +7,6 @@ using UnityEngine;
 public class PlayerInventory : MonoBehaviour
 {
     [SerializeField] private WeaponInfo startingWeapon;
-    [SerializeField] private SpecialItemInfo startingSpecialItem; // FOR TESTING
 
     [SerializeField] private int weaponCapacity = 6;
     [SerializeField] private int passivesCapacity = 6;
@@ -25,7 +24,6 @@ public class PlayerInventory : MonoBehaviour
     {
         _stats = GetComponent<PlayerStats>();
         AddWeapon(startingWeapon);
-        AddSpecial(startingSpecialItem);
     }
 
     public void AddWeapon(WeaponInfo weaponInfo)
