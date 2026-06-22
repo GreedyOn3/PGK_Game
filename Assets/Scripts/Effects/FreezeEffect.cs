@@ -20,6 +20,12 @@ public class FreezeEffect : Effect
             _previousMaterials = new Material[_meshRenderers.Length];
             for (int i = 0; i < _meshRenderers.Length; i++)
             {
+                if (_meshRenderers[i].GetComponent<ParticleSystem>() != null)
+                {
+                    _meshRenderers[i] = null;
+                    continue;
+                }
+
                 Renderer renderer = _meshRenderers[i];
                 _previousMaterials[i] = renderer.sharedMaterial;
                 renderer.sharedMaterial = freezeMaterial;
@@ -42,6 +48,8 @@ public class FreezeEffect : Effect
 
         for (int i = 0; i < _meshRenderers.Length; i++)
         {
+            if (_meshRenderers[i] == null) continue;
+
             Material previous = _previousMaterials[i];
             if (previous)
                 _meshRenderers[i].sharedMaterial = previous;

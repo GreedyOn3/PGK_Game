@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 800d93aa1818a5c49aa27245fe847052, type: 3}
-  m_Name: TestSpecialItem
+  m_Name: Better Clover
   m_EditorClassIdentifier: Assembly-CSharp::SpecialItemInfo
-  <Image>k__BackingField: {fileID: 0}
-  <Name>k__BackingField: Test Item
-  <Description>k__BackingField: Test
-  <Weight>k__BackingField: 0
+  <Image>k__BackingField: {fileID: 21300000, guid: 742c8739c01a302408b84870ae9c88e4, type: 3}
+  <Name>k__BackingField: Better Clover
+  <Description>k__BackingField: Luck +25%
+  <Weight>k__BackingField: 100
   <ItemPrefab>k__BackingField: {fileID: 618061849323173448, guid: c00b53fc230ecae4a9d9288fa6aa2c86, type: 3}

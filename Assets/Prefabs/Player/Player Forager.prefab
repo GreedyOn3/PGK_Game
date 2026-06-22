@@ -192,6 +192,10 @@ PrefabInstance:
       value: Player Forager
       objectReference: {fileID: 0}
     - target: {fileID: 9134130243309847553, guid: eecca3e02d7aa5443b34cffdc368ec19, type: 3}
+      propertyPath: resourceSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 89e9bf3abfeb7d94a808649b328bd507, type: 3}
+    - target: {fileID: 9134130243309847553, guid: eecca3e02d7aa5443b34cffdc368ec19, type: 3}
       propertyPath: resourceMaterial
       value: 
       objectReference: {fileID: 2100000, guid: ebfa1c413b300bc42ac60cc75cdefc72, type: 2}

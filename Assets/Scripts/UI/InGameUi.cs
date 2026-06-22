@@ -17,12 +17,16 @@ namespace UI
         [SerializeField] private TextMeshProUGUI timeText;
         [SerializeField] private GameObject pauseMenu;
 
+        [SerializeField] private TextMeshProUGUI resourcesText;
+        [SerializeField] private Image resourceImage;
+
         private PlayerReferences _player;
 
         private void Start()
         {
             _player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerReferences>();
             Assert.IsNotNull(_player, "Player object should have PlayerReferences component.");
+            if (resourceImage) resourceImage.sprite = _player.ResourceSprite;
         }
 
         private void Update()
@@ -38,6 +42,8 @@ namespace UI
             var levelTimeMinutes = (int)levelManager.LevelTimeMinutes;
             var levelTimeSeconds = (int)levelManager.LevelTimeSeconds;
             timeText.text = Util.FormatLevelTime(levelTimeMinutes, levelTimeSeconds);
+
+            resourcesText.text = _player.Stats.resourceGathered.ToString();
         }
 
         private void UpdatePlayerStatsDisplay()

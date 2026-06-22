@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8906196591599035171}
   - component: {fileID: 8706840182155104999}
   m_Layer: 0
-  m_Name: TestSpecialItem
+  m_Name: Better Clover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acae2f22e84cf9b418274ba6e4c700d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TestSpecialItem
-  amount: 100
+  amount: 25

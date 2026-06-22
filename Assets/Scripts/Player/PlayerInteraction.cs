@@ -28,7 +28,7 @@ public class PlayerInteraction : MonoBehaviour
             if (_hitInteractable != null) return;
 
             InteractableBase interactable = hit.transform.GetComponent<InteractableBase>();
-            if (interactable)
+            if (interactable && interactable.InteractionEnabled)
             {
                 _hitInteractable = interactable;
                 _hitInteractable.OnHoverBegin();
@@ -43,7 +43,7 @@ public class PlayerInteraction : MonoBehaviour
 
     void OnInteract()
     {
-        if (_hitInteractable != null)
+        if (_hitInteractable != null && _hitInteractable.InteractionEnabled)
             _hitInteractable.OnInteract(_playerReferences);
     }
 }

@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerReferences : MonoBehaviour
 {
     [SerializeField] private Material resourceMaterial;
+    [SerializeField] private Sprite resourceSprite;
     [SerializeField] private PlayerHealth health;
     [SerializeField] private PlayerController controller;
     [SerializeField] private PlayerMovement movement;
@@ -20,4 +21,5 @@ public class PlayerReferences : MonoBehaviour
     public PlayerCamera Camera => playerCamera;
 
     public Material ResourceMaterial => resourceMaterial;
+    public Sprite ResourceSprite => resourceSprite;
 }

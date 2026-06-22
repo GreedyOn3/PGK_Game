@@ -93,6 +93,10 @@ PrefabInstance:
       value: Player Miner
       objectReference: {fileID: 0}
     - target: {fileID: 9134130243309847553, guid: eecca3e02d7aa5443b34cffdc368ec19, type: 3}
+      propertyPath: resourceSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5c40f90a2e188244c99a580cb9921f75, type: 3}
+    - target: {fileID: 9134130243309847553, guid: eecca3e02d7aa5443b34cffdc368ec19, type: 3}
       propertyPath: resourceMaterial
       value: 
       objectReference: {fileID: 2100000, guid: af3cc80fcb0083240b2f6727e8af7f7e, type: 2}
