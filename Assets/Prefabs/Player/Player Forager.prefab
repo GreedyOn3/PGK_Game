@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: stats
       value: 
       objectReference: {fileID: 5885992735965070451}
+    - target: {fileID: 5469751036130381845, guid: 9f524694282b73240900c2e9deaff05e, type: 3}
+      propertyPath: resourceType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 9138446893861942939, guid: 9f524694282b73240900c2e9deaff05e, type: 3}
       propertyPath: m_Name
       value: Forager
@@ -187,6 +191,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Forager
       objectReference: {fileID: 0}
+    - target: {fileID: 9134130243309847553, guid: eecca3e02d7aa5443b34cffdc368ec19, type: 3}
+      propertyPath: resourceMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: ebfa1c413b300bc42ac60cc75cdefc72, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

@@ -25,8 +25,8 @@ public class BossController : MonoBehaviour
     public float predictionWeight = 0.8f;
     public LayerMask playerLayer;
 
-    [SerializeField]private bool _isAttacking = false;
-    [SerializeField]private bool _isSpawning = true;
+    private bool _isAttacking = false;
+    private bool _isSpawning = true;
     private float _lastAttackTime = 0f;
 
     private PlayerReferences _player;
@@ -55,16 +55,11 @@ public class BossController : MonoBehaviour
     {
         _isAttacking = true;
 
-        // ==============================================================================
-        // PHASE 1: START (Anticipation)
-        // ==============================================================================
+        // PHASE 1: START
         if (bossAnimator) bossAnimator.SetTrigger("AttackStart");
         yield return new WaitForSeconds(windUpTime);
 
-
-        // ==============================================================================
-        // PHASE 2: HOLD (Telegraphing)
-        // ==============================================================================
+        // PHASE 2: HOLD
         Vector3 targetPos = GetPredictedPlayerPosition();
 
         if (attackPrefab != null)
@@ -75,12 +70,8 @@ public class BossController : MonoBehaviour
         }
         yield return new WaitForSeconds(telegraphDuration);
 
-
-        // ==============================================================================
-        // PHASE 3: END (Execution & Recovery)
-        // ==============================================================================
+        // PHASE 3: END
         if (bossAnimator) bossAnimator.SetTrigger("AttackExecute");
-        //ExecuteDamage(targetPos);
         yield return new WaitForSeconds(recoveryTime);
 
         _lastAttackTime = Time.time;
@@ -112,9 +103,6 @@ public class BossController : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position + transform.forward * 5f, attackRadius);
-
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
     }

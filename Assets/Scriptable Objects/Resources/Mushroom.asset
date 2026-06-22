@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ce77d67caf874d4f9a1f9d558c6b1f1, type: 3}
-  m_Name: Stone
+  m_Name: Mushroom
   m_EditorClassIdentifier: Assembly-CSharp::ResourceData
-  resourceType: 1
-  resourceName: Stone
+  resourceType: 2
+  resourceName: Mushroom
   isSpecial: 0

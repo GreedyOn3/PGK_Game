@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ce77d67caf874d4f9a1f9d558c6b1f1, type: 3}
   m_Name: Crystal
   m_EditorClassIdentifier: Assembly-CSharp::ResourceData
+  resourceType: 1
   resourceName: Crystals
   isSpecial: 1
-  icon: {fileID: 0}

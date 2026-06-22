@@ -15,7 +15,7 @@ public class BarrelInteractable : InteractableBase
     {
         if (Random.value < resourceChance)
         {
-            PlayResourceParticles();
+            PlayResourceParticles(player);
             player.Stats.resourceGathered += resourceAmount;
         }
         else
@@ -32,12 +32,12 @@ public class BarrelInteractable : InteractableBase
         Destroy(gameObject);
     }
 
-    void PlayResourceParticles()
+    void PlayResourceParticles(PlayerReferences player)
     {
         ParticleSystem particles = Instantiate(resourceParticles, transform.position, transform.rotation);
-        /*ParticleSystem.MainModule main = particles.main;
-        ParticleSystem.ShapeModule shape = particles.shape;
-        ParticleSystemRenderer renderer = particles.GetComponent<ParticleSystemRenderer>();*/
+        ParticleSystemRenderer renderer = particles.GetComponent<ParticleSystemRenderer>();
+
+        if (player.ResourceMaterial) renderer.material = player.ResourceMaterial;
 
         particles.Play();
     }

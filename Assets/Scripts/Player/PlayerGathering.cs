@@ -5,6 +5,7 @@ public class PlayerGathering : MonoBehaviour
 {
     public PlayerStats stats;
     [Header("Settings")]
+    public GatherResourceType resourceType;
     public float checkRadius = 0.25f;
     public float checkDistance = 1f;
     public int maxFound = 4;
@@ -27,7 +28,7 @@ public class PlayerGathering : MonoBehaviour
         for (int i = 0; i < amount; i++)
         {
             ResourceObject result = checkResults[i].GetComponent<ResourceObject>();
-            if (result != null && result.data)
+            if (result != null && result.data && result.data.resourceType == resourceType)
                 resources.Add(result);
         }
 

@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEditor.PlayerSettings;
 
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private GameObject playerCameraPrefab;
+    [SerializeField] private MapObjectSpawner objectSpawner;
 
     private LevelInfo _levelInfo;
     private PlayerReferences _player;
@@ -25,14 +27,19 @@ public class LevelManager : MonoBehaviour
             Instance = this;
         }
 
-        var persistentData = PersistentData.Instance;
+        PersistentData persistentData = PersistentData.Instance;
         persistentData.levelStats = new LevelStats();
 
         _levelInfo = persistentData.selectedLevel;
         SceneManager.LoadScene(_levelInfo.LevelScene, LoadSceneMode.Additive);
-        var playerPrefab = persistentData.selectedCharacter.Prefab;
-        var player = Instantiate(playerPrefab);
-        var playerCamera = Instantiate(playerCameraPrefab);
+        GameObject playerPrefab = persistentData.selectedCharacter.Prefab;
+
+        Vector3 spawnPos = Vector3.zero;
+        if(objectSpawner)
+            objectSpawner.TryGetValidRandomPosition(playerPrefab, out spawnPos, out Vector3 _);
+
+        GameObject player = Instantiate(playerPrefab, spawnPos, Quaternion.identity);
+        GameObject playerCamera = Instantiate(playerCameraPrefab);
         player.GetComponent<PlayerCamera>().playerCamera = playerCamera.transform;
         _player = player.GetComponent<PlayerReferences>();
 

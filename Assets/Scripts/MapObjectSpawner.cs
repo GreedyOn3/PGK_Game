@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 [RequireComponent(typeof(LevelMapGenerator))]
 public class MapObjectSpawner : MonoBehaviour
@@ -30,14 +31,8 @@ public class MapObjectSpawner : MonoBehaviour
         {
             Vector3 pos = Vector3.zero;
             Vector3 normal = Vector3.up;
-            bool isBlocked = false;
 
-            do { 
-                TryGetRandomPosition(out pos, out normal); 
-                isBlocked = CheckCollision(pos, barrelPrefab); 
-            } while (isBlocked);
-
-            if (pos != Vector3.zero)
+            if (TryGetValidRandomPosition(barrelPrefab, out pos, out normal) && pos != Vector3.zero)
             {
                 float yOffset = 0f;
                 if (barrelPrefab.TryGetComponent<BoxCollider>(out BoxCollider col))
@@ -70,13 +65,36 @@ public class MapObjectSpawner : MonoBehaviour
 
     public bool CheckCollision(Vector3 position, GameObject prefab)
     {
-        if (prefab.TryGetComponent<BoxCollider>(out BoxCollider prefabCollider))
+        if (prefab.TryGetComponent<BoxCollider>(out BoxCollider boxCollider))
         {
-            Vector3 extents = prefabCollider.size / 2f;
+            Vector3 extents = boxCollider.size / 2f;
             extents = Vector3.Scale(extents, prefab.transform.localScale);
             return Physics.CheckBox(position, extents, Quaternion.identity, obstacleMask);
+        } 
+        else if (prefab.TryGetComponent<CapsuleCollider>(out CapsuleCollider capsuleCollider))
+        {
+            float sphereOffset = (capsuleCollider.height / 2f) - capsuleCollider.radius;
+
+            Vector3 point1 = position + Vector3.up * sphereOffset;
+            Vector3 point2 = position + Vector3.down * sphereOffset;
+
+            return Physics.CheckCapsule(point1, point2, capsuleCollider.radius, obstacleMask);
         }
         return false;
+    }
+
+    public bool TryGetValidRandomPosition(GameObject prefab, out Vector3 hitPosition, out Vector3 hitNormal)
+    {
+        int attempts = 0;
+        bool isBlocked = false;
+
+        do
+        {
+            TryGetRandomPosition(out hitPosition, out hitNormal);
+            isBlocked = CheckCollision(hitPosition, prefab);
+        } while (isBlocked && attempts < 15);
+
+        return !isBlocked;
     }
 
     private void OnDrawGizmosSelected()

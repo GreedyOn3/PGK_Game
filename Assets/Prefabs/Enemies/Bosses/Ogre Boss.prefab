@@ -1269,7 +1269,7 @@ GameObject:
   - component: {fileID: 7948191192099794937}
   - component: {fileID: 1252881359258015691}
   m_Layer: 6
-  m_Name: Ogre MiniBoss
+  m_Name: Ogre Boss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1285,7 +1285,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.04, y: 8.47, z: 25.686863}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2098167461599173207}
@@ -1353,8 +1353,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f3c69901315ea438cafe2be2581bcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  value: 500
-  maxValue: 500
+  value: 1000
+  maxValue: 1000
   damagePopupPrefab: {fileID: 3159081635972674440, guid: c1daf7da3a431714282e375ce6325eda, type: 3}
   damagePopupSpawnOffset: {x: 0, y: 0.5, z: 0}
   invincible: 0
@@ -1383,11 +1383,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36983547a6f6bc84e915a0f83d5e0a7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  movementSpeed: 5
+  movementSpeed: 4
   climbSpeed: 2
-  wallDetectionDistance: 2.5
-  wallDetectionRadius: 1
-  wallCheckHeight: -1.75
+  wallDetectionDistance: 5
+  wallDetectionRadius: 2
+  wallCheckHeight: -3.5
   wallClimbMask:
     serializedVersion: 2
     m_Bits: 385
@@ -1426,9 +1426,9 @@ MonoBehaviour:
   attackRadius: 5
   attackDamage: 15
   detectionRadius: 30
-  attackCooldown: 1.5
+  attackCooldown: 1
   windUpTime: 0.5
-  telegraphDuration: 2
+  telegraphDuration: 1.5
   recoveryTime: 0.5
   predictionWeight: 0.8
   playerLayer:

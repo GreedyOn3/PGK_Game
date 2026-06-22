@@ -51,7 +51,7 @@ MonoBehaviour:
   resourceAmount: 5
   xpOrbPrefab: {fileID: 2016887137102623746, guid: adcae072e84539446b423acef906004b, type: 3}
   xpOrbsAmount: 5
-  pushForce: 2.5
+  pushForce: 5
 --- !u!65 &6115986564441961229
 BoxCollider:
   m_ObjectHideFlags: 0

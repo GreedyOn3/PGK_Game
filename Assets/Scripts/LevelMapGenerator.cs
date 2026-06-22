@@ -7,10 +7,13 @@ public class LevelMapGenerator : MonoBehaviour
     [Header("Map")]
     public int mapSize = 50;
     public List<DecorationInfo> possibleDecorations;
+    public List<DecorationInfo> possibleResources;
     [Range(0f, 1f)]
     public float elevationChance = 0.075f;
     [Range(0f, 1f)]
     public float decorationChance = 0.05f;
+    [Range(0f, 1f)]
+    public float resourceChance = 0.05f;
 
     [Header("Spacing")]
     public float horizontalSpacing = 30f;
@@ -57,6 +60,7 @@ public class LevelMapGenerator : MonoBehaviour
     {
         GenerateGrid();
         CreateMap();
+        CreateBoundaries();
         _objectSpawner.Initialize(this);
     }
 
@@ -92,7 +96,10 @@ public class LevelMapGenerator : MonoBehaviour
                 else
                 {
                     block = Instantiate(blockPrefab, pos, Quaternion.identity, cellParent);
-                    if (Random.value < decorationChance) SpawnDecoration(cellParent);
+                    if (Random.value < decorationChance)
+                        SpawnDecoration(possibleDecorations, cellParent);
+                    else if (Random.value < resourceChance)
+                        SpawnDecoration(possibleResources, cellParent);
                 }
                 block.transform.localScale = new Vector3(horizontalSpacing / 2f, verticalSpacing / 2f, horizontalSpacing / 2f);
 
@@ -101,6 +108,34 @@ public class LevelMapGenerator : MonoBehaviour
             }
         }
         Physics.SyncTransforms();
+    }
+
+    void CreateBoundaries()
+    {
+        Transform boundaryParent = new GameObject("Boundaries").transform;
+        boundaryParent.SetParent(transform);
+        int wallHeight = GetMaxElevation() + 2;
+
+        float baseScaleX = horizontalSpacing / 2f;
+        float baseScaleY = verticalSpacing / 2f;
+        float baseScaleZ = horizontalSpacing / 2f;
+
+        float centerXZ = (mapSize - 1) * horizontalSpacing / 2f;
+        float centerY = (wallHeight - 1) * verticalSpacing / 2f;
+
+        Vector3 horizontalWallScale = new Vector3((mapSize + 2) * baseScaleX, wallHeight * baseScaleY, baseScaleZ);
+        Vector3 verticalWallScale = new Vector3(baseScaleX, wallHeight * baseScaleY, (mapSize + 2) * baseScaleZ);
+
+        SpawnWall(new Vector3(centerXZ, centerY, mapSize * horizontalSpacing), horizontalWallScale, boundaryParent);
+        SpawnWall(new Vector3(centerXZ, centerY, -1 * horizontalSpacing), horizontalWallScale, boundaryParent);
+        SpawnWall(new Vector3(mapSize * horizontalSpacing, centerY, centerXZ), verticalWallScale, boundaryParent);
+        SpawnWall(new Vector3(-1 * horizontalSpacing, centerY, centerXZ), verticalWallScale, boundaryParent);
+    }
+
+    void SpawnWall(Vector3 position, Vector3 scale, Transform parent)
+    {
+        GameObject wall = Instantiate(bottomBlockPrefab, position, Quaternion.identity, parent);
+        wall.transform.localScale = scale;
     }
 
     void Expand()
@@ -140,11 +175,11 @@ public class LevelMapGenerator : MonoBehaviour
         }
     }
 
-    void SpawnDecoration(Transform cell)
+    void SpawnDecoration(List<DecorationInfo> decorations, Transform cell)
     {
-        if (possibleDecorations == null || possibleDecorations.Count == 0) return;
+        if (decorations == null || decorations.Count == 0) return;
 
-        DecorationInfo decoration = Util.GetRandomWeighted(possibleDecorations);
+        DecorationInfo decoration = Util.GetRandomWeighted(decorations);
 
         float x = horizontalSpacing / 4f;
         float y = verticalSpacing / 2f;

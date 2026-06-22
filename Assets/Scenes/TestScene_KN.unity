@@ -686,6 +686,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Miner
       objectReference: {fileID: 0}
+    - target: {fileID: 7892119312954299595, guid: 6b29515b19035d049b28f85a8ac4e1d8, type: 3}
+      propertyPath: resourceMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: af3cc80fcb0083240b2f6727e8af7f7e, type: 2}
     - target: {fileID: 8572047476061519751, guid: 6b29515b19035d049b28f85a8ac4e1d8, type: 3}
       propertyPath: groundedGraceTime
       value: 0.1
@@ -1723,14 +1727,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelMapGenerator
   mapSize: 20
   possibleDecorations:
-  - {fileID: 11400000, guid: 732a81bd656961d43beb71b019002488, type: 2}
   - {fileID: 11400000, guid: 81979f8c3dacd364fb8627c868c29689, type: 2}
   - {fileID: 11400000, guid: b60a3367bb68e4d4e91dab07ee3c7366, type: 2}
   - {fileID: 11400000, guid: 25afd44bd59227542b0a3fbb1f3cd297, type: 2}
   - {fileID: 11400000, guid: 6ebee5c5e5032b34b8263d4f572d9f95, type: 2}
   - {fileID: 11400000, guid: 1a8483fc71eb64449846839813f51707, type: 2}
+  possibleResources:
+  - {fileID: 11400000, guid: 2bfbe2cd7698613489bdb9defd17b751, type: 2}
+  - {fileID: 11400000, guid: 0d4d6ee5d02ba8040852d32531fc7eb0, type: 2}
+  - {fileID: 11400000, guid: 863b05ea9ff85d44cadd7646a1c3bb06, type: 2}
+  - {fileID: 11400000, guid: 732a81bd656961d43beb71b019002488, type: 2}
+  - {fileID: 11400000, guid: 2c6757ec1e6616f47a40933364a99cfb, type: 2}
+  - {fileID: 11400000, guid: 97193c5315af2f24c997db5072789b97, type: 2}
+  - {fileID: 11400000, guid: 3ef6eb0bb9eef584db91271e1529b2de, type: 2}
+  - {fileID: 11400000, guid: fdd13024141a768499a3a224cbe2b2d7, type: 2}
+  - {fileID: 11400000, guid: 2d7fba8c87250c546a9cbab41a6e8055, type: 2}
   elevationChance: 0.07
   decorationChance: 0.15
+  resourceChance: 0.12
   horizontalSpacing: 6
   verticalSpacing: 5
   blockPrefab: {fileID: 4130946280995169567, guid: f9ca859779762d548ba37ef120d65b0a, type: 3}
@@ -1768,7 +1782,7 @@ MonoBehaviour:
     m_Bits: 256
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 45184
   barrelPrefab: {fileID: 4299253557601178441, guid: 3c6f4eb5d0d93c146901826b6703cad9, type: 3}
   barrelAmount: 30
 --- !u!1 &1414238760
@@ -1819,8 +1833,6 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
-  _isAttacking: 0
-  _isSpawning: 1
 --- !u!65 &1414238762
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2829,7 +2841,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5454540299728176351, guid: d8635fce6c767c143a149fc4c6bf740c, type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 16383
+      value: 49151
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

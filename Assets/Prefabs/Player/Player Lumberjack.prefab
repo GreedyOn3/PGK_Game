@@ -84,6 +84,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Lumberjack
       objectReference: {fileID: 0}
+    - target: {fileID: 9134130243309847553, guid: eecca3e02d7aa5443b34cffdc368ec19, type: 3}
+      propertyPath: resourceMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 2927d70025cb17c4e995471d37a95edb, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
