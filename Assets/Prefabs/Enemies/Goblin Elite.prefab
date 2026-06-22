@@ -3450,7 +3450,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7704220916404606633, guid: a71fd8f97988146479a87bb9e40f9400, type: 3}
       propertyPath: wallCheckHeight
-      value: -1.4
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: -7704220916404606633, guid: a71fd8f97988146479a87bb9e40f9400, type: 3}
       propertyPath: wallDetectionRadius

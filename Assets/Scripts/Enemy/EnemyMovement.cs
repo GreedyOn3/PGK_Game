@@ -10,6 +10,7 @@ public class EnemyMovement : Movement
     [SerializeField] private float wallDetectionDistance = 0.75f;
     [SerializeField] private float wallDetectionRadius = 0.3f;
     [SerializeField] private float wallCheckHeight = -0.75f;
+    [SerializeField] private float minWallAngle = 80f;
     [SerializeField] private LayerMask wallClimbMask;
 
     private Rigidbody _rigidbody;
@@ -29,10 +30,8 @@ public class EnemyMovement : Movement
 
     private void FixedUpdate()
     {
-        if (!CanMove()) return;
-
         MoveTowardsPlayer();
-        _animation.SetSpeed(movementSpeed);
+        _animation.SetSpeed(_rigidbody.linearVelocity.magnitude);
     }
 
     private void MoveTowardsPlayer()
@@ -54,7 +53,7 @@ public class EnemyMovement : Movement
             velocity.y = climbSpeed;
         }
 
-        _rigidbody.linearVelocity = velocity;
+        if(CanMove()) _rigidbody.linearVelocity = velocity;
         _rigidbody.MoveRotation(Quaternion.LookRotation(direction));
     }
 
@@ -64,7 +63,18 @@ public class EnemyMovement : Movement
         if (!Physics.SphereCast(origin, wallDetectionRadius, transform.forward, out RaycastHit hit, wallDetectionDistance, wallClimbMask))
             return false;
 
-        return hit.normal.y < 0.3f;
+        Vector3 directionToHit = (hit.point - origin).normalized;
+        float rayDistance = Vector3.Distance(origin, hit.point) + 0.1f;
+        Vector3 actualNormal = hit.normal;
+
+        if (Physics.Raycast(origin, directionToHit, out RaycastHit rayHit, rayDistance, wallClimbMask))
+            actualNormal = rayHit.normal;
+
+        float surfaceAngle = Vector3.Angle(actualNormal, Vector3.up);
+        if (surfaceAngle < minWallAngle)
+            return false;
+
+        return true;
     }
 
     private bool CanMove()
@@ -77,6 +87,9 @@ public class EnemyMovement : Movement
 
         return !canMove;
     }
+
+    public float GetMoveSpeed() => movementSpeed;
+    public void SetMoveSpeed(float speed) => movementSpeed = speed;
 
     private void OnDrawGizmosSelected()
     {

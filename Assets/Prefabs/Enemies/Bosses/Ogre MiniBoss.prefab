@@ -1385,9 +1385,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   movementSpeed: 5
   climbSpeed: 2
-  wallDetectionDistance: 2.5
+  wallDetectionDistance: 1
   wallDetectionRadius: 1
-  wallCheckHeight: -1.75
+  wallCheckHeight: -1.5
+  minWallAngle: 80
   wallClimbMask:
     serializedVersion: 2
     m_Bits: 45441

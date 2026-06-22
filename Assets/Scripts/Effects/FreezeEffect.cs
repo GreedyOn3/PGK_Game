@@ -3,15 +3,20 @@ using UnityEngine;
 public class FreezeEffect : Effect
 {
     public Material freezeMaterial;
-    private Movement _movement;
+    private EnemyMovement _movement;
     private Renderer[] _meshRenderers;
     private Material[] _previousMaterials;
 
+    private float _prevSpeed;
+
     private void Start()
     {
-        _movement = GetComponent<Movement>();
+        _movement = GetComponent<EnemyMovement>();
         if (_movement != null)
-            _movement.enabled = false;
+        {
+            _prevSpeed = _movement.GetMoveSpeed();
+            _movement.SetMoveSpeed(_prevSpeed * 0.5f);
+        }
 
         _meshRenderers = GetComponentsInChildren<Renderer>();
 
@@ -37,14 +42,14 @@ public class FreezeEffect : Effect
     {
         base.FixedUpdate();
 
-        if (_movement != null)
-            _movement.enabled = false;
+        /*if (_movement != null)
+            _movement.enabled = false;*/
     }
 
     private void OnDestroy()
     {
         if (_movement != null)
-            _movement.enabled = true;
+            _movement.SetMoveSpeed(_prevSpeed);
 
         for (int i = 0; i < _meshRenderers.Length; i++)
         {
