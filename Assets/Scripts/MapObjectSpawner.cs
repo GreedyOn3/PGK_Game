@@ -1,7 +1,4 @@
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 [RequireComponent(typeof(LevelMapGenerator))]
 public class MapObjectSpawner : MonoBehaviour
@@ -25,6 +22,13 @@ public class MapObjectSpawner : MonoBehaviour
         float posXZ = (width - _mapGenerator.horizontalSpacing) / 2f;
 
         _mapBounds = new Bounds(new Vector3(posXZ, height / 2f, posXZ), new Vector3(width, height, width));
+
+        LevelManager levelManager = LevelManager.Instance;
+        if (levelManager && TryGetValidRandomPosition(PersistentData.Instance.selectedCharacter.Prefab, out Vector3 playerPos, out Vector3 _))
+        {
+            levelManager.TeleportPlayer(playerPos);
+            Debug.Log("TEST! " + playerPos);
+        }
 
         if (!barrelPrefab) return;
         for(int i = 0; i < barrelAmount; i++)

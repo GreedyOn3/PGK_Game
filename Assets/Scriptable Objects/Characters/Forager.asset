@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 546a924647006834e89a79cbd8e02c14, type: 3}
   m_Name: Forager
   m_EditorClassIdentifier: Assembly-CSharp::CharacterInfo
-  <Image>k__BackingField: {fileID: 21300000, guid: 079d2ae439786af4688f611c1ae6c9d7, type: 3}
+  <Image>k__BackingField: {fileID: 21300000, guid: 57aab29604d26a543a95e0992887a710, type: 3}
   <CharacterName>k__BackingField: Forager
   <Description>k__BackingField: 
   <Prefab>k__BackingField: {fileID: 7412095148770312280, guid: cb5eacb5fdd7a9f47818300d636d82a2, type: 3}

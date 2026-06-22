@@ -51,6 +51,7 @@ public class PlayerInventory : MonoBehaviour
         if(_specials.ContainsKey(specialItemInfo))
         {
             _specials[specialItemInfo].Count++;
+            _specials[specialItemInfo].OnAdd();
         }
         else
         {
@@ -59,6 +60,7 @@ public class PlayerInventory : MonoBehaviour
             special.Init(GetComponent<PlayerReferences>());
 
             _specials.Add(specialItemInfo, special);
+            special.OnAdd();
         }
 
         OnSpecialsChange?.Invoke();

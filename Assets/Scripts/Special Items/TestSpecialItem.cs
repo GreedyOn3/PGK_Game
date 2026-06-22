@@ -4,7 +4,7 @@ public class TestSpecialItem : SpecialItem
 {
     public int amount = 100;
 
-    void Start()
+    public override void OnAdd()
     {
         _player.Stats.IncreaseModifier(StatType.Luck, amount);
     }

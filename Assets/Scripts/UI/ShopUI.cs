@@ -17,7 +17,7 @@ public class ShopUI : MonoBehaviour
     {
         if (Instance == null)
             Instance = this;
-        else
+        else if(Instance != this)
             Destroy(gameObject);
 
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerReferences>();

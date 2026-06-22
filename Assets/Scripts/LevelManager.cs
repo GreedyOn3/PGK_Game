@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static UnityEditor.PlayerSettings;
 
 public class LevelManager : MonoBehaviour
 {
@@ -19,13 +18,9 @@ public class LevelManager : MonoBehaviour
     private void Awake()
     {
         if (Instance != null && Instance != this)
-        {
             Destroy(gameObject);
-        }
         else
-        {
             Instance = this;
-        }
 
         PersistentData persistentData = PersistentData.Instance;
         persistentData.levelStats = new LevelStats();
@@ -34,11 +29,11 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(_levelInfo.LevelScene, LoadSceneMode.Additive);
         GameObject playerPrefab = persistentData.selectedCharacter.Prefab;
 
-        Vector3 spawnPos = Vector3.zero;
+        /*Vector3 spawnPos = Vector3.zero;
         if(objectSpawner)
-            objectSpawner.TryGetValidRandomPosition(playerPrefab, out spawnPos, out Vector3 _);
+            objectSpawner.TryGetValidRandomPosition(playerPrefab, out spawnPos, out Vector3 _);*/
 
-        GameObject player = Instantiate(playerPrefab, spawnPos, Quaternion.identity);
+        GameObject player = Instantiate(playerPrefab);
         GameObject playerCamera = Instantiate(playerCameraPrefab);
         player.GetComponent<PlayerCamera>().playerCamera = playerCamera.transform;
         _player = player.GetComponent<PlayerReferences>();
@@ -58,9 +53,12 @@ public class LevelManager : MonoBehaviour
         LevelTimeSeconds += Time.deltaTime;
 
         if (LevelTimeSeconds > _levelInfo.TimeLimitMinutes * 60.0f)
-        {
             GameOver(true);
-        }
+    }
+
+    public void TeleportPlayer(Vector3 pos)
+    {
+        _player.GetComponent<Rigidbody>().position = pos;
     }
 
     public void PauseLevel()

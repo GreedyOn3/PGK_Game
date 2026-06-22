@@ -11,4 +11,6 @@ public class SpecialItem : MonoBehaviour
         _player = player;
         Count = 1;
     }
+
+    public virtual void OnAdd() { }
 }

@@ -51,13 +51,10 @@ public class LevelMapGenerator : MonoBehaviour
 
     MapObjectSpawner _objectSpawner;
 
-    private void Awake()
+    void Awake()
     {
         _objectSpawner = GetComponent<MapObjectSpawner>();
-    }
 
-    void Start()
-    {
         GenerateGrid();
         CreateMap();
         CreateBoundaries();
