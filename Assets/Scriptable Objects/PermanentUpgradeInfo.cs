@@ -9,6 +9,8 @@ public class PermanentUpgradeInfo : ScriptableObject
     [field: SerializeField] public string Description { get; private set; }
     [field: SerializeField] public StatType StatType { get; private set; }
     [field: SerializeField] public float IncreasePercentage { get; private set; }
+    [field: SerializeField] public int Cost { get; private set; }
+
     public bool bought;
     public bool enabled;
 

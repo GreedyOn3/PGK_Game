@@ -101,6 +101,34 @@ public class SaveData
             resourceMap[id] = amount;
     }
 
+    public int GetTotalSpecialResources()
+    {
+        int total = 0;
+        foreach (KeyValuePair<string, int> kvp in resourceMap)
+            total += kvp.Value;
+
+        return total;
+    }
+
+    public void DecreaseSpecialResources(int amount)
+    {
+        int remaining = amount;
+        List<string> keys = new List<string>(resourceMap.Keys);
+
+        foreach (string key in keys)
+        {
+            if (remaining <= 0) break;
+
+            int available = resourceMap[key];
+            if (available > 0)
+            {
+                int deducted = Mathf.Min(available, remaining);
+                resourceMap[key] -= deducted;
+                remaining -= deducted;
+            }
+        }
+    }
+
     public void SavePermanentUpgrade(PermanentUpgradeInfo upgrade)
     {
         permanentUpgradeMap[upgrade.UpgradeName] = new PermanentUpgradeEntry.Value

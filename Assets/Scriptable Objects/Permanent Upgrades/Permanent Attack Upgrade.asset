@@ -17,5 +17,6 @@ MonoBehaviour:
   <Description>k__BackingField: Attack +10%
   <StatType>k__BackingField: 1
   <IncreasePercentage>k__BackingField: 10
+  <Cost>k__BackingField: 64
   bought: 0
   enabled: 0

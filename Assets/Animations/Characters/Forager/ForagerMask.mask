@@ -48,23 +48,23 @@ AvatarMask:
   - m_Path: Forager/KneeIK.R/KneeIK.R_end
     m_Weight: 0
   - m_Path: Forager/spine01
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Forager/spine01/Bone.00.L
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Forager/spine01/Bone.00.L/upperleg.L
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Forager/spine01/Bone.00.L/upperleg.L/lowerleg.L
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Forager/spine01/Bone.00.L/upperleg.L/lowerleg.L/lowerleg.L_end
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Forager/spine01/Bone.00.R
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Forager/spine01/Bone.00.R/upperleg.R
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Forager/spine01/Bone.00.R/upperleg.R/lowerleg.R
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Forager/spine01/Bone.00.R/upperleg.R/lowerleg.R/lowerleg.R_end
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Forager/spine01/spine02
     m_Weight: 1
   - m_Path: Forager/spine01/spine02/neck

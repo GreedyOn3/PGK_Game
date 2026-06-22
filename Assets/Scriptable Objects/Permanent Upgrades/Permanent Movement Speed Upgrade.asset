@@ -17,5 +17,6 @@ MonoBehaviour:
   <Description>k__BackingField: Movement Speed +10%
   <StatType>k__BackingField: 3
   <IncreasePercentage>k__BackingField: 10
-  bought: 1
-  enabled: 1
+  <Cost>k__BackingField: 64
+  bought: 0
+  enabled: 0
