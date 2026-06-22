@@ -1173,7 +1173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c661548c163fec46be5e5972dbd7ef3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI.ShopOptionUI
-  price: 8
+  price: 15
   image: {fileID: 2925298348953369006}
   rarityText: {fileID: 4323321101318930649}
   nameText: {fileID: 3824755892020598263}

@@ -37,13 +37,14 @@ public class ChestUI : MonoBehaviour
         else
             Destroy(this);
 
-        _levelManager = LevelManager.Instance;
-        _inputManager = InputManager.Instance;
         windowParent.SetActive(false);
     }
 
     public void OpenChest(ChoiceRarity rarity, SpecialItemInfo itemInfo)
     {
+        _levelManager = LevelManager.Instance;
+        _inputManager = InputManager.Instance;
+
         windowParent.SetActive(true);
         _levelManager.PauseLevel();
         _inputManager.SwitchInputMode(InputMode.Ui);

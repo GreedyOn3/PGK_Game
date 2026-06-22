@@ -64,6 +64,10 @@ public class ShopUI : MonoBehaviour
         LevelManager.Instance.UnpauseLevel();
         InputManager.Instance.SwitchInputMode(InputMode.Gameplay);
         gameObject.SetActive(false);
-        if(_currentShop) _currentShop.Finish();
+        if (_currentShop)
+        {
+            _currentShop.Finish();
+            _currentShop = null;
+        }
     }
 }

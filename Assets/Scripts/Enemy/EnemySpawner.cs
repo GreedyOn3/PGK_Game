@@ -3,9 +3,14 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    [SerializeField] private MapObjectSpawner mapObjectSpawner;
     [SerializeField] private Vector2 spawnRadiusMinMax = new(30.0f, 50.0f);
     [SerializeField] private List<RegularSpawn> regularSpawns = new();
     [SerializeField] private List<Wave> waves = new();
+    [Header("Shop")]
+    [SerializeField] private GameObject shopPrefab;
+    [SerializeField] private List<float> shopSpawnTimes = new();
+    [SerializeField] private float shopDistance = 5f;
 
     private GameObject _player;
 
@@ -14,14 +19,25 @@ public class EnemySpawner : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        var levelTimeMinutes = LevelManager.Instance.LevelTimeMinutes;
+        float levelTimeMinutes = LevelManager.Instance.LevelTimeMinutes;
+
+        for (int i = shopSpawnTimes.Count - 1; i >= 0; i--)
+        {
+            if(mapObjectSpawner && levelTimeMinutes >= shopSpawnTimes[i])
+            {
+                if(mapObjectSpawner.TryGetValidRandomPositionInRadius(shopPrefab, _player.transform, shopDistance, out Vector3 shopPos, out Vector3 shopNormal))
+                    Instantiate(shopPrefab, shopPos, Quaternion.FromToRotation(Vector3.up, shopNormal));
+                shopSpawnTimes.RemoveAt(i);
+                break;
+            }
+        }
 
         for (var i = regularSpawns.Count - 1; i >= 0; i--)
         {
             var regularSpawn = regularSpawns[i];
-            regularSpawn.spawnTimer += Time.fixedDeltaTime;
+            regularSpawn.spawnTimer += Time.deltaTime;
 
             var spawnPeriodMin = regularSpawn.spawnPeriodMinutes.x;
             var spawnPeriodMax = regularSpawn.spawnPeriodMinutes.y;
@@ -69,17 +85,31 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemy(GameObject enemyPrefab)
     {
-        var position = GetRandomSpawnPosition();
+        var position = GetRandomSpawnPosition(enemyPrefab);
         Instantiate(enemyPrefab, position, Quaternion.identity);
     }
 
-    private Vector3 GetRandomSpawnPosition()
+    private Vector3 GetRandomSpawnPosition(GameObject enemyPrefab)
     {
-        var randomHorizontalDirection = Random.insideUnitCircle.normalized;
-        var randomDirection = new Vector3(randomHorizontalDirection.x, 0.0f, randomHorizontalDirection.y);
-        var randomDistance = Random.Range(spawnRadiusMinMax.x, spawnRadiusMinMax.y);
-        var spawnPosition = _player.transform.position + randomDirection * randomDistance;
-        spawnPosition.y = _player.transform.position.y;
+        Vector3 spawnPosition = Vector3.zero;
+        float randomDistance = Random.Range(spawnRadiusMinMax.x, spawnRadiusMinMax.y);
+
+        if (!mapObjectSpawner)
+        {
+            var randomHorizontalDirection = Random.insideUnitCircle.normalized;
+            var randomDirection = new Vector3(randomHorizontalDirection.x, 0.0f, randomHorizontalDirection.y);
+            spawnPosition = _player.transform.position + randomDirection * randomDistance;
+            spawnPosition.y = _player.transform.position.y;
+        } 
+        else
+        {
+            mapObjectSpawner.TryGetValidRandomPositionInRadius(enemyPrefab, _player.transform, randomDistance, out spawnPosition, out _);
+
+            float yOffset = 0f;
+            if (enemyPrefab.TryGetComponent<CapsuleCollider>(out CapsuleCollider col))
+                yOffset = col.height / 2f * enemyPrefab.transform.localScale.y;
+            spawnPosition.y += yOffset;
+        }
 
         return spawnPosition;
     }

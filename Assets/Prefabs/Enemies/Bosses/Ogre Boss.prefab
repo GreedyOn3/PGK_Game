@@ -1266,8 +1266,8 @@ GameObject:
   - component: {fileID: 6005258333846772009}
   - component: {fileID: 3080941248670661930}
   - component: {fileID: 1755260347917992079}
-  - component: {fileID: 7948191192099794937}
   - component: {fileID: 1252881359258015691}
+  - component: {fileID: 6394263020920224125}
   m_Layer: 6
   m_Name: Ogre Boss
   m_TagString: Enemy
@@ -1390,22 +1390,7 @@ MonoBehaviour:
   wallCheckHeight: -3.5
   wallClimbMask:
     serializedVersion: 2
-    m_Bits: 385
---- !u!114 &7948191192099794937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3516549510617204167}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0635f8f2d0625c846898bfa69d892373, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::XpDrop
-  obj: {fileID: 2016887137102623746, guid: adcae072e84539446b423acef906004b, type: 3}
-  powerupChance: 0.1
-  powerUps: []
+    m_Bits: 45441
 --- !u!114 &1252881359258015691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1434,8 +1419,24 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
-  _isAttacking: 0
-  _isSpawning: 1
+--- !u!114 &6394263020920224125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3516549510617204167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0635f8f2d0625c846898bfa69d892373, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpawnObjectOnDestroy
+  obj: {fileID: 2016887137102623746, guid: adcae072e84539446b423acef906004b, type: 3}
+  chestPrefab: {fileID: 7777378052639836079, guid: c59524364da87594c8f76fadeaddc561, type: 3}
+  powerupChance: 0.0025
+  powerUps:
+  - {fileID: 199726486286555788, guid: 2ee5280c7b19b3d47bc37bea4604241c, type: 3}
+  - {fileID: 199726486286555788, guid: 4e642070e3be2684b90c50154ce0f106, type: 3}
 --- !u!1 &3522392974802865341
 GameObject:
   m_ObjectHideFlags: 0

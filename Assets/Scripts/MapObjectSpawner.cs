@@ -24,10 +24,14 @@ public class MapObjectSpawner : MonoBehaviour
         _mapBounds = new Bounds(new Vector3(posXZ, height / 2f, posXZ), new Vector3(width, height, width));
 
         LevelManager levelManager = LevelManager.Instance;
-        if (levelManager && TryGetValidRandomPosition(PersistentData.Instance.selectedCharacter.Prefab, out Vector3 playerPos, out Vector3 _))
+        GameObject playerPrefab = PersistentData.Instance.selectedCharacter.Prefab;
+        if (levelManager && TryGetValidRandomPosition(playerPrefab, out Vector3 playerPos, out _))
         {
-            levelManager.TeleportPlayer(playerPos);
-            Debug.Log("TEST! " + playerPos);
+            float yOffset = 0f;
+            if (playerPrefab.TryGetComponent<CapsuleCollider>(out CapsuleCollider col))
+                yOffset = col.height / 2f * playerPrefab.transform.localScale.y;
+
+            levelManager.TeleportPlayer(playerPos + Vector3.up*yOffset);
         }
 
         if (!barrelPrefab) return;
@@ -99,6 +103,38 @@ public class MapObjectSpawner : MonoBehaviour
         } while (isBlocked && attempts < 15);
 
         return !isBlocked;
+    }
+
+    public bool TryGetValidRandomPositionInRadius(GameObject prefab, Transform center, float radius, out Vector3 hitPosition, out Vector3 hitNormal)
+    {
+        int attempts = 0;
+
+        while (attempts < 30)
+        {
+            attempts++;
+
+            Vector2 randomCircle = Random.insideUnitCircle * radius;
+            Vector3 randomOrigin = new Vector3(
+                center.position.x + randomCircle.x,
+                _mapBounds.max.y,
+                center.position.z + randomCircle.y
+            );
+
+            if (randomOrigin.x < _mapBounds.min.x || randomOrigin.x > _mapBounds.max.x ||
+                randomOrigin.z < _mapBounds.min.z || randomOrigin.z > _mapBounds.max.z)
+                continue;
+
+            if (Physics.Raycast(randomOrigin, Vector3.down, out RaycastHit hit, _mapBounds.size.y, groundMask) && !CheckCollision(hit.point, prefab))
+            {
+                hitPosition = hit.point;
+                hitNormal = hit.normal;
+                return true;
+            }
+        }
+
+        hitPosition = Vector3.zero;
+        hitNormal = Vector3.up;
+        return false;
     }
 
     private void OnDrawGizmosSelected()

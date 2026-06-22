@@ -27,12 +27,8 @@ public class LevelManager : MonoBehaviour
 
         _levelInfo = persistentData.selectedLevel;
         SceneManager.LoadScene(_levelInfo.LevelScene, LoadSceneMode.Additive);
+
         GameObject playerPrefab = persistentData.selectedCharacter.Prefab;
-
-        /*Vector3 spawnPos = Vector3.zero;
-        if(objectSpawner)
-            objectSpawner.TryGetValidRandomPosition(playerPrefab, out spawnPos, out Vector3 _);*/
-
         GameObject player = Instantiate(playerPrefab);
         GameObject playerCamera = Instantiate(playerCameraPrefab);
         player.GetComponent<PlayerCamera>().playerCamera = playerCamera.transform;
