@@ -28,7 +28,6 @@ public class SaveManager : MonoBehaviour
 
     private void Awake()
     {
-        // just in case
         if (_instance && _instance != this)
         {
             Destroy(gameObject);
@@ -67,9 +66,8 @@ public class SaveManager : MonoBehaviour
     public void DeleteSavegame()
     {
         if (File.Exists(saveFilePath))
-        {
             File.WriteAllText(saveFilePath, "");
-        }
+        saveData = new();
     }
 }
 

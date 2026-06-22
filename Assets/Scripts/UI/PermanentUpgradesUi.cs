@@ -50,8 +50,7 @@ namespace UI
             SaveManager.instance.DeleteSavegame();
             PersistentData.Instance.ResetPermanentUpgrades();
             PersistentData.Instance.ResetAchievements();
-            foreach (var upgradeCard in _upgradeCards)
-                upgradeCard.UpdateUi();
+            Refresh();
         }
     }
 }
