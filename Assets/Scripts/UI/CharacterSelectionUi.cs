@@ -25,5 +25,10 @@ namespace UI
         {
             mainMenu.PickCharacter(characterInfo);
         }
+
+        public void GoBack()
+        {
+            mainMenu.CancelCharacterSelection();
+        }
     }
 }

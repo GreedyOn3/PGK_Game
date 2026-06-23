@@ -38,10 +38,20 @@ namespace UI
             SwitchScreen(levelSelectionScreen);
         }
 
+        public void CancelCharacterSelection()
+        {
+            SwitchScreen(titleScreen);
+        }
+
         public void PickLevel(LevelInfo levelInfo)
         {
             PersistentData.Instance.selectedLevel = levelInfo;
             SceneManager.LoadScene("GameplayScene");
+        }
+
+        public void CancelLevelSelection()
+        {
+            SwitchScreen(characterSelectionScreen);
         }
 
         public void ReturnToTitleScreen()

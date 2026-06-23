@@ -25,5 +25,10 @@ namespace UI
         {
             mainMenu.PickLevel(levelInfo);
         }
+
+        public void GoBack()
+        {
+            mainMenu.CancelLevelSelection();
+        }
     }
 }
