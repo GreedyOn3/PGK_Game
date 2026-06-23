@@ -47,10 +47,7 @@ namespace UI
 
         public void OnDeleteSavegameButtonClicked()
         {
-            SaveManager.instance.DeleteSavegame();
-            PersistentData.Instance.ResetPermanentUpgrades();
-            PersistentData.Instance.ResetAchievements();
-            Refresh();
+            mainMenu.GoToDeleteSaveGameScreen();
         }
     }
 }

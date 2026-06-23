@@ -10,6 +10,7 @@ namespace UI
         [SerializeField] private GameObject levelSelectionScreen;
         [SerializeField] private GameObject permanentUpgradesScreen;
         [SerializeField] private GameObject achievementsScreen;
+        [SerializeField] private GameObject deleteSaveGameScreen;
 
         private void Start()
         {
@@ -57,6 +58,16 @@ namespace UI
 #endif
         }
 
+        public void GoToDeleteSaveGameScreen()
+        {
+            SwitchScreen(deleteSaveGameScreen);
+        }
+
+        public void ReturnFromDeleteSaveGameScreen()
+        {
+            SwitchScreen(permanentUpgradesScreen);
+        }
+
         private void SwitchScreen(GameObject screen)
         {
             titleScreen.SetActive(false);
@@ -64,6 +75,7 @@ namespace UI
             levelSelectionScreen.SetActive(false);
             permanentUpgradesScreen.SetActive(false);
             achievementsScreen.SetActive(false);
+            deleteSaveGameScreen.SetActive(false);
 
             screen.SetActive(true);
         }
